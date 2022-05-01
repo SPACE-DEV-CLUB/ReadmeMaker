@@ -1,0 +1,2 @@
+// common
+export const TYPE = {}
