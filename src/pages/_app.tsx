@@ -1,8 +1,9 @@
+import React from 'react';
 import type { AppProps } from 'next/app';
 import GlobalStyle from '../styles/globalStyle';
 import { Global } from '@emotion/react';
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
       <Global styles={GlobalStyle} />
