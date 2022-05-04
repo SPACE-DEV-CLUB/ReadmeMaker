@@ -1,8 +1,8 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import NewComponents from 'components/home/components/NewComponents';
-import PopularComponents from 'components/home/components/PopularComponents';
+import PopularItemList from 'components/main/components/PopularItemList';
+import ComponentList from 'components/main/components/ComponentList';
 
 const Home: NextPage = () => {
   return (
@@ -12,8 +12,8 @@ const Home: NextPage = () => {
         <meta name="description" content="Make your readme.md awesome!!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NewComponents />
-      <PopularComponents />
+      <PopularItemList />
+      <ComponentList datas={['', '', '', '', '']} />
     </div>
   );
 };
