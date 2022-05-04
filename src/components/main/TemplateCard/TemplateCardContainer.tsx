@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import TemplateCardText from './TemplateCardText';
+import TemplateComponents from './TemplateComponents';
+import { DraggableContainer } from 'components/common/DraggableContainer';
 
 const TemplateCardContainer = () => {
   return (
@@ -9,6 +11,18 @@ const TemplateCardContainer = () => {
         <ThumbNailImage></ThumbNailImage>
         <TemplateCardText></TemplateCardText>
       </Section>
+      <DraggableContainer>
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+        <TemplateComponents />
+      </DraggableContainer>
     </>
   );
 };
