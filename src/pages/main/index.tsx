@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import TemplateCardContainer from 'components/main/TemplateCard/TemplateCardContainer';
+import TemplateComponents from 'components/main/TemplateCard/TemplateComponents';
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <Main>
         <TemplateCardContainer />
+        <TemplateComponents />
       </Main>
     </div>
   );
