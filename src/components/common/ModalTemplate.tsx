@@ -5,7 +5,6 @@ import { keyframes } from '@emotion/css';
 interface IModalInnerStyled {
   width: number;
   height: number;
-  isModal: boolean;
 }
 
 interface ModalTemplateProps extends IModalInnerStyled {
@@ -16,7 +15,6 @@ interface ModalTemplateProps extends IModalInnerStyled {
 function ModalTemplate({
   width,
   height,
-  isModal,
   children,
   onToggleModal,
   ...rest
@@ -26,7 +24,6 @@ function ModalTemplate({
       <ModalInner
         width={width}
         height={height}
-        isModal={isModal}
         onMouseDown={e => e.stopPropagation()}
       >
         {children}
@@ -81,7 +78,7 @@ const ModalBackground = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 0.4;
+  opacity: 0.8;
 `;
 
 export default ModalTemplate;
