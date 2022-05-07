@@ -1,10 +1,10 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
+import { DraggableContainer } from 'components/common/DraggableContainer';
+import ModalTemplate from 'components/common/ModalTemplate';
+import useToggle from 'hooks/useToggle';
 import TemplateCardText from './TemplateCardText';
 import TemplateComponents from './TemplateComponents';
-import { DraggableContainer } from 'components/common/DraggableContainer';
-import useToggle from 'hooks/useToggle';
-import ModalTemplate from 'components/common/ModalTemplate';
 
 const TemplateCardContainer = () => {
   const [isModal, onToggleModal] = useToggle();

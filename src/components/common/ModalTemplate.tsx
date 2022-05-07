@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
 import styled from '@emotion/styled';
+import React, { ReactElement } from 'react';
 import { keyframes } from '@emotion/css';
 
 interface IModalInnerStyled {
@@ -21,11 +21,7 @@ function ModalTemplate({
 }: ModalTemplateProps): ReactElement {
   return (
     <ModalTemplateBlock onMouseDown={onToggleModal} {...rest}>
-      <ModalInner
-        width={width}
-        height={height}
-        onMouseDown={e => e.stopPropagation()}
-      >
+      <ModalInner width={width} height={height} onMouseDown={e => e.stopPropagation()}>
         {children}
       </ModalInner>
       <ModalBackground />
