@@ -28,6 +28,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@svgr/webpack": "^6.2.1",
+    "@tinymce/tinymce-react": "^4.0.0",
     "axios": "^0.27.2",
     "eslint-plugin-prettier": "^4.0.0",
     "graphql-request": "^4.2.0",
