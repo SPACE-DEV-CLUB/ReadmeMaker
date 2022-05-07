@@ -1,4 +1,4 @@
-import { css } from "@emotion/react"
+import { css } from '@emotion/react';
 
 const GlobalStyle = css`
   html,
@@ -118,13 +118,13 @@ const GlobalStyle = css`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
+    content: '';
     content: none;
   }
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
