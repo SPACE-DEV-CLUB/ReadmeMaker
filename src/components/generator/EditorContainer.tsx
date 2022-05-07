@@ -8,7 +8,7 @@ const EditorContainer = () => {
   return (
     <Editor
       initialValue={''}
-      apiKey="u7dq1ei6qlny6tyhkebbwzr1su1sb4n2e3zzg0v4tfvfne4s"
+      apiKey={process.env.EDITOR_API_KEY}
       init={{
         bordercolor: 'blue',
         height: 500,
