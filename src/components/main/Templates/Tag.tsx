@@ -8,9 +8,8 @@ const Tag = () => {
 const Box = styled.div`
   width: 94px;
   height: 28px;
-  border: 1px solid black;
+  border: 1px solid orange;
   border-radius: 10px;
-  background-color: orange;
   margin: 0 20px 21px 0;
 `;
 

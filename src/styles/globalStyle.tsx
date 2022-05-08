@@ -1,4 +1,4 @@
-import { css } from "@emotion/react"
+import { css } from '@emotion/react';
 
 const GlobalStyle = css`
   html,
@@ -86,10 +86,10 @@ const GlobalStyle = css`
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
+    scroll-behavior: smooth;
   }
-
+  /* HTML5 display-role reset for older browsers */
   article,
   aside,
   details,
@@ -105,6 +105,8 @@ const GlobalStyle = css`
   }
   body {
     line-height: 1;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+      'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   }
   ol,
   ul {
@@ -118,13 +120,40 @@ const GlobalStyle = css`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
+    content: '';
     content: none;
   }
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
-`
+  a {
+    color: black;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+  }
+  button {
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+    cursor: pointer;
+  }
+  .sr-only {
+    position: absolute;
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+  }
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
