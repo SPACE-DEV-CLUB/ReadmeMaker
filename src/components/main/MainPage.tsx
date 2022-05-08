@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import ComponentsContainer from './components/ComponentsContainer';
-import TemplatesContainer from './\bTemplates/TemplatesContainer';
+import TemplatesContainer from './Templates/TemplatesContainer';
 
 interface MainPageProps {
   slideRef: React.MutableRefObject<HTMLElement>;
