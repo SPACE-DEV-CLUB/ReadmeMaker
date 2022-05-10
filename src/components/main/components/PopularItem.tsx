@@ -3,9 +3,10 @@ import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
 import React from 'react';
 
-const NewComponentsItem = (): JSX.Element => {
+const PopularComponentsItem = (): JSX.Element => {
   return (
     <ItemContainer>
+      <ItemContent></ItemContent>
       <SvgContainer>
         <HeartIcon />
         <CartIcon />
@@ -16,14 +17,20 @@ const NewComponentsItem = (): JSX.Element => {
 
 const ItemContainer = styled.div`
   position: relative;
+  :last-child {
+    margin-right: 30px;
+  }
+`;
+
+const ItemContent = styled.div`
   margin-top: 60px;
   min-width: 188px;
   height: 188px;
-  background-color: #000;
+  background-color: #1b2027;
   border-radius: 20px;
   white-space: nowrap;
   &:hover {
-    transform: translate(0, -30px) scaleY(1.3);
+    transform: translate(0, -15px) scaleY(1.15);
     transition: all 0.2s ease-in-out;
   }
 `;
@@ -38,4 +45,4 @@ const SvgContainer = styled.div`
   }
 `;
 
-export default NewComponentsItem;
+export default PopularComponentsItem;

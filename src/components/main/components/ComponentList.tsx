@@ -18,6 +18,7 @@ const Card = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
+  margin: auto;
 `;
 
 export default ComponentList;
