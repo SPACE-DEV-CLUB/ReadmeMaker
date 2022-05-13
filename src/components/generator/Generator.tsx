@@ -1,14 +1,11 @@
 import styled from '@emotion/styled';
-import EditorContainer from './EditorContainer';
-import MDViewer from './MDViewer';
-import PreviewContainer from './PreviewContainer';
+import EditorComponent from './EditorComponent';
 
 const Generator = () => {
   return (
     <Container>
-      <EditorContainer />
-      <PreviewContainer />
-      <MDViewer />
+      <EditorComponent />
+      <EditorComponent />
     </Container>
   );
 };
@@ -16,7 +13,9 @@ const Generator = () => {
 export default Generator;
 
 const Container = styled.div`
-  display: grid;
-  gap: 50px;
-  grid-template-columns: 400px 400px 400px;
+  background-color: #171b21;
+  padding: 70px 20px 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;

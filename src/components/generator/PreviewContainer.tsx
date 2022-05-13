@@ -1,15 +1,22 @@
 import { useRecoilValue } from 'recoil';
-import { postState } from 'recoil/atoms/post';
+import styled from '@emotion/styled';
+import { postState } from 'atoms/post';
 
 const PreviewContainer = () => {
   const post = useRecoilValue(postState);
 
   return (
-    <div>
+    <Container>
       <h3>프리뷰 컨테이너</h3>
       <div dangerouslySetInnerHTML={{ __html: post }} />
-    </div>
+    </Container>
   );
 };
 
 export default PreviewContainer;
+
+const Container = styled.div`
+  padding: 70px 40px 40px 40px;
+  background-color: #000;
+  color: #dddedf;
+`;
