@@ -8,7 +8,6 @@ const Home: NextPage = () => {
   const TOTAL_SLIDES = 1;
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<any>(null);
-
   useEffect(() => {
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
     slideRef.current.style.transform = `translateX(-${currentSlide}00vw)`;

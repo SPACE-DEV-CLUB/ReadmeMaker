@@ -6,12 +6,10 @@ import { Global } from '@emotion/react';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
-    <>
-      <RecoilRoot>
-        <Global styles={GlobalStyle} />
-        <Component {...pageProps} />
-      </RecoilRoot>
-    </>
+    <RecoilRoot>
+      <Global styles={GlobalStyle} />
+      <Component {...pageProps} />
+    </RecoilRoot>
   );
 };
 

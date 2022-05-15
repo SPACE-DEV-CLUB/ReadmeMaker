@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 import { keyframes } from '@emotion/css';
+import CloseButton from 'assets/CloseButton';
+import YellowLabel from 'assets/YellowLabel';
 
 interface IModalInnerStyled {
   width: number;
@@ -22,6 +24,8 @@ function ModalTemplate({
   return (
     <ModalTemplateBlock onMouseDown={onToggleModal} {...rest}>
       <ModalInner width={width} height={height} onMouseDown={e => e.stopPropagation()}>
+        <CloseButton onMouseDown={onToggleModal} />
+        <YellowLabel />
         {children}
       </ModalInner>
       <ModalBackground />
@@ -54,11 +58,11 @@ const transition = keyframes`
 const ModalInner = styled.div<IModalInnerStyled>`
   position: absolute;
   z-index: 9999;
-  background-color: #1c1c1c;
+  background-color: #171b21;
   top: 0;
   bottom: 0;
   right: 0;
-  left: 0;
+  left: 50%;
   margin: auto;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;

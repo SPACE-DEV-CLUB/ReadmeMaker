@@ -28,12 +28,12 @@ const PopularItemList = (): JSX.Element => {
 const Container = styled.div`
   width: 1100px;
   color: #fff;
-  background-color: #1c1c1c;
+  background-color: #171b21;
   border: 1px solid #2c2c2c;
   border-radius: 30px;
   padding: 40px 0px 30px 40px;
   box-sizing: border-box;
-
+  margin: 60px auto 120px;
   h3 {
     font-size: 20px;
     font-weight: 800;

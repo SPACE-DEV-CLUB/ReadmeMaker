@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import React from 'react';
 import Link from 'next/link';
 
@@ -32,10 +33,10 @@ const NavBar = ({ currentSlide, nextSlide, prevSlide }: NaveBarProps) => {
         </Logo>
         <CategoryWrap>
           <li onClick={prevSlide}>
-            <PageComponent>컴포넌트</PageComponent>
+            <PageComponent props={currentSlide === 0}>컴포넌트</PageComponent>
           </li>
           <li onClick={nextSlide}>
-            <PageTemplate>인기템플릿</PageTemplate>
+            <PageTemplate props={currentSlide === 1}>인기템플릿</PageTemplate>
           </li>
         </CategoryWrap>
         <MakerButton>
@@ -74,29 +75,51 @@ const CategoryWrap = styled.ul`
   color: white;
 `;
 
-const PageComponent = styled.button`
+const PageComponent = styled.button<{ props: boolean }>`
+  position: relative;
   font-size: 15px;
   font-weight: 400;
   line-height: 22px;
   color: white;
-  margin-right: 15px;
+  margin-right: 65px;
 
-  :hover {
-    font-weight: 700;
-    /* border-bottom: 6px solid #f5ff80; */
-  }
+  ${({ props }) =>
+    props &&
+    css`
+      font-weight: 700;
+      ::after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: calc(100%);
+        border-bottom: 6px solid #f5ff80;
+        border-radius: 3px;
+        bottom: -23px;
+      }
+    `}
 `;
 
-const PageTemplate = styled.button`
+const PageTemplate = styled.button<{ props: boolean }>`
+  position: relative;
   font-size: 15px;
   font-weight: 400;
   line-height: 22px;
   color: white;
 
-  :hover {
-    font-weight: 700;
-    /* border-bottom: 6px solid #f5ff80; */
-  }
+  ${({ props }) =>
+    props &&
+    css`
+      font-weight: 700;
+      ::after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: calc(100%);
+        border-bottom: 6px solid #f5ff80;
+        border-radius: 3px;
+        bottom: -23px;
+      }
+    `}
 `;
 
 const MakerButton = styled.ul`
@@ -107,7 +130,6 @@ const MakerButton = styled.ul`
     padding: 8px 28px 8px 29px;
     font-size: 14px;
     font-weight: 600;
-    /* line-height: 15px; */
   }
 `;
 

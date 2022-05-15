@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 const TemplateComponents = () => {
   return (
     <Card>
-      <Heart>
+      <ThumbNailImage />
+      <IconWrapper>
         <svg
           width="21"
           height="19"
@@ -17,8 +18,6 @@ const TemplateComponents = () => {
             fill="white"
           />
         </svg>
-      </Heart>
-      <Cart>
         <svg
           width="23"
           height="20"
@@ -32,27 +31,32 @@ const TemplateComponents = () => {
             fillOpacity="0.85"
           />
         </svg>
-      </Cart>
+      </IconWrapper>
     </Card>
   );
 };
 
 const Card = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  box-sizing: border-box;
   min-width: 188px;
   height: 188px;
-  background-color: #0f0f0f;
   border-radius: 20px;
+  border: 1px solid #20262f;
+  padding: 20px;
 `;
 
-const Heart = styled.div`
-  margin-bottom: 20px;
+const ThumbNailImage = styled.div`
+  width: 100%;
+  height: 70%;
+  background: #171b21;
 `;
 
-const Cart = styled.div`
-  margin: 0 21px 20px 21px;
+const IconWrapper = styled.div`
+  display: flex;
+  height: 30%;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 15px;
 `;
 
 export default TemplateComponents;
