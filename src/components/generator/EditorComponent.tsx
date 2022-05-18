@@ -3,12 +3,17 @@ import styled from '@emotion/styled';
 import { useSetRecoilState } from 'recoil';
 import { postState } from 'atoms/post';
 
-const EditorComponent = () => {
+interface DragProps {
+  isDragging: boolean;
+}
+
+const EditorComponent = (props: any) => {
   const setPost = useSetRecoilState(postState);
 
+  const { isDragging } = props;
+
   return (
-    <Container>
-      <h3>에디터 컨테이너</h3>
+    <Container isDragging={isDragging}>
       <Editor
         initialValue={''}
         apiKey={process.env.EDITOR_API_KEY}
@@ -37,13 +42,15 @@ const EditorComponent = () => {
 
 export default EditorComponent;
 
-const Container = styled.section`
-  background-color: #000;
+const Container = styled.div<DragProps>`
+  background-color: ${props => (props.isDragging ? '#F5FF80' : '#1B2027')};
   padding: 40px 70px 40px 40px;
   border-radius: 10px;
   border: 1px solid #1b2027;
   /* TODO: 롱클릭 시 스타일 적용 */
   border-right: 30px solid #f5ff80;
+  color: ${props => (props.isDragging ? '#1B2027' : '#F5FF80')};
+
   & .tox-toolbar__primary {
     background-color: #000 !important;
   }
