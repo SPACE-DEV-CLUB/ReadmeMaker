@@ -28,6 +28,7 @@ const DndContainer = ({ post, setPost }: any) => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
+                      <h3>{e.id}</h3>
                       <EditorComponent isDragging={snapshot.isDragging} />
                     </div>
                   );
