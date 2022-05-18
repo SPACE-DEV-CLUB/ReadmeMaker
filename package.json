@@ -24,6 +24,7 @@
     }
   },
   "dependencies": {
+    "@atlaskit/css-reset": "^6.3.13",
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
