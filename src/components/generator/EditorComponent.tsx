@@ -1,7 +1,7 @@
 import { Editor } from '@tinymce/tinymce-react';
 import styled from '@emotion/styled';
 import { useSetRecoilState } from 'recoil';
-import { postState } from 'recoil/atoms/post';
+import { postState } from 'atoms/post';
 
 const EditorComponent = () => {
   const setPost = useSetRecoilState(postState);
@@ -18,7 +18,8 @@ const EditorComponent = () => {
           statusbar: false,
           skin: 'snow',
           toolbar_sticky: true,
-          toolbar: 'bold | italic | underline',
+          toolbar:
+            'bold | italic | underline | alignleft | aligncenter| alignright | alignjustify ',
           content_style: `
           body {
             color: #dddedf !important;
@@ -42,7 +43,6 @@ const Container = styled.div`
   border: 1px solid #1b2027;
   /* TODO: 롱클릭 시 스타일 적용 */
   border-right: 30px solid #f5ff80;
-
   & .tox-toolbar__primary {
     background-color: #000 !important;
   }
