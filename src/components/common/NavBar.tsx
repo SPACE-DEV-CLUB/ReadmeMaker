@@ -4,12 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 
 interface NaveBarProps {
-  nextSlide: any;
-  prevSlide: any;
-  currentSlide: Number;
+  children: React.ReactNode;
 }
 
-const NavBar = ({ currentSlide, nextSlide, prevSlide }: NaveBarProps) => {
+const NavBar = ({ children }: NaveBarProps) => {
   return (
     <Container>
       <Wrap>
@@ -31,17 +29,7 @@ const NavBar = ({ currentSlide, nextSlide, prevSlide }: NaveBarProps) => {
             </a>
           </Link>
         </Logo>
-        <CategoryWrap>
-          <li onClick={prevSlide}>
-            <PageComponent props={currentSlide === 0}>컴포넌트</PageComponent>
-          </li>
-          <li onClick={nextSlide}>
-            <PageTemplate props={currentSlide === 1}>인기템플릿</PageTemplate>
-          </li>
-        </CategoryWrap>
-        <MakerButton>
-          <li>make it</li>
-        </MakerButton>
+        {children}
       </Wrap>
     </Container>
   );
@@ -66,71 +54,6 @@ const Wrap = styled.ul`
 
 const Logo = styled.li`
   width: 102px;
-`;
-
-const CategoryWrap = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-`;
-
-const PageComponent = styled.button<{ props: boolean }>`
-  position: relative;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 22px;
-  color: white;
-  margin-right: 65px;
-
-  ${({ props }) =>
-    props &&
-    css`
-      font-weight: 700;
-      ::after {
-        position: absolute;
-        content: '';
-        display: block;
-        width: calc(100%);
-        border-bottom: 6px solid #f5ff80;
-        border-radius: 3px;
-        bottom: -23px;
-      }
-    `}
-`;
-
-const PageTemplate = styled.button<{ props: boolean }>`
-  position: relative;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 22px;
-  color: white;
-
-  ${({ props }) =>
-    props &&
-    css`
-      font-weight: 700;
-      ::after {
-        position: absolute;
-        content: '';
-        display: block;
-        width: calc(100%);
-        border-bottom: 6px solid #f5ff80;
-        border-radius: 3px;
-        bottom: -23px;
-      }
-    `}
-`;
-
-const MakerButton = styled.ul`
-  border-radius: 30px;
-  background-color: #f5ff80;
-
-  li {
-    padding: 8px 28px 8px 29px;
-    font-size: 14px;
-    font-weight: 600;
-  }
 `;
 
 export default NavBar;

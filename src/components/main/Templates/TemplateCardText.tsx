@@ -4,17 +4,15 @@ import Tag from './Tag';
 
 const TemplateCardText = () => {
   return (
-    <Wrap>
+    <article>
       <Tag />
       <Title>Content</Title>
       <SubTitle>생성일자</SubTitle>
       <Borderline></Borderline>
       <TemplateInfo>새로운 템플릿을 확인하세요.</TemplateInfo>
-    </Wrap>
+    </article>
   );
 };
-
-const Wrap = styled.article``;
 
 const Title = styled.h2`
   font-size: 40px;
