@@ -15,7 +15,7 @@ const PreviewContainer = () => {
 
 export default PreviewContainer;
 
-const Container = styled.div`
+const Container = styled.section`
   padding: 70px 40px 40px 40px;
   background-color: #000;
   color: #dddedf;

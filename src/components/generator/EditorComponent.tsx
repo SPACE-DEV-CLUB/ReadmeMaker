@@ -8,6 +8,7 @@ const EditorComponent = () => {
 
   return (
     <Container>
+      <h3>에디터 컨테이너</h3>
       <Editor
         initialValue={''}
         apiKey={process.env.EDITOR_API_KEY}
@@ -36,7 +37,7 @@ const EditorComponent = () => {
 
 export default EditorComponent;
 
-const Container = styled.div`
+const Container = styled.section`
   background-color: #000;
   padding: 40px 70px 40px 40px;
   border-radius: 10px;
