@@ -1,17 +1,25 @@
 import { useRecoilValue } from 'recoil';
 import styled from '@emotion/styled';
-import { postState } from 'atoms/post';
+import { postsState } from 'atoms/posts';
 
 const MDViewer = () => {
-  const post = useRecoilValue(postState);
+  const posts = useRecoilValue(postsState);
 
   return (
     <Container>
       <h3>마크다운 뷰어</h3>
-      <p>{post}</p>
-      <a href={URL.createObjectURL(new Blob([post], { type: 'text/plain' }))} download="README.md">
-        다운로드
-      </a>
+      {posts.map(postItem => (
+        <div key={postItem.id}>
+          <p>{postItem.content}</p>
+          {/* TODO: array 타입에 맞게 변경 */}
+          {/* <a
+            href={URL.createObjectURL(new Blob([posts], { type: 'text/plain' }))}
+            download="README.md"
+          >
+            다운로드
+          </a> */}
+        </div>
+      ))}
     </Container>
   );
 };

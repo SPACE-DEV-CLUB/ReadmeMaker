@@ -1,14 +1,16 @@
 import { useRecoilValue } from 'recoil';
 import styled from '@emotion/styled';
-import { postState } from 'atoms/post';
+import { postsState } from 'atoms/posts';
 
 const PreviewContainer = () => {
-  const post = useRecoilValue(postState);
+  const posts = useRecoilValue(postsState);
 
   return (
     <Container>
       <h3>프리뷰 컨테이너</h3>
-      <div dangerouslySetInnerHTML={{ __html: post }} />
+      {posts.map(post => (
+        <div key={post.id} dangerouslySetInnerHTML={{ __html: post.content }} />
+      ))}
     </Container>
   );
 };
