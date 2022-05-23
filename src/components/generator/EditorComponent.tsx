@@ -1,16 +1,35 @@
 import { Editor } from '@tinymce/tinymce-react';
 import styled from '@emotion/styled';
-import { useSetRecoilState } from 'recoil';
-import { postState } from 'atoms/post';
+import { useRecoilState } from 'recoil';
+import { postsState } from 'atoms/posts';
+import { PostType } from 'types/postType';
 
-const EditorComponent = () => {
-  const setPost = useSetRecoilState(postState);
+interface EditorComponentProps {
+  post: PostType;
+}
+
+const EditorComponent = ({ post }: EditorComponentProps) => {
+  const [posts, setPosts] = useRecoilState(postsState);
+  const index = posts.findIndex(postItem => postItem.id === post.id);
+
+  const replaceItemAtIndex = (arr: PostType[], index: number, newValue: PostType) => {
+    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
+  };
+
+  const editPostContent = (value: string) => {
+    const newPostItem = replaceItemAtIndex(posts, index, {
+      ...post,
+      content: value,
+    });
+
+    setPosts(newPostItem);
+  };
 
   return (
     <Container>
       <h3>에디터 컨테이너</h3>
       <Editor
-        initialValue={''}
+        value={post.content}
         apiKey={process.env.EDITOR_API_KEY}
         init={{
           bordercolor: 'blue',
@@ -29,7 +48,7 @@ const EditorComponent = () => {
             margin: 0 !important;
           }`,
         }}
-        onEditorChange={setPost}
+        onEditorChange={editPostContent}
       />
     </Container>
   );
