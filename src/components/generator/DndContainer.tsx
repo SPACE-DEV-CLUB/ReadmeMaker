@@ -9,8 +9,6 @@ const DndContainer = ({ post, setPost }: any) => {
     const items = [...post];
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-
-    console.log(items);
     setPost(items);
   };
 

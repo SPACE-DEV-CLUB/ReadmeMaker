@@ -7,10 +7,8 @@ interface DragProps {
   isDragging: boolean;
 }
 
-const EditorComponent = (props: any) => {
+const EditorComponent = ({ isDragging }: DragProps) => {
   const setPost = useSetRecoilState(postState);
-
-  const { isDragging } = props;
 
   return (
     <Container isDragging={isDragging}>
