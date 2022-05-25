@@ -14,17 +14,15 @@ const NavBarMainItem = ({ prevSlide, nextSlide, currentSlide }: NavBarMainItemPr
     <>
       <CategoryWrap>
         <li onClick={prevSlide}>
-          <PageComponent props={currentSlide === 0}>컴포넌트</PageComponent>
+          <PageButton props={currentSlide === 0}>컴포넌트</PageButton>
         </li>
         <li onClick={nextSlide}>
-          <PageTemplate props={currentSlide === 1}>인기템플릿</PageTemplate>
+          <PageButton props={currentSlide === 1}>인기템플릿</PageButton>
         </li>
       </CategoryWrap>
       <ButtonWrap>
         <DarkModeButton />
-        <MakerButton>
-          <li>make it</li>
-        </MakerButton>
+        <MakerButton>make it</MakerButton>
       </ButtonWrap>
     </>
   );
@@ -35,33 +33,10 @@ const CategoryWrap = styled.ul`
   justify-content: space-between;
   align-items: center;
   color: white;
+  gap: 65px;
 `;
 
-const PageComponent = styled.button<{ props: boolean }>`
-  position: relative;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 22px;
-  color: white;
-  margin-right: 65px;
-
-  ${({ props }) =>
-    props &&
-    css`
-      font-weight: 700;
-      ::after {
-        position: absolute;
-        content: '';
-        display: block;
-        width: calc(100%);
-        border-bottom: 6px solid #f5ff80;
-        border-radius: 3px;
-        bottom: -23px;
-      }
-    `}
-`;
-
-const PageTemplate = styled.button<{ props: boolean }>`
+const PageButton = styled.button<{ props: boolean }>`
   position: relative;
   font-size: 15px;
   font-weight: 400;
@@ -84,16 +59,13 @@ const PageTemplate = styled.button<{ props: boolean }>`
     `}
 `;
 
-const MakerButton = styled.ul`
+const MakerButton = styled.button`
   border-radius: 30px;
   margin-left: 40px;
   background-color: #f5ff80;
-
-  li {
-    padding: 8px 28px 8px 29px;
-    font-size: 14px;
-    font-weight: 600;
-  }
+  padding: 8px 28px 8px 29px;
+  font-size: 14px;
+  font-weight: 600;
 `;
 
 const ButtonWrap = styled.div`
