@@ -1,3 +1,5 @@
+import 'styles/fonts/Montserrat.css';
+import 'styles/fonts/NotoSansKR.css';
 import { RecoilRoot } from 'recoil';
 import React from 'react';
 import type { AppProps } from 'next/app';
