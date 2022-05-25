@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 interface CartItemProps {
   id: number;
@@ -37,24 +39,24 @@ const CartItemWrap = styled.div`
   }
 `;
 
-const Image = styled.div`
-  width: 100%;
+const CartContentStyle = css`
   padding: 30px 20px;
   box-sizing: border-box;
+`;
+
+const Image = styled.div`
+  ${CartContentStyle}
   img {
     width: 100%;
   }
 `;
 
 const CartDesc = styled.div`
+  ${CartContentStyle}
   display: none;
   position: absolute;
-  padding: 30px 20px;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
 `;
 
 const Title = styled.h5`
