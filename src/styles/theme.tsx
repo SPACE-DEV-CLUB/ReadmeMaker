@@ -17,3 +17,15 @@ export const lightTheme: Theme = {
   CASUAL_FIELD: '#171B21',
   TYPE: 'light',
 };
+
+// font type
+
+export const fontSize = {
+  FONT_XSM: '10px',
+  FONT_SM: '13px',
+  FONT_MD: '16px',
+  FONT_LG: '20px',
+  FONT_XLG: '40px',
+};
+
+export type Font = typeof fontSize;

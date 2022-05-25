@@ -1,6 +1,6 @@
-import { Theme } from '../styles/theme';
+import { Font, Theme } from '../styles/theme';
 
 export interface ThemeProps {
   theme: Theme;
-  isEmpty?: boolean;
+  font: Font;
 }
