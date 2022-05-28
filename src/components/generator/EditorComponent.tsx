@@ -16,6 +16,10 @@ const EditorComponent = ({ post }: EditorComponentProps) => {
     return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
   };
 
+  const removeItemAtIndex = (arr: PostType[], index: number) => {
+    return [...arr.slice(0, index), ...arr.slice(index + 1)];
+  };
+
   const editPostContent = (value: string) => {
     const newPostItem = replaceItemAtIndex(posts, index, {
       ...post,
@@ -23,6 +27,11 @@ const EditorComponent = ({ post }: EditorComponentProps) => {
     });
 
     setPosts(newPostItem);
+  };
+
+  const deletePost = () => {
+    const newList = removeItemAtIndex(posts, index);
+    setPosts(newList);
   };
 
   return (
@@ -50,6 +59,7 @@ const EditorComponent = ({ post }: EditorComponentProps) => {
         }}
         onEditorChange={editPostContent}
       />
+      <BtnDelete onClick={deletePost}>삭제</BtnDelete>
     </Container>
   );
 };
@@ -104,4 +114,9 @@ const Container = styled.section`
     height: 54px !important;
     border-radius: 20px;
   }
+`;
+
+const BtnDelete = styled.button`
+  font-size: 16px;
+  color: #fff;
 `;
