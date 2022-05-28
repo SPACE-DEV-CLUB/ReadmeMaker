@@ -3,11 +3,6 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { FILTER_LIST } from 'constants/filterList';
 
-interface BtnFilterItemProps {
-  activeFilter: String;
-  content: String;
-}
-
 const FilterList = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
@@ -26,9 +21,8 @@ const FilterList = () => {
             <BtnFilterItem
               type="button"
               value={item.value}
-              content={item.value}
               onClick={handleActiveFilter}
-              activeFilter={activeFilter}
+              isActive={item.value === activeFilter}
             >
               {item.value}
             </BtnFilterItem>
@@ -50,13 +44,13 @@ const FilterBtnList = styled.ul`
   padding: 0 46px 0 40px;
 `;
 
-const BtnFilterItem = styled.button<BtnFilterItemProps>`
+const BtnFilterItem = styled.button<{ isActive: Boolean }>`
   height: 22px;
   line-height: 22px;
   padding: 0 10px;
   border-radius: 8px;
-  ${({ activeFilter, content }) =>
-    activeFilter === content
+  ${({ isActive }) =>
+    isActive
       ? {
           background: '#2c3037',
           color: '#f5ff80',
