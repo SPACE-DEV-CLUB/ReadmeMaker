@@ -66,12 +66,12 @@ const BtnMenuStyle = () => css`
   border: 1px solid #f5ff80;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
   border-radius: 50%;
+  font-weight: 700;
+  font-size: 7px;
 `;
 
 const BtnMenu = styled.button<{ activeMenu: String }>`
   ${BtnMenuStyle};
-  font-weight: 700;
-  font-size: 7px;
   ${({ activeMenu }) =>
     activeMenu === 'menu' && {
       background: '#f5ff80',
@@ -81,7 +81,6 @@ const BtnMenu = styled.button<{ activeMenu: String }>`
 
 const BtnCart = styled.button<{ activeMenu: String }>`
   ${BtnMenuStyle};
-  font-size: 7px;
   ${({ activeMenu }) =>
     activeMenu === 'cart' && {
       background: '#f5ff80',
