@@ -3,11 +3,13 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import NavBar from '../components/common/NavBar';
 import MainPage from 'components/main/MainPage';
+import NavBarMainItem from 'components/common/NavBarMainItem';
 
 const Home: NextPage = () => {
   const TOTAL_SLIDES = 1;
-  const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<any>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   useEffect(() => {
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
     slideRef.current.style.transform = `translateX(-${currentSlide}00vw)`;
@@ -36,7 +38,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Make your readme.md awesome!!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar nextSlide={nextSlide} prevSlide={prevSlide} currentSlide={currentSlide} />
+      <NavBar>
+        <NavBarMainItem nextSlide={nextSlide} prevSlide={prevSlide} currentSlide={currentSlide} />
+      </NavBar>
       <MainPage slideRef={slideRef} />
     </div>
   );
