@@ -54,14 +54,17 @@ const BtnFilterItem = styled.button<BtnFilterItemProps>`
   height: 22px;
   line-height: 22px;
   padding: 0 10px;
-  background: #2c3037;
-  color: #f5ff80;
   border-radius: 8px;
   ${({ activeFilter, content }) =>
-    activeFilter === content && {
-      background: '#f5ff80',
-      color: '#2c3037',
-    }}
+    activeFilter === content
+      ? {
+          background: '#2c3037',
+          color: '#f5ff80',
+        }
+      : {
+          background: '#f5ff80',
+          color: '#2c3037',
+        }}
 `;
 
 const ComtentList = styled.div`
