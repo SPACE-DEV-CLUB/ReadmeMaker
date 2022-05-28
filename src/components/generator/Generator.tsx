@@ -12,7 +12,7 @@ const Generator = () => {
       ...oldPosts,
       {
         id: `${uuid()}`,
-        content: '',
+        code: '',
       },
     ]);
   };

@@ -1,4 +1,4 @@
 export interface PostType {
   id: string;
-  content: string;
+  code: string;
 }

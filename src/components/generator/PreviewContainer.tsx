@@ -4,7 +4,7 @@ import { postsState } from 'atoms/posts';
 
 const PreviewContainer = () => {
   const posts = useRecoilValue(postsState);
-  const result = posts.map(post => post.content).join('');
+  const result = posts.map(post => post.code).join('');
 
   return (
     <Container>

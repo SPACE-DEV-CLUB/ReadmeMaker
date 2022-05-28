@@ -19,7 +19,7 @@ const EditorComponent = ({ post }: EditorComponentProps) => {
   const editPostContent = (value: string) => {
     const newPostItem = replaceItemAtIndex(posts, index, {
       ...post,
-      content: value,
+      code: value,
     });
 
     setPosts(newPostItem);
@@ -29,7 +29,7 @@ const EditorComponent = ({ post }: EditorComponentProps) => {
     <Container>
       <h3>에디터 컨테이너</h3>
       <Editor
-        value={post.content}
+        value={post.code}
         apiKey={process.env.EDITOR_API_KEY}
         init={{
           bordercolor: 'blue',

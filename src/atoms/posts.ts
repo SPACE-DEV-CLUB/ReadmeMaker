@@ -6,7 +6,7 @@ export const postsState = atom({
   default: [
     {
       id: `${uuid()}`,
-      content: '',
+      code: '',
     },
   ],
 });
