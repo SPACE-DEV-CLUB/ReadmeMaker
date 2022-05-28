@@ -4,13 +4,12 @@ import { postsState } from 'atoms/posts';
 
 const PreviewContainer = () => {
   const posts = useRecoilValue(postsState);
+  const result = posts.map(post => post.content).join('');
 
   return (
     <Container>
       <h3>프리뷰 컨테이너</h3>
-      {posts.map(post => (
-        <div key={post.id} dangerouslySetInnerHTML={{ __html: post.content }} />
-      ))}
+      <div dangerouslySetInnerHTML={{ __html: result }} />
     </Container>
   );
 };
