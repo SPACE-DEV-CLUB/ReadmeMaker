@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import ComponentsContainer from './components/ComponentsContainer';
 import TemplatesContainer from './Templates/TemplatesContainer';
+import Cart from '../../components/main/cart/Cart';
 
 interface MainPageProps {
   slideRef: React.MutableRefObject<HTMLElement>;
@@ -14,6 +15,7 @@ const MainPage = ({ slideRef }: MainPageProps) => {
         <ComponentsContainer />
         <TemplatesContainer />
       </Wrap>
+      <Cart />
     </Container>
   );
 };

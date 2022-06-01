@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { NextPage } from 'next';
+import { useRecoilState } from 'recoil';
 import Head from 'next/head';
 import NavBar from '../components/common/NavBar';
 import MainPage from 'components/main/MainPage';
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
     slideRef.current.style.transform = `translateX(-${currentSlide}00vw)`;
+    console.log(slideRef.current);
   }, [currentSlide]);
 
   const nextSlide = () => {

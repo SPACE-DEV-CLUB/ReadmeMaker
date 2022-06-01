@@ -7,6 +7,7 @@ import YellowLabel from 'assets/YellowLabel';
 interface IModalInnerStyled {
   width: number;
   height: number;
+  left?: number;
 }
 
 interface ModalTemplateProps extends IModalInnerStyled {
@@ -19,11 +20,12 @@ function ModalTemplate({
   height,
   children,
   onToggleModal,
+  left = -50,
   ...rest
 }: ModalTemplateProps): ReactElement {
   return (
     <ModalTemplateBlock onMouseDown={onToggleModal} {...rest}>
-      <ModalInner width={width} height={height} onMouseDown={e => e.stopPropagation()}>
+      <ModalInner left={left} width={width} height={height} onMouseDown={e => e.stopPropagation()}>
         <CloseButton onMouseDown={onToggleModal} />
         <YellowLabel />
         {children}
@@ -62,7 +64,7 @@ const ModalInner = styled.div<IModalInnerStyled>`
   top: 0;
   bottom: 0;
   right: 0;
-  left: 50%;
+  left: ${({ left }) => left}%;
   margin: auto;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
