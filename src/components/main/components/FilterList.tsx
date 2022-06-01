@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import FilterButton from './FilterButton';
 
 const FilterList = ({ datas }: any): JSX.Element => {
+  const [selectedFilter, setSelectedFilter] = useState('all');
+
+  const onClickFilterButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setSelectedFilter(e.currentTarget.textContent!);
+  };
+
+  console.log(selectedFilter);
   return (
     <ListWrap>
-      {datas.map((data: any, index: number) => (
-        <FilterButton data={data} key={index} />
+      {datas.map((data: string, index: number) => (
+        <FilterButton
+          data={data}
+          key={index}
+          onClick={onClickFilterButton}
+          isSelected={data === selectedFilter}
+        />
       ))}
     </ListWrap>
   );

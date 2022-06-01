@@ -1,29 +1,33 @@
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import CartItem from './CartItem';
 import ArrowBottom from 'assets/ArrowBottom';
-import { useRecoilState } from 'recoil';
-import { cartListState } from 'atoms';
+// import { useRecoilState } from 'recoil';
+// import { cartListState } from 'atoms';
 
-const mockCarts = (() =>
-  Array.from({ length: 20 }).map((_, i) => ({
-    id: i + 1,
-    title: `임시카트${i + 1}`,
-    author: `임시작가${i + 1}`,
-    image: `https://placeimg.com/200/150/${i + 1}`,
-  })))();
+const mockCarts = Array.from({ length: 20 }).map((_, i) => ({
+  id: i + 1,
+  title: `임시카트${i + 1}`,
+  author: `임시작가${i + 1}`,
+  image: `https://placeimg.com/200/150/${i + 1}`,
+}));
 
 const Cart = ({ position }: { position: string }) => {
   // const [cartList, setCartList] = useRecoilState(cartListState);
-
+  const [cartList, setCartList] = useState(mockCarts);
+  const onRemoveCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setCartList(cartList.filter(cart => cart.id !== +e.currentTarget.id!));
+  };
+  console.log(cartList);
   return (
     <CartContainer position={position}>
       <TitleWrap>
         <Title>My Cart</Title>
-        <SubTitle>{mockCarts.length}개 템플릿이 담겨있습니다.</SubTitle>
+        <SubTitle>{cartList.length}개 템플릿이 담겨있습니다.</SubTitle>
       </TitleWrap>
       <CartWrap>
-        {mockCarts.map((item, index) => (
-          <CartItem key={index} {...item} />
+        {cartList.map((item, index) => (
+          <CartItem key={index} {...item} onClick={onRemoveCart} />
         ))}
       </CartWrap>
       <button>
@@ -72,6 +76,10 @@ const CartWrap = styled.div`
   gap: 15px;
   flex-direction: column;
   height: 470px;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export default Cart;

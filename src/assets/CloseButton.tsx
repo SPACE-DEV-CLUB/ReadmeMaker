@@ -16,5 +16,9 @@ const CloseButtonWrapper = styled.div`
   position: absolute;
   top: -15px;
   right: -15px;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 `;
 export default CloseButton;
