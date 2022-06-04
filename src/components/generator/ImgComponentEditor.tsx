@@ -6,11 +6,11 @@ import useDebounce from 'hooks/useDebounce';
 import { ImgComponentType } from 'types/imgComponentType';
 import { replaceText } from 'utils';
 
-interface ImgSrcEditorComponentProps {
+interface ImgComponentEditorProps {
   imgComponent: ImgComponentType;
 }
 
-const ImgSrcEditorComponent = ({ imgComponent }: ImgSrcEditorComponentProps) => {
+const ImgComponentEditor = ({ imgComponent }: ImgComponentEditorProps) => {
   const [components, setComponents] = useRecoilState(componentsState);
   const [username, setUsername] = useState('deli-ght');
   const debounceUsername = useDebounce(username);
@@ -37,7 +37,7 @@ const ImgSrcEditorComponent = ({ imgComponent }: ImgSrcEditorComponentProps) => 
   );
 };
 
-export default ImgSrcEditorComponent;
+export default ImgComponentEditor;
 
 const Container = styled.div`
   background-color: #171b21;

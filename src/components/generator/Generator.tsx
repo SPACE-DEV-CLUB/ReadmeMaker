@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 import { componentsState } from 'atoms/components';
-import EditorComponent from './TextEditorComponent';
-import ImgSrcEditorComponent from './ImgSrcEditorComponent';
 import { TextComponentType } from 'types/textComponentType';
 import { ImgComponentType } from 'types/imgComponentType';
+import TextComponentEditor from './TextComponentEditor';
+import ImgComponentEditor from './ImgComponentEditor';
 
 const Generator = () => {
   const [components, setComponents] = useRecoilState(componentsState);
@@ -27,10 +27,13 @@ const Generator = () => {
         switch (component.type) {
           case 'text':
             return (
-              <EditorComponent key={component.id} textComponent={component as TextComponentType} />
+              <TextComponentEditor
+                key={component.id}
+                textComponent={component as TextComponentType}
+              />
             );
           case 'img':
-            return <ImgSrcEditorComponent imgComponent={component as ImgComponentType} />;
+            return <ImgComponentEditor imgComponent={component as ImgComponentType} />;
         }
       })}
       <BtnAdd onClick={addTextEditor}>추가</BtnAdd>

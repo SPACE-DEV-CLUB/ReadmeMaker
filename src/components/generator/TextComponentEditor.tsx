@@ -5,11 +5,11 @@ import { componentsState } from 'atoms/components';
 import { TextComponentType } from 'types/textComponentType';
 import { removeComponent, replaceText } from 'utils';
 
-interface EditorComponentProps {
+interface TextComponentEditorProps {
   textComponent: TextComponentType;
 }
 
-const TextEditorComponent = ({ textComponent }: EditorComponentProps) => {
+const TextComponentEditor = ({ textComponent }: TextComponentEditorProps) => {
   const [components, setComponents] = useRecoilState(componentsState);
   const curIndex = components.findIndex(component => component.id === textComponent.id);
 
@@ -57,7 +57,7 @@ const TextEditorComponent = ({ textComponent }: EditorComponentProps) => {
   );
 };
 
-export default TextEditorComponent;
+export default TextComponentEditor;
 
 const Container = styled.div`
   background-color: #000;
