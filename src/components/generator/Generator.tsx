@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 import { componentsState } from 'atoms/components';
-import { TextComponentType } from 'types/textComponentType';
-import { ImgComponentType } from 'types/imgComponentType';
+import { TextComponentType, ImgComponentType } from 'types';
 import TextComponentEditor from './TextComponentEditor';
 import ImgComponentEditor from './ImgComponentEditor';
 
