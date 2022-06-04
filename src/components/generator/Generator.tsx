@@ -1,28 +1,39 @@
 import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
-import { postsState } from 'atoms/posts';
-import EditorComponent from './EditorComponent';
+import { componentsState } from 'atoms/components';
+import EditorComponent from './TextEditorComponent';
+import ImgSrcEditorComponent from './ImgSrcEditorComponent';
+import { TextComponentType } from 'types/textComponentType';
+import { ImgComponentType } from 'types/imgComponentType';
 
 const Generator = () => {
-  const [posts, setPosts] = useRecoilState(postsState);
+  const [components, setComponents] = useRecoilState(componentsState);
 
-  const addPost = () => {
-    setPosts(oldPosts => [
-      ...oldPosts,
+  const addTextEditor = () => {
+    setComponents(oldComponents => [
+      ...oldComponents,
       {
         id: `${uuid()}`,
         code: '',
+        type: 'text',
       },
     ]);
   };
 
   return (
     <Container>
-      {posts.map(post => (
-        <EditorComponent key={post.id} post={post} />
-      ))}
-      <BtnAdd onClick={addPost}>추가</BtnAdd>
+      {components.map(component => {
+        switch (component.type) {
+          case 'text':
+            return (
+              <EditorComponent key={component.id} textComponent={component as TextComponentType} />
+            );
+          case 'img':
+            return <ImgSrcEditorComponent imgComponent={component as ImgComponentType} />;
+        }
+      })}
+      <BtnAdd onClick={addTextEditor}>추가</BtnAdd>
     </Container>
   );
 };
