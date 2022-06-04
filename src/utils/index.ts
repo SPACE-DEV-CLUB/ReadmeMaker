@@ -1,4 +1,2 @@
-// 함수
-export function example() {
-  return;
-}
+export * from './removeComponent';
+export * from './replaceText';
