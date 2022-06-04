@@ -32,7 +32,9 @@ const Generator = () => {
               />
             );
           case 'img':
-            return <ImgComponentEditor imgComponent={component as ImgComponentType} />;
+            return (
+              <ImgComponentEditor key={component.id} imgComponent={component as ImgComponentType} />
+            );
         }
       })}
       <BtnAdd onClick={addTextEditor}>추가</BtnAdd>
