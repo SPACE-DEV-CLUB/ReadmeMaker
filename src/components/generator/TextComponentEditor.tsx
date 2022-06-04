@@ -63,9 +63,12 @@ const Container = styled.div`
   background-color: #000;
   padding: 40px 70px 40px 40px;
   border-radius: 10px;
-  border: 1px solid #1b2027;
-  /* TODO: 롱클릭 시 스타일 적용 */
-  border-right: 30px solid #f5ff80;
+  border: 1px solid transparent;
+  border-right: 20px solid #f5ff80;
+
+  &:hover {
+    border-color: #f5ff80;
+  }
   & .tox-toolbar__primary {
     background-color: #000 !important;
   }
@@ -75,7 +78,7 @@ const Container = styled.div`
   }
 
   & .tox-toolbar__group {
-    background-color: #1b2027;
+    background-color: #171b21;
     width: 24px;
     height: 24px;
     line-height: 24px !important;
@@ -102,7 +105,7 @@ const Container = styled.div`
   }
 
   & .tox-edit-area__iframe {
-    background-color: #1b2027 !important;
+    background-color: #171b21 !important;
     margin-top: 10px;
     height: 54px !important;
     border-radius: 20px;
