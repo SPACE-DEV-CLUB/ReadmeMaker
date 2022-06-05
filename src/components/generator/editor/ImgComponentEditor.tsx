@@ -9,9 +9,10 @@ import ComponentContainer from './ComponentContainer';
 
 interface ImgComponentEditorProps {
   imgComponent: ImgComponentType;
+  isDragging: boolean;
 }
 
-const ImgComponentEditor = ({ imgComponent }: ImgComponentEditorProps) => {
+const ImgComponentEditor = ({ imgComponent, isDragging }: ImgComponentEditorProps) => {
   const [components, setComponents] = useRecoilState(componentsState);
   const [username, setUsername] = useState('deli-ght');
   const debounceUsername = useDebounce(username);
@@ -31,7 +32,7 @@ const ImgComponentEditor = ({ imgComponent }: ImgComponentEditorProps) => {
   };
 
   return (
-    <ComponentContainer>
+    <ComponentContainer isDragging>
       <Header>
         <Title>{imgComponent.title}</Title>
         <ImgWrap>
