@@ -1,7 +1,6 @@
-import styled from '@emotion/styled';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import '@atlaskit/css-reset';
-import EditorComponent from './EditorComponent';
+import EditorComponent from 'components/generator/editor/EditorComponent';
 
 const DndContainer = ({ post, setPost }: any) => {
   const handleChange = (result: any) => {

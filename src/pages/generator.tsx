@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import dynamic from 'next/dynamic';
-import SideBar from 'components/generator/SideBar';
-import PreviewContainer from 'components/generator/PreviewContainer';
+import SideBar from 'components/generator/sidebar/SideBar';
+import PreviewContainer from 'components/generator/viewer/PreviewContainer';
 
 const generator = () => {
   const Generator = dynamic(() => import('components/generator/SwitchGenerator'), {
