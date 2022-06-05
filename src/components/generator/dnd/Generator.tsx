@@ -1,22 +1,15 @@
 import styled from '@emotion/styled';
-import { componentsState } from 'atoms/components';
 import DndContainer from 'components/generator/dnd/DndContainer';
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 
 const Generator = () => {
-  const [components, setComponents] = useRecoilState(componentsState);
   const [start, setStart] = useState(false);
 
   useEffect(() => {
     setStart(true);
   }, []);
 
-  return (
-    <Container>
-      {start ? <DndContainer post={components} setPost={setComponents} /> : null}
-    </Container>
-  );
+  return <Container>{start ? <DndContainer /> : null}</Container>;
 };
 
 export default Generator;
