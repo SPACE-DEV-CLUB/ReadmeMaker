@@ -31,7 +31,7 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
   };
 
   return (
-    <ComponentContainer isDragging>
+    <ComponentContainer isDragging={isDragging}>
       <ComponentEditor
         value={textComponent.code}
         apiKey={process.env.EDITOR_API_KEY}
