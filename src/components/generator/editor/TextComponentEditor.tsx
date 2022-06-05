@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import { componentsState } from 'atoms/components';
 import { TextComponentType } from 'types/textComponentType';
 import { removeComponent, replaceText } from 'utils';
+import ComponentContainer from './ComponentContainer';
 
 interface TextComponentEditorProps {
   textComponent: TextComponentType;
@@ -29,8 +30,8 @@ const TextComponentEditor = ({ textComponent }: TextComponentEditorProps) => {
   };
 
   return (
-    <Container>
-      <Editor
+    <ComponentContainer>
+      <ComponentEditor
         value={textComponent.code}
         apiKey={process.env.EDITOR_API_KEY}
         init={{
@@ -53,22 +54,13 @@ const TextComponentEditor = ({ textComponent }: TextComponentEditorProps) => {
         onEditorChange={editText}
       />
       <BtnDelete onClick={deleteTextComponent}>삭제</BtnDelete>
-    </Container>
+    </ComponentContainer>
   );
 };
 
 export default TextComponentEditor;
 
-const Container = styled.div`
-  background-color: #000;
-  padding: 40px 70px 40px 40px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  border-right: 20px solid #f5ff80;
-
-  &:hover {
-    border-color: #f5ff80;
-  }
+const ComponentEditor = styled(Editor as any)`
   & .tox-toolbar__primary {
     background-color: #000 !important;
   }
