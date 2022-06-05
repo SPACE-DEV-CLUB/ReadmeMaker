@@ -15,8 +15,9 @@ const FilterButton = ({ data, isSelected, onClick }: FilterButtonProps): JSX.Ele
 };
 
 const Button = styled.button<{ isSelected: boolean }>`
-  padding: 2px 10px;
-  border-radius: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
   color: ${({ isSelected }) => (isSelected ? '#000' : '#fff')};
   background-color: ${({ isSelected }) => (isSelected ? '#F5FF80' : '#2C3037')};
 `;
