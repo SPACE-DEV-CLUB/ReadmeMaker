@@ -24,7 +24,7 @@ const Cart = () => {
     <CartContainer>
       <TitleWrap>
         <Title>My Cart</Title>
-        <SubTitle>{cartList.length}개 템플릿이 담겨있습니다.</SubTitle>
+        <SubTitle>{cartList.length} Components in Cart</SubTitle>
       </TitleWrap>
       <CartWrap>
         {cartList.map((item, index) => (
@@ -47,7 +47,7 @@ const CartContainer = styled.aside`
   top: 61px;
   width: 260px;
   height: 700px;
-  padding: 40px;
+  padding: 40px 30px;
   border-radius: 30px;
   box-sizing: border-box;
   background-color: #171b21;
@@ -55,6 +55,8 @@ const CartContainer = styled.aside`
 
 const TitleWrap = styled.div`
   width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 `;
 
 const Title = styled.h3`
@@ -70,6 +72,7 @@ const SubTitle = styled.p`
   font-weight: 400;
   line-height: 15px;
   margin-bottom: 41px;
+  color: white;
 `;
 
 const CartWrap = styled.div`
@@ -79,6 +82,7 @@ const CartWrap = styled.div`
   height: 470px;
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 10px;
   &::-webkit-scrollbar {
     display: none;
   }

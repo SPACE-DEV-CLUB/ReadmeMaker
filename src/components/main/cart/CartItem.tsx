@@ -32,6 +32,8 @@ const CartItemWrap = styled.div`
   border: 1px solid #20262f;
   z-index: 100;
   border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
   &:hover {
     img {
       opacity: 0.2;
@@ -49,20 +51,16 @@ const RemoveButton = styled(CloseButton)`
   top: -5px;
   z-index: 10;
 `;
-const CartContentStyle = css`
-  padding: 30px 20px;
-  box-sizing: border-box;
-`;
 
 const Image = styled.div`
-  ${CartContentStyle}
+  box-sizing: border-box;
   img {
     width: 100%;
   }
 `;
 
 const CartDesc = styled.div`
-  ${CartContentStyle}
+  box-sizing: border-box;
   display: none;
   position: absolute;
   top: 0;
