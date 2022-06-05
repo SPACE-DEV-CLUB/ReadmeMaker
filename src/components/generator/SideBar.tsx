@@ -20,12 +20,17 @@ const SideBar = () => {
       <Menu>
         <MenuBtnList>
           <li>
-            <BtnMenu type="button" activeMenu={activeMenu} onClick={handlActiveMenu}>
+            <BtnMenu
+              type="button"
+              value="menu"
+              isActive={activeMenu === 'menu'}
+              onClick={handlActiveMenu}
+            >
               MENU
             </BtnMenu>
           </li>
           <li>
-            <BtnCart type="button" activeMenu={activeMenu} onClick={handlActiveCart}>
+            <BtnCart type="button" isActive={activeMenu === 'cart'} onClick={handlActiveCart}>
               {/* TODO: CartIcon fill, size props 받는 걸로 변경 */}
               <CartIcon />
             </BtnCart>
@@ -58,33 +63,29 @@ const MenuBtnList = styled.ul`
   height: 100%;
 `;
 
-const BtnMenuStyle = () => css`
+const BtnMenuStyle = (isActive: Boolean) => css`
+  ${isActive
+    ? {
+        background: '#f5ff80',
+        color: '#2c3037',
+      }
+    : {
+        background: '#2c3037',
+        color: '#f5ff80',
+      }}
   width: 32px;
   height: 32px;
-  background: #171b21;
-  color: #f5ff80;
   border: 1px solid #f5ff80;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
   border-radius: 50%;
-`;
-
-const BtnMenu = styled.button<{ activeMenu: String }>`
-  ${BtnMenuStyle};
   font-weight: 700;
   font-size: 7px;
-  ${({ activeMenu }) =>
-    activeMenu === 'menu' && {
-      background: '#f5ff80',
-      color: '#171b21',
-    }};
 `;
 
-const BtnCart = styled.button<{ activeMenu: String }>`
-  ${BtnMenuStyle};
-  font-size: 7px;
-  ${({ activeMenu }) =>
-    activeMenu === 'cart' && {
-      background: '#f5ff80',
-      color: ' #171b21',
-    }};
+const BtnMenu = styled.button<{ isActive: Boolean }>`
+  ${({ isActive }) => BtnMenuStyle(isActive)};
+`;
+
+const BtnCart = styled.button<{ isActive: Boolean }>`
+  ${({ isActive }) => BtnMenuStyle(isActive)};
 `;

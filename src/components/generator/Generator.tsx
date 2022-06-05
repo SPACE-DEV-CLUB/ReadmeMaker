@@ -17,6 +17,7 @@ const Generator = () => {
     setStart(true);
   }, []);
 
+
   return (
     <Container>
       {start ? <DndContainer post={data} setPost={(data: any) => setData(data)} /> : null}

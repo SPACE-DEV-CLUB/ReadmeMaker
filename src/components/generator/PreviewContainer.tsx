@@ -1,14 +1,30 @@
 import { useRecoilValue } from 'recoil';
 import styled from '@emotion/styled';
-import { postState } from 'atoms/post';
+import { componentsState } from 'atoms/components';
 
 const PreviewContainer = () => {
-  const post = useRecoilValue(postState);
+  const components = useRecoilValue(componentsState);
+
+  //TODO: component 타입 정해지면 any 수정
+  const htmlCode = components
+    .map((component: any) => {
+      switch (component.type) {
+        case 'text':
+          break;
+        case 'img':
+          return component.code.replace('variable', component.username);
+      }
+      return component.code;
+    })
+    .join('');
 
   return (
     <Container>
       <h3>프리뷰 컨테이너</h3>
-      <div dangerouslySetInnerHTML={{ __html: post }} />
+      <div dangerouslySetInnerHTML={{ __html: htmlCode }} />
+      {/* <div>{mockData.src}</div> */}
+
+      {/* <img src={mockData.src.replace('variable', mockData.author)} alt="" /> */}
     </Container>
   );
 };
