@@ -63,8 +63,16 @@ const MenuBtnList = styled.ul`
   height: 100%;
 `;
 
-const BtnMenuStyle = () => css`
-  color: blue;
+const BtnMenuStyle = (isActive: Boolean) => css`
+  ${isActive
+    ? {
+        background: '#f5ff80',
+        color: '#2c3037',
+      }
+    : {
+        background: '#2c3037',
+        color: '#f5ff80',
+      }}
   width: 32px;
   height: 32px;
   border: 1px solid #f5ff80;
@@ -75,29 +83,9 @@ const BtnMenuStyle = () => css`
 `;
 
 const BtnMenu = styled.button<{ isActive: Boolean }>`
-  ${BtnMenuStyle};
-  ${({ isActive }) =>
-    isActive
-      ? {
-          background: '#f5ff80',
-          color: '#2c3037',
-        }
-      : {
-          background: '#2c3037',
-          color: '#f5ff80',
-        }}
+  ${({ isActive }) => BtnMenuStyle(isActive)};
 `;
 
 const BtnCart = styled.button<{ isActive: Boolean }>`
-  ${BtnMenuStyle};
-  ${({ isActive }) =>
-    isActive
-      ? {
-          background: '#f5ff80',
-          color: '#2c3037',
-        }
-      : {
-          background: '#2c3037',
-          color: '#f5ff80',
-        }}
+  ${({ isActive }) => BtnMenuStyle(isActive)};
 `;
