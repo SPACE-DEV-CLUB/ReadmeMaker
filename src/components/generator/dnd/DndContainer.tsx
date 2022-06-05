@@ -1,6 +1,10 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import '@atlaskit/css-reset';
-import EditorComponent from 'components/generator/editor/EditorComponent';
+import { v4 as uuid } from 'uuid';
+import TextComponentEditor from '../editor/TextComponentEditor';
+import ImgComponentEditor from '../editor/ImgComponentEditor';
+import { TextComponentType, ImgComponentType } from 'types';
+import styled from '@emotion/styled';
 
 const DndContainer = ({ post, setPost }: any) => {
   const handleChange = (result: any) => {
@@ -9,6 +13,32 @@ const DndContainer = ({ post, setPost }: any) => {
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
     setPost(items);
+  };
+
+  const addTextEditor = () => {
+    setPost((oldComponents: any[]) => [
+      ...oldComponents,
+      {
+        id: `${uuid()}`,
+        code: '',
+        type: 'text',
+      },
+    ]);
+  };
+
+  const switchComponent = (component: any) => {
+    switch (component.type) {
+      case 'text':
+        return (
+          <TextComponentEditor key={component.id} textComponent={component as TextComponentType} />
+        );
+      case 'img':
+        return (
+          <ImgComponentEditor key={component.id} imgComponent={component as ImgComponentType} />
+        );
+      default:
+        return;
+    }
   };
 
   return (
@@ -25,8 +55,7 @@ const DndContainer = ({ post, setPost }: any) => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
-                      <h3>{e.id}</h3>
-                      <EditorComponent isDragging={snapshot.isDragging} />
+                      {switchComponent(e)}
                     </div>
                   );
                 }}
@@ -36,8 +65,15 @@ const DndContainer = ({ post, setPost }: any) => {
           </div>
         )}
       </Droppable>
+      <BtnAdd onClick={addTextEditor}>추가</BtnAdd>
     </DragDropContext>
   );
 };
 
 export default DndContainer;
+
+const BtnAdd = styled.button`
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+`;

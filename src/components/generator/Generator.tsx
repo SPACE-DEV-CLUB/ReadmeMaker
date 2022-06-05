@@ -1,16 +1,11 @@
 import styled from '@emotion/styled';
+import { componentsState } from 'atoms/components';
 import DndContainer from 'components/generator/dnd/DndContainer';
 import React, { useEffect, useState } from 'react';
-
-const MockData = [
-  { id: 'a', index: 1 },
-  { id: 'b', index: 2 },
-  { id: 'c', index: 3 },
-  { id: 'd', index: 4 },
-];
+import { useRecoilState } from 'recoil';
 
 const Generator = () => {
-  const [data, setData] = useState(MockData);
+  const [components, setComponents] = useRecoilState(componentsState);
   const [start, setStart] = useState(false);
 
   useEffect(() => {
@@ -19,7 +14,7 @@ const Generator = () => {
 
   return (
     <Container>
-      {start ? <DndContainer post={data} setPost={(data: any) => setData(data)} /> : null}
+      {start ? <DndContainer post={components} setPost={setComponents} /> : null}
     </Container>
   );
 };
