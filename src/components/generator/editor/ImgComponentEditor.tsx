@@ -5,6 +5,7 @@ import { componentsState } from 'atoms/components';
 import useDebounce from 'hooks/useDebounce';
 import { ImgComponentType } from 'types/imgComponentType';
 import { replaceText } from 'utils';
+import ComponentContainer from './ComponentContainer';
 
 interface ImgComponentEditorProps {
   imgComponent: ImgComponentType;
@@ -30,7 +31,7 @@ const ImgComponentEditor = ({ imgComponent }: ImgComponentEditorProps) => {
   };
 
   return (
-    <Container>
+    <ComponentContainer>
       <Header>
         <Title>{imgComponent.title}</Title>
         <ImgWrap>
@@ -38,27 +39,11 @@ const ImgComponentEditor = ({ imgComponent }: ImgComponentEditorProps) => {
         </ImgWrap>
       </Header>
       <InputField type="text" onChange={changeUsername} value={username} />
-    </Container>
+    </ComponentContainer>
   );
 };
 
 export default ImgComponentEditor;
-
-const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 50px 60px 60px 60px;
-  height: 200px;
-  border-radius: 20px;
-  background: #0e1116;
-  border: 1px solid transparent;
-  border-right: 20px solid #f5ff80;
-
-  &:hover {
-    border-color: #f5ff80;
-  }
-`;
 
 const Header = styled.header`
   display: flex;
