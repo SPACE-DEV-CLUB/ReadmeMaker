@@ -5,7 +5,7 @@ import SideBar from 'components/generator/SideBar';
 import PreviewContainer from 'components/generator/PreviewContainer';
 
 const generator = () => {
-  const Generator = dynamic(() => import('components/generator/Generator'), {
+  const Generator = dynamic(() => import('components/generator/SwitchGenerator'), {
     ssr: false,
   });
 

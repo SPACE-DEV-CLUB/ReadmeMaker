@@ -1,45 +1,22 @@
 import styled from '@emotion/styled';
-import { useRecoilState } from 'recoil';
-import { v4 as uuid } from 'uuid';
-import { componentsState } from 'atoms/components';
-import { TextComponentType, ImgComponentType } from 'types';
-import TextComponentEditor from './TextComponentEditor';
-import ImgComponentEditor from './ImgComponentEditor';
+import React, { useEffect, useState } from 'react';
+
+const MockData = [
+  { id: 'a', index: 1 },
+  { id: 'b', index: 2 },
+  { id: 'c', index: 3 },
+  { id: 'd', index: 4 },
+];
 
 const Generator = () => {
-  const [components, setComponents] = useRecoilState(componentsState);
+  const [data, setData] = useState(MockData);
+  const [start, setStart] = useState(false);
 
-  const addTextEditor = () => {
-    setComponents(oldComponents => [
-      ...oldComponents,
-      {
-        id: `${uuid()}`,
-        code: '',
-        type: 'text',
-      },
-    ]);
-  };
+  useEffect(() => {
+    setStart(true);
+  }, []);
 
-  return (
-    <Container>
-      {components.map(component => {
-        switch (component.type) {
-          case 'text':
-            return (
-              <TextComponentEditor
-                key={component.id}
-                textComponent={component as TextComponentType}
-              />
-            );
-          case 'img':
-            return (
-              <ImgComponentEditor key={component.id} imgComponent={component as ImgComponentType} />
-            );
-        }
-      })}
-      <BtnAdd onClick={addTextEditor}>추가</BtnAdd>
-    </Container>
-  );
+  return <Container></Container>;
 };
 
 export default Generator;
@@ -50,10 +27,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-`;
 
-const BtnAdd = styled.button`
-  color: white;
-  font-weight: 700;
-  font-size: 20px;
+  h3 {
+    color: white;
+  }
 `;
