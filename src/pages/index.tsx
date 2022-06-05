@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Make your readme.md awesome!!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar>
+      <NavBar route="main">
         <NavBarMainItem nextSlide={nextSlide} prevSlide={prevSlide} currentSlide={currentSlide} />
       </NavBar>
       <MainPage slideRef={slideRef} />
