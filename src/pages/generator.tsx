@@ -44,12 +44,6 @@ const Title = styled.h2`
   font-weight: 800;
 `;
 
-const Title = styled.h2`
-  color: #f5ff80;
-  font-size: 20px;
-  font-weight: 800;
-`;
-
 const TestNavi = styled.div`
   height: 70px;
   line-height: 70px;
