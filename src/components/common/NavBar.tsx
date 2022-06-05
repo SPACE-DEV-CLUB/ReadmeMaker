@@ -23,7 +23,7 @@ const NavBar = ({ route, children }: NavBarProps) => {
 
       case 'generator':
         return (
-          <Link href={'/'} passHref>
+          <Link href="/" passHref>
             <SwitchAnchor href="replace" route={route}>
               Exit
             </SwitchAnchor>
