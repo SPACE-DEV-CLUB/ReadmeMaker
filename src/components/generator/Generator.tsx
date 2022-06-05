@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import DndContainer from 'components/generator/DndContainer';
 import React, { useEffect, useState } from 'react';
 
 const MockData = [
@@ -16,7 +17,12 @@ const Generator = () => {
     setStart(true);
   }, []);
 
-  return <Container></Container>;
+
+  return (
+    <Container>
+      {start ? <DndContainer post={data} setPost={(data: any) => setData(data)} /> : null}
+    </Container>
+  );
 };
 
 export default Generator;
