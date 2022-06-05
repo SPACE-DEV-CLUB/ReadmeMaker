@@ -8,9 +8,10 @@ import ComponentContainer from './ComponentContainer';
 
 interface TextComponentEditorProps {
   textComponent: TextComponentType;
+  isDragging: boolean;
 }
 
-const TextComponentEditor = ({ textComponent }: TextComponentEditorProps) => {
+const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorProps) => {
   const [components, setComponents] = useRecoilState(componentsState);
   const curIndex = components.findIndex(component => component.id === textComponent.id);
 
@@ -30,7 +31,7 @@ const TextComponentEditor = ({ textComponent }: TextComponentEditorProps) => {
   };
 
   return (
-    <ComponentContainer>
+    <ComponentContainer isDragging>
       <ComponentEditor
         value={textComponent.code}
         apiKey={process.env.EDITOR_API_KEY}

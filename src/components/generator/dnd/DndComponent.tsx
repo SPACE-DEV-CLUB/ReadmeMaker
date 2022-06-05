@@ -13,15 +13,23 @@ const DndComponent = ({ component, componentIndex }: any) => {
     setStart(true);
   }, []);
 
-  const switchComponent = (component: any) => {
+  const switchComponent = (component: any, isDragging: boolean) => {
     switch (component.type) {
       case 'text':
         return (
-          <TextComponentEditor key={component.id} textComponent={component as TextComponentType} />
+          <TextComponentEditor
+            key={component.id}
+            textComponent={component as TextComponentType}
+            isDragging={isDragging}
+          />
         );
       case 'img':
         return (
-          <ImgComponentEditor key={component.id} imgComponent={component as ImgComponentType} />
+          <ImgComponentEditor
+            key={component.id}
+            imgComponent={component as ImgComponentType}
+            isDragging={isDragging}
+          />
         );
       default:
         return;
@@ -43,7 +51,7 @@ const DndComponent = ({ component, componentIndex }: any) => {
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
               >
-                <ComponentBox>{switchComponent(component)}</ComponentBox>
+                <ComponentBox>{switchComponent(component, snapshot.isDragging)}</ComponentBox>
               </div>
             );
           }}
