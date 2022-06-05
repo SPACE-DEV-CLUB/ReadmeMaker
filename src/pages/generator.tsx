@@ -27,11 +27,15 @@ const generator = () => {
 
 export default generator;
 
-const Container = styled.section``;
+const Container = styled.section`
+  height: 100vh;
+  background-color: #171b21;
+`;
 
 const GridWrap = styled.section`
   display: grid;
   grid-template-columns: 300px 500px auto;
+  height: 100%;
 `;
 
 const Title = styled.h2`

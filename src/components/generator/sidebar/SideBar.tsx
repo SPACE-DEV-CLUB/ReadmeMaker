@@ -45,7 +45,7 @@ const SideBar = () => {
 export default SideBar;
 
 const Container = styled.section`
-  height: 100vh;
+  height: 100%;
   background-color: #171b21;
   color: white;
 `;

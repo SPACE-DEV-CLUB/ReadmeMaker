@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import DndContainer from 'components/generator/DndContainer';
+import DndContainer from 'components/generator/dnd/DndContainer';
 import React, { useEffect, useState } from 'react';
 
 const MockData = [
@@ -17,7 +17,6 @@ const Generator = () => {
     setStart(true);
   }, []);
 
-
   return (
     <Container>
       {start ? <DndContainer post={data} setPost={(data: any) => setData(data)} /> : null}
@@ -33,6 +32,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 100%;
 
   h3 {
     color: white;
