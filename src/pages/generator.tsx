@@ -3,6 +3,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import SideBar from 'components/generator/sidebar/SideBar';
 import PreviewContainer from 'components/generator/viewer/PreviewContainer';
+import NavBar from 'components/common/NavBar';
 
 const generator = () => {
   const Generator = dynamic(() => import('components/generator/SwitchGenerator'), {
@@ -12,7 +13,9 @@ const generator = () => {
   return (
     <Container>
       {/* TODO: 네비게이션 바 수정*/}
-      <TestNavi>네비게이션 바</TestNavi>
+      <NavBar route="generator">
+        <Title>Make It</Title>
+      </NavBar>
       <GridWrap>
         <SideBar />
         <Generator />
@@ -29,6 +32,12 @@ const Container = styled.section``;
 const GridWrap = styled.section`
   display: grid;
   grid-template-columns: 300px 500px auto;
+`;
+
+const Title = styled.h2`
+  color: #f5ff80;
+  font-size: 20px;
+  font-weight: 800;
 `;
 
 const TestNavi = styled.div`
