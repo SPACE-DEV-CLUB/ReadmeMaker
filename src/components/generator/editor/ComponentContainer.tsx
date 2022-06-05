@@ -43,7 +43,7 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
   padding: 50px 60px 60px 60px;
   height: 200px;
   border-radius: 20px;
-  background: #0e1116;
+  background: ${({ isDragging }) => (isDragging ? lightTheme.PIN : '#0e1116')};
   border: 1px solid #171b21;
   border-right: 20px solid #171b21;
 

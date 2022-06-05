@@ -32,7 +32,7 @@ const ImgComponentEditor = ({ imgComponent, isDragging }: ImgComponentEditorProp
   };
 
   return (
-    <ComponentContainer isDragging>
+    <ComponentContainer isDragging={isDragging}>
       <Header>
         <Title>{imgComponent.title}</Title>
         <ImgWrap>
