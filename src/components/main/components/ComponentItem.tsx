@@ -1,22 +1,25 @@
 import styled from '@emotion/styled';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useToggle from 'hooks/useToggle';
 import Modal from '../Modal';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { modalState } from 'atoms';
 
 const ComponentItem = ({ data }: any): JSX.Element => {
-  const [isModal, onToggleModal] = useToggle();
+  const [isModal, setModal] = useRecoilState(modalState);
 
-  const onClickComponentCard = () => {
-    onToggleModal();
+  const onToggleModal = () => {
+    setModal([!isModal[0], isModal[1]]);
   };
 
+  useEffect(() => {});
   return (
     <Card>
       <h3>컴포넌트 이름</h3>
       <p>컴포넌트 설명 블라블라 입니다</p>
-      <ItemContainer onClick={onClickComponentCard}>
+      <ItemContainer onClick={onToggleModal}>
         <div>{data}</div>
       </ItemContainer>
       <IconWrapper>
@@ -24,7 +27,7 @@ const ComponentItem = ({ data }: any): JSX.Element => {
         <HeartIcon />
         <CartIcon />
       </IconWrapper>
-      {isModal && <Modal onToggleModal={onToggleModal} />}
+      {isModal[0] && <Modal onToggleModal={onToggleModal} />}
     </Card>
   );
 };

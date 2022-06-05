@@ -1,21 +1,22 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { DraggableContainer } from 'components/common/DraggableContainer';
-import useToggle from 'hooks/useToggle';
 import TemplateCardText from './TemplateCardText';
 import TemplateComponents from './TemplateComponents';
 import Modal from '../Modal';
+import { useRecoilState } from 'recoil';
+import { modalState } from 'atoms';
 
 const TemplateCardContainer = () => {
-  const [isModal, onToggleModal] = useToggle();
+  const [isModal, setModal] = useRecoilState(modalState);
 
-  const onClickTemplateCard = () => {
-    onToggleModal();
+  const onToggleModal = () => {
+    setModal([isModal[0], !isModal[1]]);
   };
 
   return (
     <>
-      <Content onClick={onClickTemplateCard}>
+      <Content onClick={onToggleModal}>
         <ThumbNailImage isModalOn={false}></ThumbNailImage>
         <TemplateCardText></TemplateCardText>
       </Content>
@@ -33,7 +34,7 @@ const TemplateCardContainer = () => {
           <TemplateComponents />
         </DraggableContainer>
       </ComponentWrapper>
-      {isModal && <Modal onToggleModal={onToggleModal} left={50} />}
+      {isModal[1] && <Modal onToggleModal={onToggleModal} left={50} />}
     </>
   );
 };

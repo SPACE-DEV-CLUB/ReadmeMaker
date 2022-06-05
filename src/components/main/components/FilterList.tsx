@@ -9,7 +9,6 @@ const FilterList = ({ datas }: any): JSX.Element => {
     setSelectedFilter(e.currentTarget.textContent!);
   };
 
-  console.log(selectedFilter);
   return (
     <ListWrap>
       {datas.map((data: string, index: number) => (

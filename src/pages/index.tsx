@@ -5,16 +5,17 @@ import Head from 'next/head';
 import NavBar from '../components/common/NavBar';
 import MainPage from 'components/main/MainPage';
 import NavBarMainItem from 'components/common/NavBarMainItem';
+import { modalState } from 'atoms';
 
 const Home: NextPage = () => {
   const TOTAL_SLIDES = 1;
   const slideRef = useRef<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [_, setModal] = useRecoilState(modalState);
 
   useEffect(() => {
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
     slideRef.current.style.transform = `translateX(-${currentSlide}00vw)`;
-    console.log(slideRef.current);
   }, [currentSlide]);
 
   const nextSlide = () => {
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
     } else {
       setCurrentSlide(currentSlide + 1);
     }
+    setModal([false, false]);
   };
 
   const prevSlide = () => {
@@ -31,6 +33,7 @@ const Home: NextPage = () => {
     } else {
       setCurrentSlide(currentSlide - 1);
     }
+    setModal([false, false]);
   };
 
   return (
