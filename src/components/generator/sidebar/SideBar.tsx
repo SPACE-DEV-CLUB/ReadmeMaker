@@ -48,6 +48,14 @@ const Container = styled.section`
   height: 100%;
   background-color: #171b21;
   color: white;
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 `;
 
 const Menu = styled.header`

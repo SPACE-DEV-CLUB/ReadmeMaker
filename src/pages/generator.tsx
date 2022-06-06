@@ -28,7 +28,6 @@ const generator = () => {
 export default generator;
 
 const Container = styled.section`
-  height: 100vh;
   background-color: #171b21;
 `;
 
@@ -43,13 +42,3 @@ const Title = styled.h2`
   font-size: 20px;
   font-weight: 800;
 `;
-
-// const TestNavi = styled.div`
-//   height: 70px;
-//   line-height: 70px;
-//   text-align: center;
-//   font-size: 20px;
-//   font-weight: 700;
-//   color: #f5ff80;
-//   background-color: black;
-// `;

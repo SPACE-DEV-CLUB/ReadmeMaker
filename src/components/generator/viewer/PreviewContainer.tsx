@@ -35,4 +35,12 @@ const Container = styled.section`
   padding: 70px 40px 40px 40px;
   background-color: #000;
   color: #dddedf;
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 `;
