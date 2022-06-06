@@ -5,27 +5,54 @@ import RMMLogo from 'assets/RMMLogo';
 import { DarkModeButton } from './DarkModeButton';
 
 interface NavBarProps {
+  route: string;
   children: React.ReactNode;
 }
 
-const NavBar = ({ children }: NavBarProps) => (
-  <Container>
-    <Wrap>
-      <Logo>
-        <Link href={`/`} passHref>
-          <a href="replace">
-            <RMMLogo />
-          </a>
-        </Link>
-      </Logo>
-      {children}
-      <ButtonWrap>
-        <DarkModeButton />
-        <MakerButton>make it</MakerButton>
-      </ButtonWrap>
-    </Wrap>
-  </Container>
-);
+const NavBar = ({ route, children }: NavBarProps) => {
+  const renderSwitchAnchor = (route: string) => {
+    switch (route) {
+      case 'main':
+        return (
+          <Link href="/generator" passHref>
+            <SwitchAnchor href="replace" route={route}>
+              Make It
+            </SwitchAnchor>
+          </Link>
+        );
+
+      case 'generator':
+        return (
+          <Link href="/" passHref>
+            <SwitchAnchor href="replace" route={route}>
+              Exit
+            </SwitchAnchor>
+          </Link>
+        );
+      default:
+        break;
+    }
+  };
+
+  return (
+    <Container>
+      <Wrap>
+        <Logo>
+          <Link href="/" passHref>
+            <a href="replace">
+              <RMMLogo />
+            </a>
+          </Link>
+        </Logo>
+        {children}
+        <ButtonWrap>
+          <DarkModeButton />
+          {renderSwitchAnchor(route)}
+        </ButtonWrap>
+      </Wrap>
+    </Container>
+  );
+};
 
 const Container = styled.header`
   display: flex;
@@ -48,13 +75,18 @@ const Logo = styled.li`
   width: 102px;
 `;
 
-const MakerButton = styled.button`
+const SwitchAnchor = styled.a<{ route: string }>`
   border-radius: 30px;
   margin-left: 40px;
+  width: 112px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #f5ff80;
-  padding: 8px 28px 8px 29px;
   font-size: 14px;
   font-weight: 600;
+  ${({ route }) => route === 'generator' && 'background-color:#ffffff'}
 `;
 
 const ButtonWrap = styled.div`
