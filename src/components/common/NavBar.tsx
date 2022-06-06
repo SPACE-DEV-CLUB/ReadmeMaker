@@ -14,7 +14,7 @@ const NavBar = ({ route, children }: NavBarProps) => {
     switch (route) {
       case 'main':
         return (
-          <Link href={`/generator`} passHref>
+          <Link href="/generator" passHref>
             <SwitchAnchor href="replace" route={route}>
               Make It
             </SwitchAnchor>
@@ -23,7 +23,7 @@ const NavBar = ({ route, children }: NavBarProps) => {
 
       case 'generator':
         return (
-          <Link href={`/`} passHref>
+          <Link href="/" passHref>
             <SwitchAnchor href="replace" route={route}>
               Exit
             </SwitchAnchor>
@@ -38,7 +38,7 @@ const NavBar = ({ route, children }: NavBarProps) => {
     <Container>
       <Wrap>
         <Logo>
-          <Link href={`/`} passHref>
+          <Link href="/" passHref>
             <a href="replace">
               <RMMLogo />
             </a>
