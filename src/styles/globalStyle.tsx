@@ -112,6 +112,11 @@ const GlobalStyle = css`
   ul {
     list-style: none;
   }
+
+  li + li {
+    margin: 0;
+  }
+
   blockquote,
   q {
     quotes: none;
