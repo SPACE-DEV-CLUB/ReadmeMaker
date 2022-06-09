@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { Draggable } from 'react-beautiful-dnd';
 import { ImgComponentType } from 'types/imgComponentType';
 import { TextComponentType } from 'types/textComponentType';
@@ -29,7 +30,7 @@ const DndComponent = ({ component, componentIndex }: any) => {
       {(provided, snapshot) => {
         return (
           <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-            {switchComponent(component)}
+            <ComponentBox>{switchComponent(component)}</ComponentBox>
           </div>
         );
       }}
@@ -38,3 +39,7 @@ const DndComponent = ({ component, componentIndex }: any) => {
 };
 
 export default DndComponent;
+
+const ComponentBox = styled.div`
+  margin: 10px;
+`;
