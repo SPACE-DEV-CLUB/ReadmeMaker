@@ -1,10 +1,10 @@
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import '@atlaskit/css-reset';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
-import TextComponentEditor from '../editor/TextComponentEditor';
-import ImgComponentEditor from '../editor/ImgComponentEditor';
 import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
+import TextComponentEditor from '../editor/TextComponentEditor';
+import ImgComponentEditor from '../editor/ImgComponentEditor';
 import { componentsState } from 'atoms/components';
 import DndComponent from './DndComponent';
 
