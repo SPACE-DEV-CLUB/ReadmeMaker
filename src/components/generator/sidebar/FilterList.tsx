@@ -44,7 +44,7 @@ const FilterBtnList = styled.ul`
   padding: 0 46px 0 40px;
 `;
 
-const BtnFilterItem = styled.button<{ isActive: Boolean }>`
+const BtnFilterItem = styled.button<{ isActive: boolean }>`
   height: 22px;
   line-height: 22px;
   padding: 0 10px;
