@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { ImgComponentType } from 'types/imgComponentType';
 import { TextComponentType } from 'types/textComponentType';
@@ -6,6 +7,12 @@ import ImgComponentEditor from '../editor/ImgComponentEditor';
 import TextComponentEditor from '../editor/TextComponentEditor';
 
 const DndComponent = ({ component, componentIndex }: any) => {
+  const [start, setStart] = useState(false);
+
+  useEffect(() => {
+    setStart(true);
+  }, []);
+
   const switchComponent = (component: any) => {
     switch (component.type) {
       case 'text':
@@ -22,19 +29,27 @@ const DndComponent = ({ component, componentIndex }: any) => {
   };
 
   return (
-    <Draggable
-      draggableId={`test-${component.id}`}
-      index={componentIndex}
-      key={`test-${component.id}`}
-    >
-      {(provided, snapshot) => {
-        return (
-          <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-            <ComponentBox>{switchComponent(component)}</ComponentBox>
-          </div>
-        );
-      }}
-    </Draggable>
+    <Container>
+      {start && (
+        <Draggable
+          draggableId={`test-${component.id}`}
+          index={componentIndex}
+          key={`test-${component.id}`}
+        >
+          {(provided, snapshot) => {
+            return (
+              <div
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                ref={provided.innerRef}
+              >
+                <ComponentBox>{switchComponent(component)}</ComponentBox>
+              </div>
+            );
+          }}
+        </Draggable>
+      )}
+    </Container>
   );
 };
 
@@ -42,4 +57,10 @@ export default DndComponent;
 
 const ComponentBox = styled.div`
   margin: 10px;
+`;
+
+const Container = styled.div`
+  background-color: #171b21;
+  padding: 70px 20px 70px;
+  height: 100%;
 `;
