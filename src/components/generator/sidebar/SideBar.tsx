@@ -63,7 +63,7 @@ const MenuBtnList = styled.ul`
   height: 100%;
 `;
 
-const BtnMenuStyle = (isActive: Boolean) => css`
+const BtnMenuStyle = (isActive: boolean) => css`
   ${isActive
     ? {
         background: '#f5ff80',
@@ -82,10 +82,10 @@ const BtnMenuStyle = (isActive: Boolean) => css`
   font-size: 7px;
 `;
 
-const BtnMenu = styled.button<{ isActive: Boolean }>`
+const BtnMenu = styled.button<{ isActive: boolean }>`
   ${({ isActive }) => BtnMenuStyle(isActive)};
 `;
 
-const BtnCart = styled.button<{ isActive: Boolean }>`
+const BtnCart = styled.button<{ isActive: boolean }>`
   ${({ isActive }) => BtnMenuStyle(isActive)};
 `;

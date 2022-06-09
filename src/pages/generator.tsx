@@ -6,7 +6,7 @@ import PreviewContainer from 'components/generator/viewer/PreviewContainer';
 import NavBar from 'components/common/NavBar';
 
 const generator = () => {
-  const Generator = dynamic(() => import('components/generator/SwitchGenerator'), {
+  const Generator = dynamic(() => import('components/generator/dnd/Generator'), {
     ssr: false,
   });
 
