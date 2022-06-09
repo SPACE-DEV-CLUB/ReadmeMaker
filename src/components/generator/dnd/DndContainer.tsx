@@ -35,8 +35,8 @@ const DndContainer = () => {
       <Droppable droppableId="cardlists">
         {provided => (
           <div className="cardlists" {...provided.droppableProps} ref={provided.innerRef}>
-            {components.map((post: any, i: number) => (
-              <DndComponent key={`test-${post.id}`} post={post} postIndex={i} />
+            {components.map((component: any, i: number) => (
+              <DndComponent key={`test-${component.id}`} component={component} componentIndex={i} />
             ))}
             {provided.placeholder}
           </div>

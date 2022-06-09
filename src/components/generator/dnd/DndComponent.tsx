@@ -4,7 +4,7 @@ import { TextComponentType } from 'types/textComponentType';
 import ImgComponentEditor from '../editor/ImgComponentEditor';
 import TextComponentEditor from '../editor/TextComponentEditor';
 
-const DndComponent = ({ post, postIndex }: any) => {
+const DndComponent = ({ component, componentIndex }: any) => {
   const switchComponent = (component: any) => {
     switch (component.type) {
       case 'text':
@@ -21,11 +21,15 @@ const DndComponent = ({ post, postIndex }: any) => {
   };
 
   return (
-    <Draggable draggableId={`test-${post.id}`} index={postIndex} key={`test-${post.id}`}>
+    <Draggable
+      draggableId={`test-${component.id}`}
+      index={componentIndex}
+      key={`test-${component.id}`}
+    >
       {(provided, snapshot) => {
         return (
           <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-            {switchComponent(post)}
+            {switchComponent(component)}
           </div>
         );
       }}
