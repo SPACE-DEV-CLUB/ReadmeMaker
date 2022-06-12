@@ -1,4 +1,3 @@
-import '@atlaskit/css-reset';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
 import styled from '@emotion/styled';
