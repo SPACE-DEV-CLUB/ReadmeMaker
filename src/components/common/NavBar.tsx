@@ -67,8 +67,7 @@ const Wrap = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin: 0 158px 0 168px;
+  width: calc(100% - 220px);
 `;
 
 const Logo = styled.li`

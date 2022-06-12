@@ -3,7 +3,7 @@ import React from 'react';
 import { DraggableContainer } from 'components/common/DraggableContainer';
 import TemplateCardText from './TemplateCardText';
 import TemplateComponents from './TemplateComponents';
-import Modal from '../Modal';
+import Modal from 'components/main/Modal';
 import { useRecoilState } from 'recoil';
 import { modalState } from 'atoms';
 
@@ -16,34 +16,39 @@ const TemplateCardContainer = () => {
 
   return (
     <>
-      <Content onClick={onToggleModal}>
-        <ThumbNailImage isModalOn={false}></ThumbNailImage>
-        <TemplateCardText></TemplateCardText>
-      </Content>
-      <ComponentWrapper>
-        <DraggableContainer>
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-          <TemplateComponents />
-        </DraggableContainer>
-      </ComponentWrapper>
+      <Wrap>
+        <Content onClick={onToggleModal}>
+          <ThumbNailImage isModalOn={false}></ThumbNailImage>
+          <TemplateCardText></TemplateCardText>
+        </Content>
+        <ComponentWrapper>
+          <DraggableContainer>
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+            <TemplateComponents />
+          </DraggableContainer>
+        </ComponentWrapper>
+      </Wrap>
       {isModal[1] && <Modal onToggleModal={onToggleModal} left={50} />}
     </>
   );
 };
 
+const Wrap = styled.div`
+  width: 100%;
+`;
+
 const Content = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1100px;
   height: 500px;
   border-radius: 40px;
   background-color: #171b21;
@@ -54,8 +59,7 @@ const ComponentWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1100px;
-  margin: 40px auto 120px;
+  margin: 40px 0 120px;
 `;
 
 //백그라운드 이미지 예정

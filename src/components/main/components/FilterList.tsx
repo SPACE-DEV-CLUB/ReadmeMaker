@@ -13,10 +13,10 @@ const FilterList = ({ datas }: any): JSX.Element => {
     <ListWrap>
       {datas.map((data: string, index: number) => (
         <FilterButton
-          data={data}
-          key={index}
-          onClick={onClickFilterButton}
-          isSelected={data === selectedFilter}
+        data={data}
+        key={index}
+        onClick={onClickFilterButton}
+        isSelected={data === selectedFilter}
         />
       ))}
     </ListWrap>
@@ -28,8 +28,8 @@ const ListWrap = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin: 0 auto 40px;
-  width: 1100px;
+  margin: 60px 0 40px;
+  width: 100%;
 `;
 
 export default FilterList;

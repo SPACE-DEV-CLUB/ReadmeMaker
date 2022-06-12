@@ -13,12 +13,11 @@ const ComponentList = ({ datas }: any): JSX.Element => {
 };
 
 const Card = styled.div`
-  width: 1100px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
-  margin: auto;
 `;
 
 export default ComponentList;

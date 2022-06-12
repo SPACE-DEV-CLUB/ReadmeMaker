@@ -3,19 +3,23 @@ import styled from '@emotion/styled';
 import ComponentsContainer from './components/ComponentsContainer';
 import TemplatesContainer from './Templates/TemplatesContainer';
 import Cart from '../../components/main/cart/Cart';
+import { useRecoilValue } from 'recoil';
+import { modalState } from 'atoms';
 
 interface MainPageProps {
   slideRef: React.MutableRefObject<HTMLElement>;
 }
 
 const MainPage = ({ slideRef }: MainPageProps) => {
+  const isModal = useRecoilValue(modalState);
+
   return (
     <Container>
       <Wrap ref={slideRef}>
         <ComponentsContainer />
         <TemplatesContainer />
       </Wrap>
-      <Cart />
+      {!isModal.some(modal => modal) && <Cart />}
     </Container>
   );
 };
