@@ -55,6 +55,7 @@ const Generator = () => {
 export default Generator;
 
 const DndContainer = styled.section`
+  padding-bottom: 5%;
   text-align: center;
   overflow-y: auto;
   background-color: ${darkTheme.CASUAL_FIELD};
