@@ -69,6 +69,5 @@ const ComponentBox = styled.div`
 
 const Container = styled.div`
   background-color: #171b21;
-  padding: 70px 20px 70px;
   height: 100%;
 `;

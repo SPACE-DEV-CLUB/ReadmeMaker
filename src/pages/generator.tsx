@@ -35,7 +35,7 @@ const Container = styled.section`
 const GridWrap = styled.section`
   display: grid;
   grid-template-columns: 300px 500px auto;
-  height: 100%;
+  height: calc(100vh - 70px);
 `;
 
 const Title = styled.h2`
@@ -44,12 +44,12 @@ const Title = styled.h2`
   font-weight: 800;
 `;
 
-const TestNavi = styled.div`
-  height: 70px;
-  line-height: 70px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  color: #f5ff80;
-  background-color: black;
-`;
+// const TestNavi = styled.div`
+//   height: 70px;
+//   line-height: 70px;
+//   text-align: center;
+//   font-size: 20px;
+//   font-weight: 700;
+//   color: #f5ff80;
+//   background-color: black;
+// `;
