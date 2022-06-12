@@ -12,7 +12,6 @@ const TemplatesContainer = () => {
       </TitleWrap>
       <TemplateCardContainer />
       <TemplateCardContainer />
-      <Cart position="right" />
     </Container>
   );
 };

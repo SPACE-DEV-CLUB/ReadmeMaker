@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Cart from '../cart/Cart';
 import ComponentList from './ComponentList';
 import PopularItemList from './PopularItemList';
 import FilterList from './FilterList';
@@ -11,7 +10,6 @@ const ComponentsContainer = () => {
       <PopularItemList />
       <FilterList datas={['all', 'arts', 'coloful', 'modern', 'future']} />
       <ComponentList datas={['', '', '', '', '']} />
-      <Cart position="left" />
     </Container>
   );
 };
@@ -22,6 +20,9 @@ const Container = styled.section`
   color: white;
   overflow: scroll;
   background-color: #0e1116;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export default ComponentsContainer;
