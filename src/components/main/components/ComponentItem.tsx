@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
 import React, { useEffect } from 'react';
-import useToggle from 'hooks/useToggle';
-import Modal from '../Modal';
+// import useToggle from 'hooks/useToggle';
+import Modal from 'components/main/Modal';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from 'atoms';
+import { modalStates } from 'atoms';
 
 const ComponentItem = ({ data }: any): JSX.Element => {
-  const [isModal, setModal] = useRecoilState(modalState);
+  const [isModal, setModal] = useRecoilState(modalStates);
 
   const onToggleModal = () => {
     setModal([!isModal[0], isModal[1]]);

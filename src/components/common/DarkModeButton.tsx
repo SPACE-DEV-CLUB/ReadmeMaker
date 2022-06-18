@@ -13,12 +13,13 @@ export const DarkModeButton = () => {
 
 const CheckBox = styled.input`
   all: unset;
-  width: 60px;
+  width: 50px;
   height: 32px;
   border-radius: 2em;
   display: flex;
   align-items: center;
   /* toggle off */
+  border: 1px solid #ededed;
   background: linear-gradient(
     112.31deg,
     #f0fe90 26.94%,
@@ -30,29 +31,33 @@ const CheckBox = styled.input`
   ::after {
     content: '';
     z-index: 10;
-    left: 4px;
-    width: 28px;
-    height: 28px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
     display: block;
     border-radius: 50%;
     background: white;
     position: relative;
     transition: all 0.2s ease-in-out;
+    border: 1px solid #ededed;
     box-shadow: 1px 0px 8px rgba(0, 0, 0, 0.4);
   }
   /* toggle on */
   &:checked {
     background: #292f37;
+    border: 1px solid #141414;
     ::after {
       content: '';
       position: relative;
       display: block;
-      width: 28px;
-      height: 28px;
-      left: 28px;
+      width: 26px;
+      height: 26px;
+      left: 20px;
       border-radius: 50%;
+      border: 1px solid #131313;
       background: #08090c;
       transition: all 0.2s ease-in-out;
+      box-shadow: 1px 0px 8px rgba(0, 0, 0, 0.4);
     }
   }
 `;

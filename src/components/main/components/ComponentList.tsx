@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import ComponentItem from './ComponentItem';
+import ComponentItem from 'components/main/components/ComponentItem';
 
 const ComponentList = ({ datas }: any): JSX.Element => {
   return (
@@ -13,12 +13,11 @@ const ComponentList = ({ datas }: any): JSX.Element => {
 };
 
 const Card = styled.div`
-  width: 1100px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
-  margin: auto;
 `;
 
 export default ComponentList;

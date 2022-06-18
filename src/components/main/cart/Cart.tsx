@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import CartItem from './CartItem';
+import CartItem from 'components/main/cart/CartItem';
 import ArrowBottom from 'assets/ArrowBottom';
 import { useRecoilValue } from 'recoil';
 // import { useRecoilState } from 'recoil';

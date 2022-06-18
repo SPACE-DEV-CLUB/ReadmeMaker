@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Tag from './Tag';
+import Tag from 'components/main/Templates/Tag';
 
 const TemplateCardText = () => {
   return (

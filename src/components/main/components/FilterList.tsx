@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import FilterButton from './FilterButton';
+import FilterButton from 'components/main/components/FilterButton';
 
 const FilterList = ({ datas }: any): JSX.Element => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -28,8 +28,8 @@ const ListWrap = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin: 0 auto 40px;
-  width: 1100px;
+  margin: 60px 0 40px;
+  width: 100%;
 `;
 
 export default FilterList;
