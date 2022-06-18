@@ -1,9 +1,10 @@
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { v4 as uuid } from 'uuid';
+import '@atlaskit/css-reset';
 import styled from '@emotion/styled';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useRecoilState } from 'recoil';
-import { componentsState } from 'atoms/components';
+import { v4 as uuid } from 'uuid';
 import DndComponent from './DndComponent';
+import { componentsState } from 'atoms/components';
 import { darkTheme } from 'styles/theme';
 
 const Generator = () => {

@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { ImgComponentType } from 'types/imgComponentType';
-import { TextComponentType } from 'types/textComponentType';
 import ImgComponentEditor from '../editor/ImgComponentEditor';
 import TextComponentEditor from '../editor/TextComponentEditor';
+import { ImgComponentType } from 'types/imgComponentType';
+import { TextComponentType } from 'types/textComponentType';
 
 const DndComponent = ({ component, componentIndex }: any) => {
   const [start, setStart] = useState(false);

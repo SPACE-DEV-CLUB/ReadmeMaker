@@ -1,8 +1,8 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import ComponentList from 'components/main/components/ComponentList';
-import PopularItemList from 'components/main/components/PopularItemList';
-import FilterList from 'components/main/components/FilterList';
+import React from 'react';
+import ComponentList from './ComponentList';
+import FilterList from './FilterList';
+import PopularItemList from './PopularItemList';
 
 const ComponentsContainer = () => {
   return (

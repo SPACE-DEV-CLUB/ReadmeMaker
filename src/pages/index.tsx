@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
 import type { NextPage } from 'next';
-import { useRecoilState } from 'recoil';
 import Head from 'next/head';
-import NavBar from '../components/common/NavBar';
-import MainPage from 'components/main/MainPage';
-import NavBarMainItem from 'components/common/NavBarMainItem';
+import React, { useEffect, useRef, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { modalStates } from 'atoms';
+import NavBar from 'components/common/NavBar';
+import NavBarMainItem from 'components/common/NavBarMainItem';
+import MainPage from 'components/main/MainPage';
 
 const Home: NextPage = () => {
   const TOTAL_SLIDES = 1;

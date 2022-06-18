@@ -1,5 +1,5 @@
-import { Editor } from '@tinymce/tinymce-react';
 import styled from '@emotion/styled';
+import { Editor } from '@tinymce/tinymce-react';
 import { useSetRecoilState } from 'recoil';
 import { postState } from 'atoms/post';
 

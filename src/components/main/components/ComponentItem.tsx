@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
-import React, { useEffect } from 'react';
 // import useToggle from 'hooks/useToggle';
-import Modal from 'components/main/Modal';
-import { useRecoilState, useRecoilValue } from 'recoil';
 import { modalStates } from 'atoms';
+import Modal from 'components/main/Modal';
 
 const ComponentItem = ({ data }: any): JSX.Element => {
   const [isModal, setModal] = useRecoilState(modalStates);

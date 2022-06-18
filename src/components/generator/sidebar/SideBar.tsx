@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useState } from 'react';
-import CartIcon from 'assets/CartIcon';
 import FilterList from './FilterList';
+import CartIcon from 'assets/CartIcon';
 
 const SideBar = () => {
   const [activeMenu, setActiveMenu] = useState('menu');

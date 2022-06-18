@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import React from 'react';
 import dynamic from 'next/dynamic';
+import React from 'react';
+import NavBar from 'components/common/NavBar';
 import SideBar from 'components/generator/sidebar/SideBar';
 import PreviewContainer from 'components/generator/viewer/PreviewContainer';
-import NavBar from 'components/common/NavBar';
 
 const generator = () => {
   const Generator = dynamic(() => import('components/generator/dnd/Generator'), {

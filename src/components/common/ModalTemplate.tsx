@@ -1,6 +1,6 @@
+import { keyframes } from '@emotion/css';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
-import { keyframes } from '@emotion/css';
 import CloseButton from 'assets/CloseButton';
 import YellowLabel from 'assets/YellowLabel';
 

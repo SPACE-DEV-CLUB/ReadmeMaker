@@ -1,12 +1,10 @@
-import { Editor } from '@tinymce/tinymce-react';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 import { useRecoilState } from 'recoil';
+import ComponentContainer from './ComponentContainer';
 import { componentsState } from 'atoms/components';
 import { TextComponentType } from 'types/textComponentType';
 import { removeComponent, replaceText } from 'utils';
-import ComponentContainer from './ComponentContainer';
-import { useEffect } from 'react';
 
 interface TextComponentEditorProps {
   textComponent: TextComponentType;

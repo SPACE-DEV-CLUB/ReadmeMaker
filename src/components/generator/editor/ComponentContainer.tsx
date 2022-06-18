@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import MeatballIcon from 'assets/Meatball.svg';
 import { ReactNode } from 'react';
+import MeatballIcon from 'assets/Meatball.svg';
 import { lightTheme } from 'styles/theme';
 
 interface ComponentContainerProps {

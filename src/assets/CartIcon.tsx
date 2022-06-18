@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface IconProps {
-  width: number;
-  height: number;
-  color: string;
+  width?: number;
+  height?: number;
+  color?: string;
 }
 
 const CartIcon = ({ width = 23, height = 20, color = 'white' }: IconProps): JSX.Element => {

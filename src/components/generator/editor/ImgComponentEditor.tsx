@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
-import { useRecoilState } from 'recoil';
 import { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import ComponentContainer from './ComponentContainer';
 import { componentsState } from 'atoms/components';
 import useDebounce from 'hooks/useDebounce';
 import { ImgComponentType } from 'types/imgComponentType';
 import { replaceText } from 'utils';
-import ComponentContainer from './ComponentContainer';
+
 
 interface ImgComponentEditorProps {
   imgComponent: ImgComponentType;
