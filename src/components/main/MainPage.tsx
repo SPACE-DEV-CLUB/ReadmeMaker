@@ -4,14 +4,14 @@ import ComponentsContainer from 'components/main/components/ComponentsContainer'
 import TemplatesContainer from 'components/main/Templates/TemplatesContainer';
 import Cart from 'components/main/cart/Cart';
 import { useRecoilValue } from 'recoil';
-import { modalState } from 'atoms';
+import { modalStates } from 'atoms';
 
 interface MainPageProps {
   slideRef: React.MutableRefObject<HTMLElement>;
 }
 
 const MainPage = ({ slideRef }: MainPageProps) => {
-  const isModal = useRecoilValue(modalState);
+  const modalPositions = useRecoilValue(modalStates);
 
   return (
     <Container>
@@ -19,7 +19,7 @@ const MainPage = ({ slideRef }: MainPageProps) => {
         <ComponentsContainer />
         <TemplatesContainer />
       </Wrap>
-      {!isModal.some(modal => modal) && <Cart />}
+      {modalPositions.every(modal => !modal) && <Cart />}
     </Container>
   );
 };

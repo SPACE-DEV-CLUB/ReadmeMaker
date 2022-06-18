@@ -5,10 +5,10 @@ import { DraggableContainer } from 'components/common/DraggableContainer';
 import TemplateCardText from 'components/main/Templates/TemplateCardText';
 import TemplateComponents from 'components/main/Templates/TemplateComponents';
 import { useRecoilState } from 'recoil';
-import { modalState } from 'atoms';
+import { modalStates } from 'atoms';
 
 const TemplateCardContainer = () => {
-  const [isModal, setModal] = useRecoilState(modalState);
+  const [isModal, setModal] = useRecoilState(modalStates);
 
   const onToggleModal = () => {
     setModal([isModal[0], !isModal[1]]);

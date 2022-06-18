@@ -5,13 +5,13 @@ import Head from 'next/head';
 import NavBar from '../components/common/NavBar';
 import MainPage from 'components/main/MainPage';
 import NavBarMainItem from 'components/common/NavBarMainItem';
-import { modalState } from 'atoms';
+import { modalStates } from 'atoms';
 
 const Home: NextPage = () => {
   const TOTAL_SLIDES = 1;
   const slideRef = useRef<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [_, setModal] = useRecoilState(modalState);
+  const [_, setModal] = useRecoilState(modalStates);
 
   useEffect(() => {
     slideRef.current.style.transition = 'all 0.5s ease-in-out';

@@ -5,7 +5,7 @@ export const cartListState = atom({
   default: ['', '', ''],
 });
 
-export const modalState = atom({
+export const modalStates = atom({
   key: 'modalState',
   default: [false, false],
 });
