@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import FilterButton from './FilterButton';
+import FilterButton from 'components/main/components/FilterButton';
 
 const FilterList = ({ datas }: any): JSX.Element => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -13,10 +13,10 @@ const FilterList = ({ datas }: any): JSX.Element => {
     <ListWrap>
       {datas.map((data: string, index: number) => (
         <FilterButton
-        data={data}
-        key={index}
-        onClick={onClickFilterButton}
-        isSelected={data === selectedFilter}
+          data={data}
+          key={index}
+          onClick={onClickFilterButton}
+          isSelected={data === selectedFilter}
         />
       ))}
     </ListWrap>
