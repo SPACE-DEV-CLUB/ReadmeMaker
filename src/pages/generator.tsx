@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import NavBar from 'components/common/NavBar';
+import Generator from 'components/generator/dnd/Generator';
 import SideBar from 'components/generator/sidebar/SideBar';
-import PreviewContainer from 'components/generator/viewer/PreviewContainer';
 
 const generator = () => {
-  const Generator = dynamic(() => import('components/generator/dnd/Generator'), {
+  const PreviewContainer = dynamic(() => import('components/generator/viewer/PreviewContainer'), {
     ssr: false,
   });
 
