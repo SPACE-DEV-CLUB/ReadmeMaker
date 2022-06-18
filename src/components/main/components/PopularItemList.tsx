@@ -7,8 +7,10 @@ const PopularItemList = (): JSX.Element => {
   const today = new Date();
   return (
     <Container>
-      <h3>Popular Components</h3>
-      <p>{`${today.getFullYear()}년 ${today.getMonth() + 1}월의 인기 컴포넌트를 확인하세요 !`}</p>
+      <ComponentsTitle>Popular Components</ComponentsTitle>
+      <ComponentsSubTitle>{`${today.getFullYear()}년 ${
+        today.getMonth() + 1
+      }월의 인기 컴포넌트를 확인하세요 !`}</ComponentsSubTitle>
       <DraggableContainer>
         <PopularItem />
         <PopularItem />
@@ -34,14 +36,16 @@ const Container = styled.div`
   border-radius: 30px;
   padding: 40px 0px 30px 40px;
   box-sizing: border-box;
-  h3 {
-    font-size: 20px;
-    font-weight: 800;
-  }
-  p {
-    margin: 10px 0 30px;
-    font-size: 14px;
-  }
+`;
+
+const ComponentsTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 800;
+`;
+
+const ComponentsSubTitle = styled.p`
+  margin: 10px 0 30px;
+  font-size: 14px;
 `;
 
 export default PopularItemList;
