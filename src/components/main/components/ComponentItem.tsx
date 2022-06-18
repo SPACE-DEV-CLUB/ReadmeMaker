@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
@@ -14,7 +14,6 @@ const ComponentItem = ({ data }: any): JSX.Element => {
     setModal([!isModal[0], isModal[1]]);
   };
 
-  useEffect(() => {});
   return (
     <Card>
       <h3>컴포넌트 이름</h3>
