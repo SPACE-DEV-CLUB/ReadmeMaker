@@ -12,7 +12,7 @@ const TemplatesContainer = () => {
           <SubTitle>다양한 조합의 인기 템플릿을 확인하세요.</SubTitle>
         </TitleWrap>
         <TemplateCardContainer />
-        <TemplateCardContainer />
+        {/* <TemplateCardContainer /> */}
       </Wrap>
     </Container>
   );
@@ -47,7 +47,7 @@ const SubTitle = styled.h3`
 
 const Wrap = styled.div`
   width: calc(100vw - 500px);
-  margin: 60px 110px 120px 0;
+  margin: 0 110px 120px 0;
 `;
 
 export default TemplatesContainer;

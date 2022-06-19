@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { useRecoilState } from 'recoil';
+import { modalStates } from 'atoms';
 import Modal from 'components/main/Modal';
 import { DraggableContainer } from 'components/common/DraggableContainer';
 import TemplateCardText from 'components/main/Templates/TemplateCardText';
 import TemplateComponents from 'components/main/Templates/TemplateComponents';
-import { useRecoilState } from 'recoil';
-import { modalStates } from 'atoms';
 
 const TemplateCardContainer = () => {
   const [isModal, setModal] = useRecoilState(modalStates);
@@ -16,11 +16,11 @@ const TemplateCardContainer = () => {
 
   return (
     <>
-      <Wrap>
-        <Content onClick={onToggleModal}>
+      <TemplateCard>
+        <TemplateContent onClick={onToggleModal}>
           <ThumbNailImage isModalOn={false}></ThumbNailImage>
-          <TemplateCardText></TemplateCardText>
-        </Content>
+          <TemplateCardText />
+        </TemplateContent>
         <ComponentWrapper>
           <DraggableContainer>
             <TemplateComponents />
@@ -35,40 +35,42 @@ const TemplateCardContainer = () => {
             <TemplateComponents />
           </DraggableContainer>
         </ComponentWrapper>
-      </Wrap>
+      </TemplateCard>
       {isModal[1] && <Modal onToggleModal={onToggleModal} left={50} />}
     </>
   );
 };
 
-const Wrap = styled.div`
+const TemplateCard = styled.section`
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  margin: 0 auto;
+  background-color: #0e1116;
+  border: 1px solid #20262f;
+  border-radius: 30px;
 `;
 
-const Content = styled.section`
+const TemplateContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  border-radius: 40px;
-  background-color: #171b21;
-  margin: 0 auto;
 `;
 
 const ComponentWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 0 120px;
+  margin: 20px 0 24px 15px;
 `;
 
 //백그라운드 이미지 예정
 const ThumbNailImage = styled.article<{ isModalOn: boolean }>`
-  width: ${({ isModalOn }) => (isModalOn ? '700px' : '500px')};
-  height: ${({ isModalOn }) => (isModalOn ? '500px' : '400px')};
+  width: ${({ isModalOn }) => (isModalOn ? '700px' : '100%')};
+  height: ${({ isModalOn }) => (isModalOn ? '500px' : '320px')};
   border-radius: 30px;
   background-color: #1b2027;
-  margin: 80px;
+  margin: ${({ isModalOn }) => (isModalOn ? '80px' : '40px')};
 `;
 
 export default TemplateCardContainer;

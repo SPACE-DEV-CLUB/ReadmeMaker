@@ -39,7 +39,7 @@ const TemplateComponents = () => {
 const Card = styled.div`
   box-sizing: border-box;
   min-width: 188px;
-  height: 188px;
+  height: 185px;
   border-radius: 20px;
   border: 1px solid #20262f;
   padding: 20px;
