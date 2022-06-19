@@ -31,8 +31,11 @@ const SideBar = () => {
           </li>
           <li>
             <BtnCart type="button" isActive={activeMenu === 'cart'} onClick={handlActiveCart}>
-              {/* TODO: CartIcon fill, size props 받는 걸로 변경 */}
-              <CartIcon />
+              <CartIcon
+                width={15}
+                height={14}
+                color={activeMenu === 'cart' ? '#2c3037' : '#f5ff80'}
+              />
             </BtnCart>
           </li>
         </MenuBtnList>
@@ -48,6 +51,14 @@ const Container = styled.section`
   height: 100%;
   background-color: #171b21;
   color: white;
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 `;
 
 const Menu = styled.header`
@@ -75,11 +86,15 @@ const BtnMenuStyle = (isActive: boolean) => css`
       }}
   width: 32px;
   height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #f5ff80;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
   border-radius: 50%;
   font-weight: 700;
   font-size: 7px;
+  letter-spacing: -0.7px;
 `;
 
 const BtnMenu = styled.button<{ isActive: boolean }>`
@@ -88,4 +103,7 @@ const BtnMenu = styled.button<{ isActive: boolean }>`
 
 const BtnCart = styled.button<{ isActive: boolean }>`
   ${({ isActive }) => BtnMenuStyle(isActive)};
+  svg {
+    transform: translateX(-1px);
+  }
 `;
