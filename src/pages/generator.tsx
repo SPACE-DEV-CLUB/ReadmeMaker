@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import SideBar from 'components/generator/sidebar/SideBar';
 import PreviewContainer from 'components/generator/viewer/PreviewContainer';
@@ -11,17 +12,24 @@ const generator = () => {
   });
 
   return (
-    <Container>
-      {/* TODO: 네비게이션 바 수정*/}
-      <NavBar route="generator">
-        <Title>Make It</Title>
-      </NavBar>
-      <GridWrap>
-        <SideBar />
-        <Generator />
-        <PreviewContainer></PreviewContainer>
-      </GridWrap>
-    </Container>
+    <>
+      <Head>
+        <script
+          src="https://cdn.tiny.cloud/1/grw4sefbm00ssvsu8w4c01r6wbwjavncftmlqr5elrrgh62v/tinymce/6/tinymce.min.js"
+          referrerPolicy="origin"
+        ></script>
+      </Head>
+      <Container>
+        <NavBar route="generator">
+          <Title>Make It</Title>
+        </NavBar>
+        <GridWrap>
+          <SideBar />
+          <Generator />
+          <PreviewContainer></PreviewContainer>
+        </GridWrap>
+      </Container>
+    </>
   );
 };
 
