@@ -11,7 +11,6 @@ const TemplateCardText = () => {
         <Title>Content</Title>
         <SubTitle>SubTitle</SubTitle>
         <Tag />
-        <Borderline></Borderline>
         <TemplateInfo>새로운 템플릿을 확인하세요.</TemplateInfo>
       </article>
       <IconWrapper>
@@ -24,6 +23,7 @@ const TemplateCardText = () => {
 
 const Container = styled.section`
   display: flex;
+  min-width: 480px;
   min-height: 320px;
   flex-direction: column;
   justify-content: space-between;
@@ -44,15 +44,19 @@ const SubTitle = styled.h3`
   margin-bottom: 20px;
 `;
 
-const Borderline = styled.div`
-  width: 480px;
-  height: 3px;
-  margin-bottom: 30px;
-  background-color: #1b2027;
-`;
-
 const TemplateInfo = styled.p`
+  position: relative;
   color: #fff;
+  margin-top: 60px;
+
+  ::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    height: 3px;
+    width: 100%;
+    background-color: #1b2027;
+  }
 `;
 
 const IconWrapper = styled.div`
