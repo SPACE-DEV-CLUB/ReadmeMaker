@@ -17,6 +17,7 @@ const TemplateCardContainer = () => {
   return (
     <>
       <TemplateCard>
+        <h3 className="sr-only">TemplateCard</h3>
         <TemplateContent onClick={onToggleModal}>
           <ThumbNailImage isModalOn={false}></ThumbNailImage>
           <TemplateCardText />
