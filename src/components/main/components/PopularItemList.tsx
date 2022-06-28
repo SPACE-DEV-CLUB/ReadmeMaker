@@ -1,6 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import PopularItem from 'components/main/components/PopularItem';
+import React from 'react';
+import PopularItem from './PopularItem';
 import { DraggableContainer } from 'components/common/DraggableContainer';
 
 const PopularItemList = (): JSX.Element => {

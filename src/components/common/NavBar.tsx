@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import React from 'react';
 import Link from 'next/link';
-import RMMLogo from 'assets/RMMLogo';
+import React from 'react';
 import { DarkModeButton } from './DarkModeButton';
+import RMMLogo from 'assets/RMMLogo';
 
 interface NavBarProps {
   route: string;

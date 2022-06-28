@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import CartItem from 'components/main/cart/CartItem';
+import React, { useState } from 'react';
 import ArrowBottom from 'assets/ArrowBottom';
-import { useRecoilValue } from 'recoil';
+import CartItem from 'components/main/cart/CartItem';
 // import { useRecoilState } from 'recoil';
 // import { cartListState } from 'atoms';
 

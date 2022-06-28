@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import ModalTemplate from 'components/common/ModalTemplate';
-import HeartIcon from 'assets/HeartIcon';
 import CartIcon from 'assets/CartIcon';
+import HeartIcon from 'assets/HeartIcon';
+import ModalTemplate from 'components/common/ModalTemplate';
 
 interface ModalProps {
   onToggleModal: () => void;

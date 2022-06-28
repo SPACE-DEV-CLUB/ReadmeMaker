@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
-import React from 'react';
 
 const PopularComponentsItem = (): JSX.Element => {
   return (

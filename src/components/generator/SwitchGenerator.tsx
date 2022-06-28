@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
+import ImgComponentEditor from './editor/ImgComponentEditor';
+import TextComponentEditor from './editor/TextComponentEditor';
 import { componentsState } from 'atoms/components';
 import { TextComponentType, ImgComponentType } from 'types';
-import TextComponentEditor from './editor/TextComponentEditor';
-import ImgComponentEditor from './editor/ImgComponentEditor';
 
 const SwitchGenerator = () => {
   const [components, setComponents] = useRecoilState(componentsState);

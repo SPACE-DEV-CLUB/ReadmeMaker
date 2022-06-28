@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import TemplateCardContainer from 'components/main/Templates/TemplateCardContainer';
-import Cart from 'components/main/cart/Cart';
+import React from 'react';
+import TemplateCardContainer from './TemplateCardContainer';
 
 const TemplatesContainer = () => {
   return (

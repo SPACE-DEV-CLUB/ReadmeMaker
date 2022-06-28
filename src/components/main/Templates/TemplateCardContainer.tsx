@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { useRecoilState } from 'recoil';
+import TemplateCardText from './TemplateCardText';
+import TemplateComponents from './TemplateComponents';
 import { modalStates } from 'atoms';
-import Modal from 'components/main/Modal';
 import { DraggableContainer } from 'components/common/DraggableContainer';
-import TemplateCardText from 'components/main/Templates/TemplateCardText';
-import TemplateComponents from 'components/main/Templates/TemplateComponents';
+import Modal from 'components/main/Modal';
 
 const TemplateCardContainer = () => {
   const [isModal, setModal] = useRecoilState(modalStates);

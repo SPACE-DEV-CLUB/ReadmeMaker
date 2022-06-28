@@ -1,6 +1,5 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import React from 'react';
 import CloseButton from 'assets/CloseButton';
 
 interface CartItemProps {

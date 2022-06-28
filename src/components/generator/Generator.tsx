@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import DndContainer from 'components/generator/dnd/DndContainer';
 import React, { useEffect, useState } from 'react';
+import DndContainer from 'components/generator/dnd/DndContainer';
 
 const MockData = [
   { id: 'a', index: 1 },

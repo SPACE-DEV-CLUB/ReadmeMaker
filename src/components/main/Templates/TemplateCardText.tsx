@@ -1,8 +1,8 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import Tag from 'components/main/Templates/Tag';
-import HeartIcon from 'assets/HeartIcon';
+import React from 'react';
+import Tag from './Tag';
 import CartIcon from 'assets/CartIcon';
+import HeartIcon from 'assets/HeartIcon';
 
 const TemplateCardText = () => {
   return (
