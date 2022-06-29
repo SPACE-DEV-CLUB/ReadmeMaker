@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Editor } from '@tinymce/tinymce-react';
+import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import { componentsState } from 'atoms/components';
@@ -12,13 +13,14 @@ interface TextComponentEditorProps {
 }
 
 const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorProps) => {
+  const editorRef = useRef<any>(null);
   const [components, setComponents] = useRecoilState(componentsState);
   const curIndex = components.findIndex(component => component.id === textComponent.id);
 
-  const editText = (value: string) => {
-    const updatedComponentList = replaceText(components, curIndex, {
+  const editText = () => {
+    const updatedComponentList = replaceText([...components], curIndex, {
       ...textComponent,
-      code: value,
+      code: editorRef.current.getContent(),
     });
 
     setComponents(updatedComponentList);
@@ -34,7 +36,8 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
     <ComponentContainer isDragging={isDragging}>
       <EditorWrap isDragging={isDragging}>
         <Editor
-          value={textComponent.code}
+          initialValue={components[curIndex].code}
+          onInit={(evt, editor) => (editorRef.current = editor)}
           apiKey={process.env.EDITOR_API_KEY}
           // TODO: isDragging 글자색상 분기 처리
           init={{
@@ -54,10 +57,14 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
             margin: 0 !important;
           }`,
           }}
-          onEditorChange={editText}
         />
       </EditorWrap>
-      <BtnDelete onClick={deleteTextComponent}>삭제</BtnDelete>
+      <BtnDelete type="button" onClick={deleteTextComponent}>
+        삭제
+      </BtnDelete>
+      <BtnOk type="button" onClick={editText}>
+        수정
+      </BtnOk>
     </ComponentContainer>
   );
 };
@@ -110,6 +117,11 @@ const EditorWrap = styled.article<{ isDragging: boolean }>`
 `;
 
 const BtnDelete = styled.button`
+  font-size: 16px;
+  color: #fff;
+`;
+
+const BtnOk = styled.button`
   font-size: 16px;
   color: #fff;
 `;
