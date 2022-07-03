@@ -4,3 +4,5 @@ export const RESPONSIVE = {
   MEDIUM: '1080px',
   SMALL: '768px',
 };
+
+export const API_ENDPOINT = 'http://44.201.164.193:3065';
