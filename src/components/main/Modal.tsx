@@ -3,24 +3,29 @@ import React from 'react';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
 import ModalTemplate from 'components/common/ModalTemplate';
+import { Component } from 'types/component';
 
 interface ModalProps {
   onToggleModal: () => void;
   left?: number;
+  item: Component;
 }
-const Modal = ({ onToggleModal, left = -50 }: ModalProps) => (
+
+const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => (
   <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
     <ModalTitle>
-      Component Name {'  '} |{'  '} Component Type
+      {item.title} {'  '} |{'  '} {item.type}
     </ModalTitle>
-    <ThumbNailImage isModalOn={true}></ThumbNailImage>
+    <ImageContainer isModalOn={true}>
+      <ItemImage src={item.image} alt={item.title} />
+    </ImageContainer>
     <ModalFooter>
       <div>
-        <h5>component Name</h5>
-        <p>Author</p>
+        <h5>{item.title}</h5>
+        <p>{item.author}</p>
       </div>
       <IconWrapper>
-        <span>300</span>
+        <span>{item.like}</span>
         <HeartIcon />
         <CartIcon />
       </IconWrapper>
@@ -35,14 +40,21 @@ const ModalTitle = styled.h4`
   font-size: 20px;
 `;
 
-const ThumbNailImage = styled.article<{ isModalOn: boolean }>`
+const ImageContainer = styled.article<{ isModalOn: boolean }>`
   width: ${({ isModalOn }) => (isModalOn ? '700px' : '500px')};
   height: ${({ isModalOn }) => (isModalOn ? '500px' : '400px')};
   border-radius: 30px;
   background-color: #1b2027;
   margin: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
+const ItemImage = styled.img`
+  width: 100%;
+  max-height: 80%;
+`;
 const ModalFooter = styled.div`
   padding-top: 26px;
   margin: 0 40px 40px;

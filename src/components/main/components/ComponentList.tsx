@@ -1,12 +1,16 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import ComponentItem from 'components/main/components/ComponentItem';
+import { Component } from 'types/component';
 
-const ComponentList = ({ datas }: any): JSX.Element => {
+interface ComponentListProps {
+  list: Component[];
+}
+const ComponentList = ({ list }: ComponentListProps): JSX.Element => {
   return (
     <Card>
-      {datas.map((data: any, index: number) => (
-        <ComponentItem data={data} key={index} />
+      {list.map(item => (
+        <ComponentItem item={item} key={item.id} />
       ))}
     </Card>
   );

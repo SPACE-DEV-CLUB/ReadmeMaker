@@ -1,16 +1,24 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { useQuery } from 'react-query';
 import ComponentList from './ComponentList';
 import FilterList from './FilterList';
 import PopularItemList from './PopularItemList';
+import { getComponents, getComponentTags } from 'utils/apis';
 
 const ComponentsContainer = () => {
+  const { data: componentList } = useQuery('components', getComponents);
+  const { data: tags } = useQuery('tags', getComponentTags);
+
+  console.log(tags);
+  console.log(componentList);
+  if (!componentList || !tags) return null;
   return (
     <Container>
       <Wrap>
-        <PopularItemList />
-        <FilterList datas={['all', 'arts', 'coloful', 'modern', 'future']} />
-        <ComponentList datas={['', '', '', '', '']} />
+        <PopularItemList list={componentList} />
+        {/* <FilterList list={tags} /> */}
+        <ComponentList list={componentList} />
       </Wrap>
     </Container>
   );

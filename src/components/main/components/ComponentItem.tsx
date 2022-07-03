@@ -6,8 +6,12 @@ import HeartIcon from 'assets/HeartIcon';
 // import useToggle from 'hooks/useToggle';
 import { modalStates } from 'atoms';
 import Modal from 'components/main/Modal';
+import { Component } from 'types/component';
 
-const ComponentItem = ({ data }: any): JSX.Element => {
+interface ConponentItemProps {
+  item: Component;
+}
+const ComponentItem = ({ item }: ConponentItemProps): JSX.Element => {
   const [isModal, setModal] = useRecoilState(modalStates);
 
   const onToggleModal = () => {
@@ -16,17 +20,17 @@ const ComponentItem = ({ data }: any): JSX.Element => {
 
   return (
     <Card>
-      <h3>컴포넌트 이름</h3>
-      <p>컴포넌트 설명 블라블라 입니다</p>
+      <h3>{item.title}</h3>
+      <p>{item.author}</p>
       <ItemContainer onClick={onToggleModal}>
-        <div>{data}</div>
+        <ItemImage src={item.image} alt={item.title} />
       </ItemContainer>
       <IconWrapper>
         <span>300</span>
         <HeartIcon />
         <CartIcon />
       </IconWrapper>
-      {isModal[0] && <Modal onToggleModal={onToggleModal} />}
+      {isModal[0] && <Modal item={item} onToggleModal={onToggleModal} />}
     </Card>
   );
 };
@@ -53,8 +57,15 @@ const ItemContainer = styled.div`
   background-color: #171b21;
   border-radius: 27px;
   margin-bottom: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
+const ItemImage = styled.img`
+  width: 100%;
+  max-height: 80%;
+`;
 const IconWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
