@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import CartIcon from 'assets/CartIcon';
-import HeartIcon from 'assets/HeartIcon';
+import HeartIcon from 'assets/HeartIconEmpty';
 import Tag from 'components/main/Templates/Tag';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import { TemplateTag } from 'types/template';
 
 interface TemplateCardTextProps {
@@ -36,8 +37,8 @@ const TemplateCardText = ({
 
 const Container = styled.section`
   display: flex;
-  min-width: 480px;
-  min-height: 320px;
+  min-width: 270px;
+  min-height: 184px;
   flex-direction: column;
   justify-content: space-between;
   margin-right: 40px;
@@ -49,6 +50,10 @@ const Title = styled.h2`
   font-weight: 800;
   color: #fff;
   margin-bottom: 10px;
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
+    font-size: 26px;
+  }
 `;
 
 const SubTitle = styled.h3`
@@ -69,6 +74,10 @@ const TemplateInfo = styled.p`
     height: 3px;
     width: 100%;
     background-color: #1b2027;
+  }
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
+    display: none;
   }
 `;
 

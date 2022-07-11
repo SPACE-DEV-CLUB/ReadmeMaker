@@ -5,7 +5,7 @@ import React from 'react';
 import NavBar from 'components/common/NavBar';
 import Generator from 'components/generator/dnd/Generator';
 import SideBar from 'components/generator/sidebar/SideBar';
-import { RESPONSIVE } from 'constants/index';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 
 const generator = () => {
   const PreviewContainer = dynamic(() => import('components/generator/viewer/PreviewContainer'), {
@@ -44,7 +44,7 @@ const GridWrap = styled.section`
   display: grid;
   grid-template-columns: 2fr 3fr 5fr;
   height: calc(100vh - 70px);
-  @media screen and (min-width: ${RESPONSIVE.LARGE}) {
+  @media screen and (min-width: ${MEDIA_QUERY_END_POINT.LARGE}) {
     width: 1440px;
     margin: 0 auto;
   }

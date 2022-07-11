@@ -1,19 +1,20 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import TemplateCardText from './TemplateCardText';
-import TemplateComponents from './TemplateComponents';
 import { modalStates } from 'atoms';
 import { DraggableContainer } from 'components/common/DraggableContainer';
 import Modal from 'components/main/Modal';
+import TemplateCardText from 'components/main/Templates/TemplateCardText';
+import TemplateComponents from 'components/main/Templates/TemplateComponents';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import { Template } from 'types/template';
 
 interface TemplateCardContainerProps {
   item: Template;
 }
+
 const TemplateCardContainer = ({ item }: TemplateCardContainerProps) => {
   const [isModal, setModal] = useRecoilState(modalStates);
-
   const onToggleModal = () => {
     setModal([isModal[0], !isModal[1]]);
   };
@@ -54,15 +55,22 @@ const TemplateCard = styled.section`
 
 const TemplateContent = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+
+  @media (min-width: ${MEDIA_QUERY_END_POINT.LARGE}) {
+    gap: 40px;
+  }
+
+  @media (min-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
+    gap: 20px;
+  }
 `;
 
 const ComponentWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0 24px 15px;
+  margin: 20px 0 24px 40px;
 `;
 
 //백그라운드 이미지 예정
@@ -70,9 +78,24 @@ const ThumbNailImageWrapper = styled.article<{ isModalOn: boolean }>`
   width: ${({ isModalOn }) => (isModalOn ? '700px' : '500px')};
   height: ${({ isModalOn }) => (isModalOn ? '500px' : '400px')};
   border-radius: 30px;
-  margin: 80px;
+  background-color: #1b2027;
+  margin: ${({ isModalOn }) => (isModalOn ? '80px' : '40px')};
+  display: flex;
+  align-items: center;
+
   img {
     width: 100%;
+  }
+
+  @media (min-width: ${MEDIA_QUERY_END_POINT.LARGE}) {
+    width: 340px;
+    height: 320px;
+  }
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
+    width: 207px;
+    height: 184px;
+    margin: ${({ isModalOn }) => (isModalOn ? '80px' : '20px')};
   }
 `;
 

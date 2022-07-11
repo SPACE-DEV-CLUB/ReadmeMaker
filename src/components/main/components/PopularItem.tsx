@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import CartIcon from 'assets/CartIcon';
-import HeartIcon from 'assets/HeartIcon';
+import HeartIconEmpty from 'assets/HeartIconEmpty';
 import { Component } from 'types/component';
 
 interface PopularComponetItemProps {
@@ -14,7 +14,7 @@ const PopularComponentsItem = ({ item }: PopularComponetItemProps): JSX.Element 
         <ItemImage src={item.image} alt={item.title} />
       </ItemContent>
       <SvgContainer>
-        <HeartIcon />
+        <HeartIconEmpty />
         <CartIcon />
       </SvgContainer>
     </ItemContainer>

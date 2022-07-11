@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import ArrowBottom from 'assets/ArrowBottom';
 import CartItem from 'components/main/cart/CartItem';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 // import { useRecoilState } from 'recoil';
 // import { cartListState } from 'atoms';
 
@@ -46,10 +47,21 @@ const CartContainer = styled.aside`
   top: 61px;
   width: 260px;
   height: 700px;
-  padding: 40px 30px;
+  padding: 40px 40px;
   border-radius: 30px;
   box-sizing: border-box;
   background-color: #171b21;
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
+    padding: 40px 20px;
+    width: 194px;
+    margin-left: 40px;
+    gap: 0;
+  }
+
+  @media (min-width: ${MEDIA_QUERY_END_POINT.LARGE}) {
+    margin-left: calc((100vw - 1220px) / 2);
+  }
 `;
 
 const TitleWrap = styled.div`
@@ -72,6 +84,10 @@ const SubTitle = styled.p`
   line-height: 15px;
   margin-bottom: 41px;
   color: white;
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
+    margin-bottom: 5px;
+  }
 `;
 
 const CartWrap = styled.div`
