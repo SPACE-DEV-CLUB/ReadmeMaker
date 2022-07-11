@@ -1,12 +1,15 @@
 import styled from '@emotion/styled';
+import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import ImgComponentEditor from '../editor/ImgComponentEditor';
-import TextComponentEditor from '../editor/TextComponentEditor';
 import { ImgComponentType } from 'types/imgComponentType';
 import { TextComponentType } from 'types/textComponentType';
 
 const DndComponent = ({ component, componentIndex }: any) => {
+  const TextComponentEditor = dynamic(() => import('../editor/TextComponentEditor'), {
+    ssr: false,
+  });
   const [start, setStart] = useState(false);
 
   useEffect(() => {
