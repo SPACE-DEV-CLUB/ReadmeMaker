@@ -29,11 +29,16 @@ const SwitchGenerator = () => {
               <TextComponentEditor
                 key={component.id}
                 textComponent={component as TextComponentType}
+                isDragging={false}
               />
             );
           case 'img':
             return (
-              <ImgComponentEditor key={component.id} imgComponent={component as ImgComponentType} />
+              <ImgComponentEditor
+                key={component.id}
+                imgComponent={component as ImgComponentType}
+                isDragging={false}
+              />
             );
         }
       })}

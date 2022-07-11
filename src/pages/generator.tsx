@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import React from 'react';
 import NavBar from 'components/common/NavBar';
 import Generator from 'components/generator/dnd/Generator';
