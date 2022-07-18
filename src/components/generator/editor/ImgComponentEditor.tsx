@@ -7,7 +7,6 @@ import useDebounce from 'hooks/useDebounce';
 import { ImgComponentType } from 'types/imgComponentType';
 import { replaceText } from 'utils';
 
-
 interface ImgComponentEditorProps {
   imgComponent: ImgComponentType;
   isDragging: boolean;
