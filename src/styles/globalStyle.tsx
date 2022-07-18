@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { RESPONSIVE } from 'constants/index';
 
 const GlobalStyle = css`
   html,
@@ -107,6 +108,19 @@ const GlobalStyle = css`
     font-family: 'Montserrat', -apple-system, 'BlinkMacSystemFont', system-ui, Roboto,
       'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
       sans-serif;
+
+    @media screen and (min-width: ${RESPONSIVE.X_LARGE}) {
+      font-size: 24px;
+    }
+    @media screen and (min-width: ${RESPONSIVE.LARGE}) {
+      font-size: 20px;
+    }
+    @media screen and (min-width: ${RESPONSIVE.MEDIUM}) {
+      font-size: 16px;
+    }
+    @media screen and (min-width: ${RESPONSIVE.SMALL}) {
+      font-size: 12px;
+    }
   }
   ol,
   ul {

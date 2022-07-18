@@ -1,11 +1,7 @@
-
-
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FILTER_LIST } from 'constants/filterList';
-
-
 
 const FilterList = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -53,6 +49,7 @@ const BtnFilterItem = styled.button<{ isActive: boolean }>`
   line-height: 22px;
   padding: 0 10px;
   border-radius: 8px;
+  font-size: 0.75rem;
   ${({ isActive }) =>
     isActive
       ? {

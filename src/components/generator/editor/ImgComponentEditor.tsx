@@ -54,7 +54,7 @@ const Header = styled.header`
 `;
 
 const Title = styled.h3`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 800;
   color: white;
 `;

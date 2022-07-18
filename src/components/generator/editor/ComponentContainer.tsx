@@ -27,12 +27,18 @@ const draggingStyle = () => css`
   border-color: ${lightTheme.PIN};
   color: black;
 
+  & svg {
+    right: -12px;
+    fill: #0e1116;
+  }
+
   & input {
     background-color: #e9f370;
     color: #0e1116;
   }
 
-  & h3 {
+  & h3,
+  & button {
     color: #0e1116;
   }
 `;
@@ -64,7 +70,7 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
   &::after {
     position: absolute;
     content: '';
-    display: inline-block;
+    display: ${({ isDragging }) => (isDragging ? 'none' : 'inline-block')};
     top: 0;
     bottom: 0;
     right: 20px;

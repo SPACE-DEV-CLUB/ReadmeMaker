@@ -114,14 +114,20 @@ const EditorWrap = styled.article<{ isDragging: boolean }>`
     height: 54px !important;
     border-radius: 20px;
   }
+
+  & .tox .tox-toolbar,
+  .tox .tox-toolbar__overflow,
+  .tox .tox-toolbar__primary {
+    background: transparent;
+  }
 `;
 
 const BtnDelete = styled.button`
-  font-size: 16px;
+  font-size: 1rem;
   color: #fff;
 `;
 
 const BtnOk = styled.button`
-  font-size: 16px;
+  font-size: 1rem;
   color: #fff;
 `;

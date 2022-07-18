@@ -52,6 +52,6 @@ const GridWrap = styled.section`
 
 const Title = styled.h2`
   color: #f5ff80;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 800;
 `;
