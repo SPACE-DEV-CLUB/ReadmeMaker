@@ -50,8 +50,7 @@ const Container = styled.section`
   padding: 0px 40px 40px 40px;
   background-color: #000;
   color: #dddedf;
-  overflow: scroll;
-  overflow-x: hidden;
+  overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -86,4 +85,8 @@ const DownloadBtn = styled.a`
   }
 `;
 
-const PreviewBox = styled.section``;
+const PreviewBox = styled.section`
+  & > div > * {
+    width: 100%;
+  }
+`;

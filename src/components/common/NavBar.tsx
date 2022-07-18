@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { DarkModeButton } from './DarkModeButton';
 import RMMLogo from 'assets/RMMLogo';
+import { RESPONSIVE } from 'constants/index';
 
 interface NavBarProps {
   route: string;
@@ -61,6 +62,10 @@ const Container = styled.header`
   width: 100%;
   height: 70px;
   background-color: #000;
+  @media screen and (min-width: ${RESPONSIVE.X_LARGE}) {
+    width: 1440px;
+    margin: 0 auto;
+  }
 `;
 
 const Wrap = styled.ul`
