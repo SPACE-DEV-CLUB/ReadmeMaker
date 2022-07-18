@@ -44,20 +44,38 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
   height: 200px;
   border-radius: 20px;
   background: #0e1116;
-  border: 1px solid #171b21;
-  border-right: 20px solid #171b21;
+  border: 1px solid #20262f;
 
   ${({ isDragging }) => isDragging && draggingStyle()}
 
   &:hover {
-    border-right: 20px solid ${lightTheme.PIN};
     border-color: ${lightTheme.PIN};
+    border-right: 20px solid ${lightTheme.PIN};
+
+    & svg {
+      right: -12px;
+    }
+    &::after {
+      display: none;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    border-left: 1px solid #20262f;
   }
 `;
 
 const MeatballBtn = styled(MeatballIcon)`
   position: absolute;
   top: 50%;
-  right: -2.8%;
+  right: 8px;
   transform: translateY(-50%);
+  fill: #31363c;
+  z-index: 1000;
 `;
