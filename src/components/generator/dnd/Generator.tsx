@@ -75,5 +75,5 @@ const DndContainer = styled.section`
 const BtnAdd = styled.button`
   color: white;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1rem;
 `;

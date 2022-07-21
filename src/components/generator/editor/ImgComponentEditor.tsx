@@ -7,7 +7,6 @@ import useDebounce from 'hooks/useDebounce';
 import { ImgComponentType } from 'types/imgComponentType';
 import { replaceText } from 'utils';
 
-
 interface ImgComponentEditorProps {
   imgComponent: ImgComponentType;
   isDragging: boolean;
@@ -55,7 +54,7 @@ const Header = styled.header`
 `;
 
 const Title = styled.h3`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 800;
   color: white;
 `;
