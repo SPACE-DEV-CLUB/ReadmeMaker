@@ -42,7 +42,7 @@ const FilterList = () => {
             all
           </BtnFilterItem>
         </li>
-        {tags.map((tag: ComponentTag) => {
+        {tags?.map((tag: ComponentTag) => {
           const { id, title } = tag;
           return (
             <li key={`filter-tag-${id}`}>
