@@ -1,29 +1,24 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
 // import useToggle from 'hooks/useToggle';
-import { modalStates } from 'atoms';
-import Modal from 'components/main/Modal';
 import { Component } from 'types/component';
 
 interface ConponentItemProps {
   item: Component;
+  setModalTarget: (item: Component) => void;
 }
-const ComponentItem = ({ item }: ConponentItemProps): JSX.Element => {
-  const [isModal, setModal] = useRecoilState(modalStates);
-
-  const onToggleModal = () => {
-    console.log(123, item);
-    setModal([!isModal[0], isModal[1]]);
+const ComponentItem = ({ item, setModalTarget }: ConponentItemProps): JSX.Element => {
+  const onClickComponent = () => {
+    setModalTarget(item);
   };
 
   return (
     <Card>
       <h3>{item.title}</h3>
       <p>{item.author}</p>
-      <ItemContainer onClick={onToggleModal}>
+      <ItemContainer onClick={onClickComponent}>
         <ItemImage src={item.image} alt={item.title} />
       </ItemContainer>
       <IconWrapper>
@@ -31,7 +26,6 @@ const ComponentItem = ({ item }: ConponentItemProps): JSX.Element => {
         <HeartIcon />
         <CartIcon />
       </IconWrapper>
-      {isModal[0] && <Modal item={item} onToggleModal={onToggleModal} />}
     </Card>
   );
 };
