@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { v4 as uuidv4 } from 'uuid';
+import { ComponentList } from './ComponentList';
 import { Component, ComponentTag } from 'types/component';
 import { getComponents, getComponentTags } from 'utils/apis';
 
@@ -57,17 +58,7 @@ const FilterList = () => {
           );
         })}
       </FilterBtnList>
-      <ContentList>
-        {filteredData?.map(component => {
-          const { id, title, image } = component;
-          return (
-            <ComponentCard key={`component-card-${id}`}>
-              <div>{title}</div>
-              <Image src={image} alt={title} />
-            </ComponentCard>
-          );
-        })}
-      </ContentList>
+      <ComponentList componentData={filteredData} />
     </div>
   );
 };
@@ -98,24 +89,4 @@ const BtnFilterItem = styled.button<{ isActive: boolean }>`
           background: '#f5ff80',
           color: '#2c3037',
         }}
-`;
-
-const ContentList = styled.div`
-  padding-left: 40px;
-`;
-
-const ComponentCard = styled.div`
-  padding: 30px 20px;
-  background-color: #171b21;
-  border: 1px solid #1b2027;
-  border-radius: 20px;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 12px;
-`;
-
-const Image = styled.img`
-  margin: 30px auto 0;
-  width: 100%;
 `;
