@@ -58,9 +58,15 @@ const FilterList = () => {
         })}
       </FilterBtnList>
       <ContentList>
-        {filteredData?.map(component => (
-          <p>{component.title}</p>
-        ))}
+        {filteredData?.map(component => {
+          const { id, title, image } = component;
+          return (
+            <ComponentCard key={`component-card-${id}`}>
+              <div>{title}</div>
+              <Image src={image} alt={title} />
+            </ComponentCard>
+          );
+        })}
       </ContentList>
     </div>
   );
@@ -96,4 +102,20 @@ const BtnFilterItem = styled.button<{ isActive: boolean }>`
 
 const ContentList = styled.div`
   padding-left: 40px;
+`;
+
+const ComponentCard = styled.div`
+  padding: 30px 20px;
+  background-color: #171b21;
+  border: 1px solid #1b2027;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+`;
+
+const Image = styled.img`
+  margin: 30px auto 0;
+  width: 100%;
 `;
