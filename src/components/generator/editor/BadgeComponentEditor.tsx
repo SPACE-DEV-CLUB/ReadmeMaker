@@ -4,23 +4,23 @@ import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import { componentsState } from 'atoms/components';
 import useDebounce from 'hooks/useDebounce';
-import { ImgComponentType } from 'types/imgComponentType';
+import { BadgeComponentType } from 'types/badgeComponentType';
 import { replaceText } from 'utils';
 
-interface ImgComponentEditorProps {
-  imgComponent: ImgComponentType;
+interface BadgeComponentEditorProps {
+  badgeComponent: BadgeComponentType;
   isDragging: boolean;
 }
 
-const ImgComponentEditor = ({ imgComponent, isDragging }: ImgComponentEditorProps) => {
+const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEditorProps) => {
   const [components, setComponents] = useRecoilState(componentsState);
   const [username, setUsername] = useState('deli-ght');
   const debounceUsername = useDebounce(username);
-  const curIndex = components.findIndex(component => component.id === imgComponent.id);
+  const curIndex = components.findIndex(component => component.id === badgeComponent.id);
 
   useEffect(() => {
     const updatedComponentList = replaceText(components, curIndex, {
-      ...imgComponent,
+      ...badgeComponent,
       username: debounceUsername,
     });
 
@@ -34,9 +34,9 @@ const ImgComponentEditor = ({ imgComponent, isDragging }: ImgComponentEditorProp
   return (
     <ComponentContainer isDragging={isDragging}>
       <Header>
-        <Title>{imgComponent.title}</Title>
+        <Title>{badgeComponent.title}</Title>
         <ImgWrap>
-          <Img src={imgComponent.image} alt="" />
+          <Img src={badgeComponent.image} alt="" />
         </ImgWrap>
       </Header>
       <InputField type="text" onChange={changeUsername} value={username} />
@@ -44,7 +44,7 @@ const ImgComponentEditor = ({ imgComponent, isDragging }: ImgComponentEditorProp
   );
 };
 
-export default ImgComponentEditor;
+export default BadgeComponentEditor;
 
 const Header = styled.header`
   display: flex;
