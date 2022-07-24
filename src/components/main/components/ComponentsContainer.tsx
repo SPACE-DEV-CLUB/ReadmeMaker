@@ -10,8 +10,6 @@ const ComponentsContainer = () => {
   const { data: componentList } = useQuery('components', getComponents);
   const { data: tags } = useQuery('tags', getComponentTags);
 
-  console.log(tags);
-  console.log(componentList);
   if (!componentList || !tags) return null;
   return (
     <Container>

@@ -4,18 +4,17 @@ import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
 import ModalTemplate from 'components/common/ModalTemplate';
 import { Component } from 'types/component';
+import { Template } from 'types/template';
 
 interface ModalProps {
   onToggleModal: () => void;
   left?: number;
-  item: Component;
+  item: Component | Template;
 }
 
 const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => (
   <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
-    <ModalTitle>
-      {item.title} {'  '} |{'  '} {item.type}
-    </ModalTitle>
+    <ModalTitle>{item.title}</ModalTitle>
     <ImageContainer isModalOn={true}>
       <ItemImage src={item.image} alt={item.title} />
     </ImageContainer>

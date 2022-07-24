@@ -15,6 +15,7 @@ const ComponentItem = ({ item }: ConponentItemProps): JSX.Element => {
   const [isModal, setModal] = useRecoilState(modalStates);
 
   const onToggleModal = () => {
+    console.log(123, item);
     setModal([!isModal[0], isModal[1]]);
   };
 
@@ -26,7 +27,7 @@ const ComponentItem = ({ item }: ConponentItemProps): JSX.Element => {
         <ItemImage src={item.image} alt={item.title} />
       </ItemContainer>
       <IconWrapper>
-        <span>300</span>
+        <span>{item.like}</span>
         <HeartIcon />
         <CartIcon />
       </IconWrapper>

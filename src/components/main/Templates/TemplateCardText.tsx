@@ -1,17 +1,30 @@
 import styled from '@emotion/styled';
-import React from 'react';
-import Tag from './Tag';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
+import Tag from 'components/main/Templates/Tag';
+import { TemplateTag } from 'types/template';
 
-const TemplateCardText = () => {
+interface TemplateCardTextProps {
+  title: string;
+  TemplateTags: TemplateTag[];
+  createdAt: string;
+  description: string;
+}
+const TemplateCardText = ({
+  title,
+  TemplateTags,
+  createdAt,
+  description,
+}: TemplateCardTextProps) => {
   return (
     <Container>
       <article>
-        <Title>Content</Title>
-        <SubTitle>SubTitle</SubTitle>
-        <Tag />
-        <TemplateInfo>새로운 템플릿을 확인하세요.</TemplateInfo>
+        {TemplateTags.map(tag => (
+          <Tag key={tag.id} tagName={tag.title} />
+        ))}
+        <Title>{title}</Title>
+        <SubTitle>{createdAt}</SubTitle>
+        <TemplateInfo>{description}</TemplateInfo>
       </article>
       <IconWrapper>
         <HeartIcon />

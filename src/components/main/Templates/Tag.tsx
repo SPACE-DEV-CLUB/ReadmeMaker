@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-const Tag = () => {
-  return <Item>OMG</Item>;
+const Tag = ({ tagName }: { tagName: string }) => {
+  return <Box>{tagName}</Box>;
 };
 
-const Item = styled.div`
+const Box = styled.div`
   display: inline-block;
   padding: 6px 10px;
   border-radius: 6px;
