@@ -16,14 +16,16 @@ export interface Component {
   varaiable: string;
 }
 
-export interface ComponentTag {
+export interface ComponentTag extends Tag {
   Function_Tag: FunctionTag;
+}
+
+export interface Tag {
   createdAt: string;
   id: number;
   title: string;
   updatedAt: string;
 }
-
 export interface FunctionTag {
   component_id: number;
   component_tags_id: number;

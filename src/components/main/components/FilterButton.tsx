@@ -2,14 +2,14 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 interface FilterButtonProps {
-  data: string;
+  title: string;
   isSelected: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const FilterButton = ({ data, isSelected, onClick }: FilterButtonProps): JSX.Element => {
+const FilterButton = ({ title, isSelected, onClick }: FilterButtonProps): JSX.Element => {
   return (
-    <Button isSelected={isSelected} onClick={onClick}>
-      {data}
+    <Button isSelected={isSelected} onClick={onClick} value={title}>
+      {title}
     </Button>
   );
 };

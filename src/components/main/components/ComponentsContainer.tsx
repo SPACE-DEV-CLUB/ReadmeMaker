@@ -15,7 +15,7 @@ const ComponentsContainer = () => {
     <Container>
       <Wrap>
         <PopularItemList list={componentList} />
-        {/* <FilterList list={tags} /> */}
+        <FilterList list={tags} />
         <ComponentList list={componentList} />
       </Wrap>
     </Container>
