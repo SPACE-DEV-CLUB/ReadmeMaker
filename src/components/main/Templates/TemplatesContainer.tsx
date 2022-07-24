@@ -1,8 +1,14 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import { useQuery } from 'react-query';
 import TemplateCardContainer from './TemplateCardContainer';
+// import Cart from 'components/main/cart/Cart';
+import { getTemplates } from 'utils/apis';
 
 const TemplatesContainer = () => {
+  const { data: templateList } = useQuery('templates', getTemplates);
+
+  if (!templateList) return;
+
   return (
     <Container>
       <Wrap>
@@ -10,8 +16,9 @@ const TemplatesContainer = () => {
           <Title>Now Hot 🔥</Title>
           <SubTitle>다양한 조합의 인기 템플릿을 확인하세요.</SubTitle>
         </TitleWrap>
-        <TemplateCardContainer />
-        {/* <TemplateCardContainer /> */}
+        {templateList.map(template => (
+          <TemplateCardContainer item={template} key={template.id} />
+        ))}
       </Wrap>
     </Container>
   );

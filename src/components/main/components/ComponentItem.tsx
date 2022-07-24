@@ -1,32 +1,31 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
 // import useToggle from 'hooks/useToggle';
-import { modalStates } from 'atoms';
-import Modal from 'components/main/Modal';
+import { Component } from 'types/component';
 
-const ComponentItem = ({ data }: any): JSX.Element => {
-  const [isModal, setModal] = useRecoilState(modalStates);
-
-  const onToggleModal = () => {
-    setModal([!isModal[0], isModal[1]]);
+interface ConponentItemProps {
+  item: Component;
+  setModalTarget: (item: Component) => void;
+}
+const ComponentItem = ({ item, setModalTarget }: ConponentItemProps): JSX.Element => {
+  const onClickComponent = () => {
+    setModalTarget(item);
   };
 
   return (
     <Card>
-      <h3>컴포넌트 이름</h3>
-      <p>컴포넌트 설명 블라블라 입니다</p>
-      <ItemContainer onClick={onToggleModal}>
-        <div>{data}</div>
+      <h3>{item.title}</h3>
+      <p>{item.author}</p>
+      <ItemContainer onClick={onClickComponent}>
+        <ItemImage src={item.image} alt={item.title} />
       </ItemContainer>
       <IconWrapper>
-        <span>300</span>
+        <span>{item.like}</span>
         <HeartIcon />
         <CartIcon />
       </IconWrapper>
-      {isModal[0] && <Modal onToggleModal={onToggleModal} />}
     </Card>
   );
 };
@@ -53,8 +52,15 @@ const ItemContainer = styled.div`
   background-color: #171b21;
   border-radius: 27px;
   margin-bottom: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
+const ItemImage = styled.img`
+  width: 100%;
+  max-height: 80%;
+`;
 const IconWrapper = styled.div`
   display: flex;
   justify-content: flex-end;

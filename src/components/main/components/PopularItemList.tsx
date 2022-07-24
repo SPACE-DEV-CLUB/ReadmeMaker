@@ -2,8 +2,12 @@ import styled from '@emotion/styled';
 import React from 'react';
 import PopularItem from './PopularItem';
 import { DraggableContainer } from 'components/common/DraggableContainer';
+import { Component } from 'types/component';
 
-const PopularItemList = (): JSX.Element => {
+interface PopularItemListProps {
+  list: Component[];
+}
+const PopularItemList = ({ list }: PopularItemListProps): JSX.Element => {
   const today = new Date();
   return (
     <Container>
@@ -12,16 +16,9 @@ const PopularItemList = (): JSX.Element => {
         today.getMonth() + 1
       }월의 인기 컴포넌트를 확인하세요 !`}</ComponentsSubTitle>
       <DraggableContainer>
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
-        <PopularItem />
+        {list.map((item, index) => (
+          <PopularItem key={index} item={item} />
+        ))}
       </DraggableContainer>
     </Container>
   );

@@ -3,30 +3,38 @@ import React from 'react';
 import CartIcon from 'assets/CartIcon';
 import HeartIcon from 'assets/HeartIcon';
 import ModalTemplate from 'components/common/ModalTemplate';
+import { Component } from 'types/component';
+import { Template } from 'types/template';
 
 interface ModalProps {
   onToggleModal: () => void;
   left?: number;
+  item: Component | Template;
 }
-const Modal = ({ onToggleModal, left = -50 }: ModalProps) => (
-  <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
-    <ModalTitle>
-      Component Name {'  '} |{'  '} Component Type
-    </ModalTitle>
-    <ThumbNailImage isModalOn={true}></ThumbNailImage>
-    <ModalFooter>
-      <div>
-        <h5>component Name</h5>
-        <p>Author</p>
-      </div>
-      <IconWrapper>
-        <span>300</span>
-        <HeartIcon />
-        <CartIcon />
-      </IconWrapper>
-    </ModalFooter>
-  </ModalTemplate>
-);
+
+const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
+  const { title, image, author, like } = item;
+
+  return (
+    <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
+      <ModalTitle>{title}</ModalTitle>
+      <ImageContainer>
+        <ItemImage src={image} alt={title} />
+      </ImageContainer>
+      <ModalFooter>
+        <div>
+          <h5>{title}</h5>
+          <p>{author}</p>
+        </div>
+        <IconWrapper>
+          <span>{like}</span>
+          <HeartIcon />
+          <CartIcon />
+        </IconWrapper>
+      </ModalFooter>
+    </ModalTemplate>
+  );
+};
 
 const ModalTitle = styled.h4`
   position: absolute;
@@ -35,14 +43,21 @@ const ModalTitle = styled.h4`
   font-size: 20px;
 `;
 
-const ThumbNailImage = styled.article<{ isModalOn: boolean }>`
-  width: ${({ isModalOn }) => (isModalOn ? '700px' : '500px')};
-  height: ${({ isModalOn }) => (isModalOn ? '500px' : '400px')};
+const ImageContainer = styled.article`
+  width: 700px;
+  height: 500px;
   border-radius: 30px;
   background-color: #1b2027;
   margin: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
+const ItemImage = styled.img`
+  width: 100%;
+  max-height: 80%;
+`;
 const ModalFooter = styled.div`
   padding-top: 26px;
   margin: 0 40px 40px;
