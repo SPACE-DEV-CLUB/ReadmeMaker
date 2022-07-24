@@ -1,19 +1,28 @@
 import styled from '@emotion/styled';
+import { useSetRecoilState } from 'recoil';
+import { componentsState } from 'atoms/components';
 import { Component } from 'types/component';
-
 interface ComponentListProps {
   componentData: Component[] | undefined;
 }
+
 export const ComponentList = ({ componentData }: ComponentListProps) => {
+  const setComponents = useSetRecoilState(componentsState);
+
   if (componentData?.length === 0) {
     return <p>해당 필터에 속하는 컴포넌트가 존재하지 않습니다.</p>;
   }
+
+  const addComponent = (component: Component): void => {
+    setComponents((oldComponents: any[]) => [...oldComponents, component]);
+  };
+
   return (
     <ContentList>
       {componentData?.map(component => {
         const { id, title, image } = component;
         return (
-          <ComponentCard key={`component-card-${id}`}>
+          <ComponentCard key={`component-card-${id}`} onClick={() => addComponent(component)}>
             <div>{title}</div>
             <Image src={image} alt={title} />
           </ComponentCard>
@@ -36,6 +45,11 @@ const ComponentCard = styled.div`
   font-size: 10px;
   font-weight: 500;
   line-height: 12px;
+  margin-bottom: 5px;
+
+  &:hover {
+    border: 1px solid #f5ff80;
+  }
 `;
 
 const Image = styled.img`
