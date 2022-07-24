@@ -8,7 +8,7 @@ const TemplatesContainer = () => {
   const { data: templateList } = useQuery('templates', getTemplates);
 
   if (!templateList) return;
-  console.log(templateList);
+
   return (
     <Container>
       <Wrap>

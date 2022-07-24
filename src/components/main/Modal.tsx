@@ -12,25 +12,29 @@ interface ModalProps {
   item: Component | Template;
 }
 
-const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => (
-  <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
-    <ModalTitle>{item.title}</ModalTitle>
-    <ImageContainer isModalOn={true}>
-      <ItemImage src={item.image} alt={item.title} />
-    </ImageContainer>
-    <ModalFooter>
-      <div>
-        <h5>{item.title}</h5>
-        <p>{item.author}</p>
-      </div>
-      <IconWrapper>
-        <span>{item.like}</span>
-        <HeartIcon />
-        <CartIcon />
-      </IconWrapper>
-    </ModalFooter>
-  </ModalTemplate>
-);
+const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
+  const { title, image, author, like } = item;
+
+  return (
+    <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
+      <ModalTitle>{title}</ModalTitle>
+      <ImageContainer>
+        <ItemImage src={image} alt={title} />
+      </ImageContainer>
+      <ModalFooter>
+        <div>
+          <h5>{title}</h5>
+          <p>{author}</p>
+        </div>
+        <IconWrapper>
+          <span>{like}</span>
+          <HeartIcon />
+          <CartIcon />
+        </IconWrapper>
+      </ModalFooter>
+    </ModalTemplate>
+  );
+};
 
 const ModalTitle = styled.h4`
   position: absolute;
@@ -39,9 +43,9 @@ const ModalTitle = styled.h4`
   font-size: 20px;
 `;
 
-const ImageContainer = styled.article<{ isModalOn: boolean }>`
-  width: ${({ isModalOn }) => (isModalOn ? '700px' : '500px')};
-  height: ${({ isModalOn }) => (isModalOn ? '500px' : '400px')};
+const ImageContainer = styled.article`
+  width: 700px;
+  height: 500px;
   border-radius: 30px;
   background-color: #1b2027;
   margin: 80px;
