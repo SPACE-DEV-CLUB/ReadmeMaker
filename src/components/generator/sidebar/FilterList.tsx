@@ -1,11 +1,26 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import { v4 as uuidv4 } from 'uuid';
-import { FILTER_LIST } from 'constants/filterList';
+import { Component, ComponentTag } from 'types/component';
+import { getComponents, getComponentTags } from 'utils/apis';
 
 const FilterList = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [filteredData, setFilteredData] = useState<Component[]>();
+  const { data: componentList } = useQuery('components', getComponents);
+  const { data: tags } = useQuery('tags', getComponentTags);
 
+  useEffect(() => {
+    if (activeFilter !== 'all') {
+      const newData = componentList?.filter((component: Component) =>
+        component.ComponentTags.some(tag => tag.title === activeFilter),
+      );
+      setFilteredData(newData);
+      return;
+    }
+    setFilteredData(componentList);
+  }, [activeFilter]);
   const handleActiveFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
@@ -16,20 +31,37 @@ const FilterList = () => {
   return (
     <div>
       <FilterBtnList>
-        {FILTER_LIST.map(item => (
-          <li key={`filter-item-${uuidv4()}`}>
-            <BtnFilterItem
-              type="button"
-              value={item.value}
-              onClick={handleActiveFilter}
-              isActive={item.value === activeFilter}
-            >
-              {item.value}
-            </BtnFilterItem>
-          </li>
-        ))}
+        <li key={`filter-tag-${uuidv4()}`}>
+          <BtnFilterItem
+            type="button"
+            value="all"
+            onClick={handleActiveFilter}
+            isActive={'all' === activeFilter}
+          >
+            all
+          </BtnFilterItem>
+        </li>
+        {tags.map((tag: ComponentTag) => {
+          const { id, title } = tag;
+          return (
+            <li key={`filter-tag-${id}`}>
+              <BtnFilterItem
+                type="button"
+                value={title}
+                onClick={handleActiveFilter}
+                isActive={title === activeFilter}
+              >
+                {title}
+              </BtnFilterItem>
+            </li>
+          );
+        })}
       </FilterBtnList>
-      <ComtentList>content</ComtentList>
+      <ContentList>
+        {filteredData?.map(component => (
+          <p>{component.title}</p>
+        ))}
+      </ContentList>
     </div>
   );
 };
@@ -62,6 +94,6 @@ const BtnFilterItem = styled.button<{ isActive: boolean }>`
         }}
 `;
 
-const ComtentList = styled.div`
+const ContentList = styled.div`
   padding-left: 40px;
 `;
