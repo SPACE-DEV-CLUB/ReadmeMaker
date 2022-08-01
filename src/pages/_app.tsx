@@ -3,12 +3,12 @@ import 'styles/fonts/NotoSansKR.css';
 import { Global } from '@emotion/react';
 import type { AppProps } from 'next/app';
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 import GlobalStyle from 'styles/globalStyle';
 
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const getClient = (() => {
+export const getClient = (() => {
   let client: QueryClient | null = null;
   return () => {
     if (!client)
@@ -35,6 +35,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       <RecoilRoot>
         <Global styles={GlobalStyle} />
         <Component {...pageProps} />
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
       </RecoilRoot>
     </QueryClientProvider>
   );

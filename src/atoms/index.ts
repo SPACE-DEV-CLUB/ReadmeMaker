@@ -1,8 +1,9 @@
 import { atom } from 'recoil';
+import { Component } from 'types/component';
 
-export const cartListState = atom({
+export const cartListState = atom<Component[]>({
   key: 'cartListState',
-  default: ['', '', ''],
+  default: [],
 });
 
 export const modalStates = atom({
