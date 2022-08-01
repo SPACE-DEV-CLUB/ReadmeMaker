@@ -1,21 +1,13 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 import ArrowBottom from 'assets/ArrowBottom';
+import { cartListState } from 'atoms';
 import CartItem from 'components/main/cart/CartItem';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
-// import { useRecoilState } from 'recoil';
-// import { cartListState } from 'atoms';
-
-const mockCarts = Array.from({ length: 20 }).map((_, i) => ({
-  id: i + 1,
-  title: `임시카트${i + 1}`,
-  author: `임시작가${i + 1}`,
-  image: `https://placeimg.com/200/150/${i + 1}`,
-}));
 
 const Cart = () => {
-  // const [cartList, setCartList] = useRecoilState(cartListState);
-  const [cartList, setCartList] = useState(mockCarts);
+  const [cartList, setCartList] = useRecoilState(cartListState);
   const onRemoveCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCartList(cartList.filter(cart => cart.id !== +e.currentTarget.id!));
   };
