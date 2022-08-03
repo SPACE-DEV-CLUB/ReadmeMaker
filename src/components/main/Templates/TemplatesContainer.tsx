@@ -7,9 +7,6 @@ import { getTemplates } from 'utils/apis';
 
 const TemplatesContainer = () => {
   const { data: templateList } = useQuery('templates', getTemplates);
-  console.log('templateList', templateList);
-
-  console.log('templateList', templateList);
   if (!templateList) return;
   return (
     <Container>

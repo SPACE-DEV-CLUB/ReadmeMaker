@@ -62,11 +62,6 @@ const Container = styled.header`
   width: 100%;
   height: 70px;
   background-color: #000;
-
-  @media screen and (min-width: ${MEDIA_QUERY_END_POINT.X_LARGE}) {
-    width: 1440px;
-    margin: 0 auto;
-  }
 `;
 
 const Wrap = styled.ul`
