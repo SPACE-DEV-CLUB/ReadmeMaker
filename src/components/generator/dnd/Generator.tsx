@@ -38,7 +38,7 @@ const Generator = () => {
             <div className="cardlists" {...provided.droppableProps} ref={provided.innerRef}>
               {components.map((component: any, i: number) => (
                 <DndComponent
-                  key={`test-${component.id}`}
+                  key={`${component.id}-${i}`}
                   component={component}
                   componentIndex={i}
                 />

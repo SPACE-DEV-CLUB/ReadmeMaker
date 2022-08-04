@@ -27,6 +27,7 @@ const DndComponent = ({ component, componentIndex }: any) => {
           />
         );
       case 'badge':
+      case 'image':
         return (
           <ImgComponentEditor
             key={component.id}
