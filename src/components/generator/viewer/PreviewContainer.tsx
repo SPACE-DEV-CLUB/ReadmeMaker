@@ -6,14 +6,14 @@ const PreviewContainer = () => {
   const components = useRecoilValue(componentsState);
   const readmeContent = components.reduce((ac, el) => ac + el.code, '');
 
-  //TODO: component 타입 정해지면 any 수정
   const htmlCode = components
     .map((component: any) => {
       switch (component.type) {
         case 'text':
           break;
-        case 'img':
-          return component.code.replace('variable', component.username);
+        case 'badge':
+        case 'image':
+          return component.code.replace('%user%', component.username);
       }
       return component.code;
     })
