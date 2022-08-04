@@ -6,10 +6,11 @@ import FilterList from './FilterList';
 import PopularItemList from './PopularItemList';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import { getComponents, getComponentTags } from 'utils/apis';
+import { QueryKeys } from 'utils/queryClient';
 
 const ComponentsContainer = () => {
-  const { data: componentList } = useQuery('components', getComponents);
-  const { data: tags } = useQuery('tags', getComponentTags);
+  const { data: componentList } = useQuery(QueryKeys.COMPONENTS, getComponents);
+  const { data: tags } = useQuery(QueryKeys.TAGS, getComponentTags);
 
   if (!componentList || !tags) return null;
 

@@ -1,20 +1,62 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { useMutation } from 'react-query';
+import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIconEmpty from 'assets/HeartIconEmpty';
-// import useToggle from 'hooks/useToggle';
-import { modalStates } from 'atoms';
-import Modal from 'components/main/Modal';
+import { cartListState } from 'atoms';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
+import { getClient } from 'pages/_app';
 import { Component } from 'types/component';
+import { likeComponent } from 'utils/apis';
+import { QueryKeys } from 'utils/queryClient';
 
 interface ConponentItemProps {
   item: Component;
   setModalTarget: (item: Component) => void;
 }
 const ComponentItem = ({ item, setModalTarget }: ConponentItemProps): JSX.Element => {
+  const queryClient = getClient();
+  const [cartList, setCartList] = useRecoilState(cartListState);
+
   const onClickComponent = () => {
     setModalTarget(item);
+  };
+
+  const { mutate: like } = useMutation(({ id }: { id: number }) => likeComponent(id), {
+    onMutate: async ({ id }) => {
+      await queryClient.cancelQueries(QueryKeys.COMPONENTS);
+      const prevComponents = queryClient.getQueryData<Component[]>(QueryKeys.COMPONENTS) || [];
+
+      const targetIndex = prevComponents.findIndex(component => component.id === id);
+      if (targetIndex === undefined || targetIndex < 0) return prevComponents;
+
+      const newComponents = [...prevComponents];
+      const updatedComponentLike = newComponents[targetIndex].like + 1;
+      newComponents.splice(targetIndex, 1, {
+        ...newComponents[targetIndex],
+        like: updatedComponentLike,
+      });
+
+      queryClient.setQueryData(QueryKeys.COMPONENTS, newComponents);
+      return prevComponents;
+    },
+    onError: (_, __, context) => {
+      queryClient.invalidateQueries(QueryKeys.COMPONENTS);
+      if (context) {
+        queryClient.setQueryData(QueryKeys.COMPONENTS, context);
+      }
+    },
+  });
+
+  const onClickHeartIcon = () => {
+    like({ id: item.id });
+  };
+
+  const onClickCartIcon = () => {
+    if (cartList.includes(item)) return;
+
+    setCartList([...cartList, item]);
   };
 
   return (
@@ -26,8 +68,12 @@ const ComponentItem = ({ item, setModalTarget }: ConponentItemProps): JSX.Elemen
       </ItemContainer>
       <IconWrapper>
         <span>{item.like}</span>
-        <HeartIconEmpty />
-        <CartIcon />
+        <div onClick={onClickHeartIcon}>
+          <HeartIconEmpty />
+        </div>
+        <div onClick={onClickCartIcon}>
+          <CartIcon />
+        </div>
       </IconWrapper>
     </Card>
   );
@@ -77,11 +123,9 @@ const ItemContainer = styled.div`
   background-color: #171b21;
   border-radius: 27px;
   margin-bottom: 27px;
-  //중간 머지 충돌 부분
   display: flex;
   justify-content: center;
   align-items: center;
-  //
   box-sizing: border-box;
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {

@@ -20,3 +20,11 @@ export const getTemplates = async () => {
   const data = await response.data;
   return data;
 };
+
+export const likeComponent = async (id: number) => {
+  await axios.put(`${API_ENDPOINT}/component/update/${id}`);
+};
+
+export const likeTemplate = async (id: number) => {
+  await axios.put(`${API_ENDPOINT}/template/update/${id}`);
+};
