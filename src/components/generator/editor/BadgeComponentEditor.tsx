@@ -2,10 +2,11 @@ import styled from '@emotion/styled';
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
+import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
 import useDebounce from 'hooks/useDebounce';
 import { BadgeComponentType } from 'types/badgeComponentType';
-import { replaceText } from 'utils';
+import { replaceText, removeComponent } from 'utils';
 
 interface BadgeComponentEditorProps {
   badgeComponent: BadgeComponentType;
@@ -31,6 +32,12 @@ const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEdit
     setUsername(event.target.value);
   };
 
+  const deleteBadgeComponent = () => {
+    const updatedComponentList = removeComponent(components, curIndex);
+
+    setComponents(updatedComponentList);
+  };
+
   return (
     <ComponentContainer isDragging={isDragging}>
       <Header>
@@ -40,6 +47,7 @@ const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEdit
         </ImgWrap>
       </Header>
       <InputField type="text" onChange={changeUsername} value={username} />
+      <RemoveButton onClick={() => deleteBadgeComponent()} />
     </ComponentContainer>
   );
 };
@@ -80,4 +88,12 @@ const InputField = styled.input`
   border: none;
   border-radius: 20px;
   padding-left: 8px;
+`;
+
+const RemoveButton = styled(CloseButton)`
+  width: 20px;
+  height: 20px;
+  left: -5px;
+  top: -5px;
+  z-index: 10;
 `;
