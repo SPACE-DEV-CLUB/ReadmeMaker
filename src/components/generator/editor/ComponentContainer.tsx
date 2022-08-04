@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import MeatballIcon from 'assets/Meatball.svg';
-import { RESPONSIVE } from 'constants/index';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import { lightTheme } from 'styles/theme';
 
 interface ComponentContainerProps {
@@ -77,10 +77,10 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
     border-left: 1px solid #20262f;
   }
 
-  @media screen and (max-width: ${RESPONSIVE.MEDIUM}) {
+  @media screen and (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
     padding: 50px 60px 40px 40px;
   }
-  @media screen and (max-width: ${RESPONSIVE.SMALL}) {
+  @media screen and (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
     padding: 28px 40px 20px 20px;
   }
 `;

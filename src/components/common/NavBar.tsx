@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import React from 'react';
-import { DarkModeButton } from './DarkModeButton';
 import RMMLogo from 'assets/RMMLogo';
-import { RESPONSIVE } from 'constants/index';
+import { DarkModeButton } from 'components/common/DarkModeButton';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 
 interface NavBarProps {
   route: string;
@@ -62,10 +62,6 @@ const Container = styled.header`
   width: 100%;
   height: 70px;
   background-color: #000;
-  @media screen and (min-width: ${RESPONSIVE.X_LARGE}) {
-    width: 1440px;
-    margin: 0 auto;
-  }
 `;
 
 const Wrap = styled.ul`
@@ -73,6 +69,16 @@ const Wrap = styled.ul`
   justify-content: space-between;
   align-items: center;
   width: calc(100% - 220px);
+  margin: 0 110px;
+
+  @media (min-width: ${MEDIA_QUERY_END_POINT.LARGE}) {
+    width: 1220px;
+  }
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
+    width: 100vw;
+    margin: 0 40px;
+  }
 `;
 
 const Logo = styled.li`

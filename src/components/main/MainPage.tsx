@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import Cart from './cart/Cart';
-import ComponentsContainer from './components/ComponentsContainer';
-import TemplatesContainer from './Templates/TemplatesContainer';
 import { modalStates } from 'atoms';
+import ComponentsContainer from 'components/main/components/ComponentsContainer';
+import TemplatesContainer from 'components/main/Templates/TemplatesContainer';
 
 interface MainPageProps {
   slideRef: React.MutableRefObject<HTMLElement>;

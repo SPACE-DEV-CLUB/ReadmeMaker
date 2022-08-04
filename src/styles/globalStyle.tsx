@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { RESPONSIVE } from 'constants/index';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 
 const GlobalStyle = css`
   html,
@@ -109,16 +109,16 @@ const GlobalStyle = css`
       'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
       sans-serif;
 
-    @media screen and (min-width: ${RESPONSIVE.X_LARGE}) {
+    @media screen and (min-width: ${MEDIA_QUERY_END_POINT.X_LARGE}) {
       font-size: 24px;
     }
-    @media screen and (min-width: ${RESPONSIVE.LARGE}) {
+    @media screen and (min-width: ${MEDIA_QUERY_END_POINT.LARGE}) {
       font-size: 20px;
     }
-    @media screen and (min-width: ${RESPONSIVE.MEDIUM}) {
+    @media screen and (min-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
       font-size: 16px;
     }
-    @media screen and (min-width: ${RESPONSIVE.SMALL}) {
+    @media screen and (min-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
       font-size: 12px;
     }
   }

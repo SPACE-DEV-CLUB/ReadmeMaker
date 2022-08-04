@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import CartIcon from 'assets/CartIcon';
-import HeartIcon from 'assets/HeartIcon';
+import HeartIconEmpty from 'assets/HeartIconEmpty';
 import ModalTemplate from 'components/common/ModalTemplate';
 import { Component } from 'types/component';
 import { Template } from 'types/template';
@@ -28,7 +28,7 @@ const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
         </div>
         <IconWrapper>
           <span>{like}</span>
-          <HeartIcon />
+          <HeartIconEmpty />
           <CartIcon />
         </IconWrapper>
       </ModalFooter>

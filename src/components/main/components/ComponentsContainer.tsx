@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import ComponentList from './ComponentList';
 import FilterList from './FilterList';
 import PopularItemList from './PopularItemList';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import { getComponents, getComponentTags } from 'utils/apis';
 
 const ComponentsContainer = () => {
@@ -11,6 +12,7 @@ const ComponentsContainer = () => {
   const { data: tags } = useQuery('tags', getComponentTags);
 
   if (!componentList || !tags) return null;
+
   return (
     <Container>
       <Wrap>
@@ -39,6 +41,16 @@ const Container = styled.section`
 const Wrap = styled.div`
   width: calc(100vw - 500px);
   margin: 60px 110px 120px 0;
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
+    width: 480px;
+    margin-right: 40px;
+  }
+
+  @media (min-width: ${MEDIA_QUERY_END_POINT.LARGE}) {
+    width: 940px;
+    margin-right: calc((100vw - 1220px) / 2);
+  }
 `;
 
 export default ComponentsContainer;
