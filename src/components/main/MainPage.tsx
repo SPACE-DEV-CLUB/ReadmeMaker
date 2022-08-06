@@ -30,6 +30,7 @@ const Container = styled.section`
   height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
+  background: ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
 const Wrap = styled.section`

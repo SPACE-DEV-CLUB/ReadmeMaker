@@ -119,13 +119,13 @@ const ComponentDescription = styled.p`
 const ItemContainer = styled.div`
   width: 100%;
   height: 245px;
-  /* background-color: ${({ theme }) => theme.colors.MAIN_FONT}; */
   border-radius: 27px;
   margin-bottom: 27px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
     height: 150px;

@@ -9,7 +9,7 @@ import { darkTheme } from 'styles/theme';
 // { onToggle, checked, ...rest }: IProp
 export const DarkModeButton = () => {
   const { theme, toggleTheme } = useDarkMode();
-  return <CheckBox type="checkbox" onChange={toggleTheme} checked={theme === darkTheme} />;
+  return <CheckBox type="checkbox" onChange={toggleTheme} checked={theme.colors === darkTheme} />;
 };
 
 const CheckBox = styled.input`

@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import React from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { useDarkMode } from 'hooks/useDarkMode';
+// import theme from 'styles/theme';
 
 const Pages = ({
   Component,

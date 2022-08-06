@@ -33,7 +33,6 @@ const Container = styled.section`
   height: 100%;
   color: white;
   overflow: scroll;
-  background-color: #0e1116;
   ::-webkit-scrollbar {
     display: none;
   }

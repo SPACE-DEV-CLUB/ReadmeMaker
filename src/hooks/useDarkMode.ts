@@ -1,28 +1,28 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { lightTheme, darkTheme, Theme } from '../styles/theme';
+import { lightTheme, darkTheme, ColorTheme } from '../styles/theme';
 import { darkModeState } from 'atoms';
 
 export const useDarkMode = () => {
-  const [theme, setTheme] = useRecoilState<Theme>(darkModeState);
-  const setMode = (mode: Theme) => {
+  const [theme, setTheme] = useRecoilState(darkModeState);
+  const setMode = (mode: ColorTheme) => {
     mode === lightTheme
       ? window.localStorage.setItem('theme', 'light')
       : window.localStorage.setItem('theme', 'dark');
-    setTheme(mode);
+    setTheme({ ...theme, colors: mode });
   };
 
   const toggleTheme = () => {
-    theme === lightTheme ? setMode(darkTheme) : setMode(lightTheme);
+    theme.colors === lightTheme ? setMode(darkTheme) : setMode(lightTheme);
   };
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem('theme');
     if (localTheme !== null) {
       if (localTheme === 'dark') {
-        setTheme(darkTheme);
+        setTheme({ ...theme, colors: darkTheme });
       } else {
-        setTheme(lightTheme);
+        setTheme({ ...theme, colors: lightTheme });
       }
     }
   }, []);
