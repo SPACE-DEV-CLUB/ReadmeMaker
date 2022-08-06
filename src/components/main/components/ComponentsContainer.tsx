@@ -31,7 +31,6 @@ const Container = styled.section`
   flex-direction: column;
   width: 100vw;
   height: 100%;
-  color: white;
   overflow: scroll;
   ::-webkit-scrollbar {
     display: none;

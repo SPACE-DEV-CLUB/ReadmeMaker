@@ -48,8 +48,8 @@ const TemplateCard = styled.section`
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
-  background-color: #0e1116;
-  border: 1px solid #20262f;
+  background-color: ${({ theme }) => theme.colors.BACKGROUND};
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   border-radius: 30px;
 `;
 

@@ -83,9 +83,10 @@ const Card = styled.div`
   width: 460px;
   height: 460px;
   color: #fff;
-  border: 1px solid #1b2027;
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   border-radius: 30px;
   padding: 40px 40px 30px;
+  box-shadow: ${({ theme }) => theme.colors.SHADOW};
   h3 {
     font-size: 20px;
     font-weight: 800;
@@ -125,7 +126,6 @@ const ItemContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
     height: 150px;

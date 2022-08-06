@@ -15,7 +15,7 @@ export const lightTheme: ColorTheme = {
   MAIN_FONT: '#FFFFFF',
   PIN: '#F5FF80',
   BACKGROUND: 'linear-gradient(180deg, #ADE8DF 0%, #DCF8A4 73.81%)', // linear-gradient(180deg, #ADE8DF 0%, #DCF8A4 73.81%);그래디언트 기존꺼 안됨
-  NAV_BACKGROUND: 'rgba(23, 27, 33, 0.06)',
+  NAV_BACKGROUND: '#A5DCD2',
   CASUAL_LINE: '#FFFFFF;',
   CASUAL_FIELD: 'rgba(255, 255, 255, 0.08);',
   CASUAL_SUB_FIELD: 'rgba(255, 255, 255, 0.1);',

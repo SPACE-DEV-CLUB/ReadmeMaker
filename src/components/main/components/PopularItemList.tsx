@@ -29,10 +29,12 @@ const Container = styled.div`
   width: 100%;
   color: #fff;
   background-color: #171b21;
-  border: 1px solid #2c2c2c;
+  background: ${({ theme }) => theme.colors.CASUAL_FIELD};
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   border-radius: 30px;
   padding: 40px 0px 30px 40px;
   box-sizing: border-box;
+  box-shadow: ${({ theme }) => theme.colors.SHADOW};
 `;
 
 const ComponentsTitle = styled.h3`

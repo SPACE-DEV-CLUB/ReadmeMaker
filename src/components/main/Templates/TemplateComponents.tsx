@@ -41,14 +41,14 @@ const Card = styled.div`
   min-width: 188px;
   height: 185px;
   border-radius: 20px;
-  border: 1px solid #20262f;
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   padding: 20px;
 `;
 
 const ThumbNailImage = styled.div`
   width: 100%;
   height: 70%;
-  background: #171b21;
+  background: #48494b;
 `;
 
 const IconWrapper = styled.div`

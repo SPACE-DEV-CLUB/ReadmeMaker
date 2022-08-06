@@ -27,15 +27,16 @@ const CartItem = ({ id, title, author, image, onClick }: CartItemProps) => {
 const CartItemWrap = styled.div`
   position: relative;
   width: 100%;
-  height: 200px;
-  border: 1px solid #20262f;
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   z-index: 100;
   border-radius: 20px;
   box-sizing: border-box;
   padding: 20px;
+  flex-shrink: 0;
+
   &:hover {
     img {
-      opacity: 0.2;
+      opacity: 0.9;
     }
     div:last-child {
       display: block;

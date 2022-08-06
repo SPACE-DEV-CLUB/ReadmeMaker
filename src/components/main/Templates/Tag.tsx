@@ -12,7 +12,7 @@ const Box = styled.div`
   margin: 0 10px 20px 0;
   font-size: 13px;
   color: white;
-  background-color: #2c3037;
+  background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
 `;
 
 export default Tag;

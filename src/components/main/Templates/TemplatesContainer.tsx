@@ -31,7 +31,7 @@ const Container = styled.section`
   height: 100%;
   color: white;
   overflow: scroll;
-  background-color: #0e1116;
+  background: ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
 const TitleWrap = styled.div`
