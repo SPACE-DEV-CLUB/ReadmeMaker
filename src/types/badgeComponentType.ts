@@ -1,4 +1,4 @@
-export interface ImgComponentType {
+export interface BadgeComponentType {
   id: string;
   title: string;
   code: string;

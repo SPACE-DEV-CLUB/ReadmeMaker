@@ -3,6 +3,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
+import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
 import { TextComponentType } from 'types/textComponentType';
 import { removeComponent, replaceText } from 'utils';
@@ -39,7 +40,6 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
           initialValue={components[curIndex].code}
           onInit={(evt, editor) => (editorRef.current = editor)}
           apiKey={process.env.EDITOR_API_KEY}
-          // TODO: isDragging 글자색상 분기 처리
           init={{
             bordercolor: 'blue',
             height: 30,
@@ -59,12 +59,12 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
           }}
         />
       </EditorWrap>
-      <BtnDelete type="button" onClick={deleteTextComponent}>
-        삭제
-      </BtnDelete>
-      <BtnOk type="button" onClick={editText}>
-        수정
-      </BtnOk>
+      <ButtonWrap>
+        <BtnOk type="button" onClick={editText}>
+          입력
+        </BtnOk>
+      </ButtonWrap>
+      <RemoveButton onClick={deleteTextComponent} />
     </ComponentContainer>
   );
 };
@@ -130,4 +130,18 @@ const BtnDelete = styled.button`
 const BtnOk = styled.button`
   font-size: 1rem;
   color: #fff;
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`;
+
+const RemoveButton = styled(CloseButton)`
+  width: 20px;
+  height: 20px;
+  left: -5px;
+  top: -5px;
+  z-index: 10;
 `;

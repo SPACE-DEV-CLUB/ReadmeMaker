@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
-import ImgComponentEditor from './editor/ImgComponentEditor';
+import BadgeComponentEditor from './editor/BadgeComponentEditor';
 import TextComponentEditor from './editor/TextComponentEditor';
 import { componentsState } from 'atoms/components';
-import { TextComponentType, ImgComponentType } from 'types';
+import { TextComponentType, BadgeComponentType } from 'types';
 
 const SwitchGenerator = () => {
   const [components, setComponents] = useRecoilState(componentsState);
@@ -32,11 +32,11 @@ const SwitchGenerator = () => {
                 isDragging={false}
               />
             );
-          case 'img':
+          case 'badge':
             return (
-              <ImgComponentEditor
+              <BadgeComponentEditor
                 key={component.id}
-                imgComponent={component as ImgComponentType}
+                badgeComponent={component as BadgeComponentType}
                 isDragging={false}
               />
             );

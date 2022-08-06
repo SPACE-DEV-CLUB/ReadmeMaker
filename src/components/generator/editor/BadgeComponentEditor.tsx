@@ -2,25 +2,26 @@ import styled from '@emotion/styled';
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
+import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
 import useDebounce from 'hooks/useDebounce';
-import { ImgComponentType } from 'types/imgComponentType';
-import { replaceText } from 'utils';
+import { BadgeComponentType } from 'types/badgeComponentType';
+import { replaceText, removeComponent } from 'utils';
 
-interface ImgComponentEditorProps {
-  imgComponent: ImgComponentType;
+interface BadgeComponentEditorProps {
+  badgeComponent: BadgeComponentType;
   isDragging: boolean;
 }
 
-const ImgComponentEditor = ({ imgComponent, isDragging }: ImgComponentEditorProps) => {
+const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEditorProps) => {
   const [components, setComponents] = useRecoilState(componentsState);
   const [username, setUsername] = useState('deli-ght');
   const debounceUsername = useDebounce(username);
-  const curIndex = components.findIndex(component => component.id === imgComponent.id);
+  const curIndex = components.findIndex(component => component.id === badgeComponent.id);
 
   useEffect(() => {
     const updatedComponentList = replaceText(components, curIndex, {
-      ...imgComponent,
+      ...badgeComponent,
       username: debounceUsername,
     });
 
@@ -31,20 +32,27 @@ const ImgComponentEditor = ({ imgComponent, isDragging }: ImgComponentEditorProp
     setUsername(event.target.value);
   };
 
+  const deleteBadgeComponent = () => {
+    const updatedComponentList = removeComponent(components, curIndex);
+
+    setComponents(updatedComponentList);
+  };
+
   return (
     <ComponentContainer isDragging={isDragging}>
       <Header>
-        <Title>{imgComponent.title}</Title>
+        <Title>{badgeComponent.title}</Title>
         <ImgWrap>
-          <Img src={imgComponent.image} alt="" />
+          <Img src={badgeComponent.image} alt="" />
         </ImgWrap>
       </Header>
       <InputField type="text" onChange={changeUsername} value={username} />
+      <RemoveButton onClick={() => deleteBadgeComponent()} />
     </ComponentContainer>
   );
 };
 
-export default ImgComponentEditor;
+export default BadgeComponentEditor;
 
 const Header = styled.header`
   display: flex;
@@ -80,4 +88,12 @@ const InputField = styled.input`
   border: none;
   border-radius: 20px;
   padding-left: 8px;
+`;
+
+const RemoveButton = styled(CloseButton)`
+  width: 20px;
+  height: 20px;
+  left: -5px;
+  top: -5px;
+  z-index: 10;
 `;
