@@ -13,40 +13,14 @@ import { getClient, QueryKeys } from 'utils/queryClient';
 interface ComponentItemProps {
   item: Component;
   setModalTarget: (item: Component) => void;
+  like: ({ id }: { id: number }) => void;
 }
-const ComponentItem = ({ item, setModalTarget }: ComponentItemProps): JSX.Element => {
-  const queryClient = getClient();
+const ComponentItem = ({ item, setModalTarget, like }: ComponentItemProps): JSX.Element => {
   const [cartList, setCartList] = useRecoilState(cartListState);
 
   const onClickComponent = () => {
     setModalTarget(item);
   };
-
-  const { mutate: like } = useMutation(({ id }: { id: number }) => likeComponent(id), {
-    onMutate: async ({ id }) => {
-      await queryClient.cancelQueries(QueryKeys.COMPONENTS);
-      const prevComponents = queryClient.getQueryData<Component[]>(QueryKeys.COMPONENTS) || [];
-
-      const targetIndex = prevComponents.findIndex(component => component.id === id);
-      if (targetIndex === undefined || targetIndex < 0) return prevComponents;
-
-      const newComponents = [...prevComponents];
-      const updatedComponentLike = newComponents[targetIndex].like + 1;
-      newComponents.splice(targetIndex, 1, {
-        ...newComponents[targetIndex],
-        like: updatedComponentLike,
-      });
-
-      queryClient.setQueryData(QueryKeys.COMPONENTS, newComponents);
-      return prevComponents;
-    },
-    onError: (_, __, context) => {
-      queryClient.invalidateQueries(QueryKeys.COMPONENTS);
-      if (context) {
-        queryClient.setQueryData(QueryKeys.COMPONENTS, context);
-      }
-    },
-  });
 
   const onClickHeartIcon = () => {
     like({ id: item.id });
@@ -60,8 +34,10 @@ const ComponentItem = ({ item, setModalTarget }: ComponentItemProps): JSX.Elemen
 
   return (
     <Card>
-      <h3>{item.title}</h3>
-      <ComponentDescription>{item.author}</ComponentDescription>
+      <div>
+        <h3>{item.title}</h3>
+        <ComponentDescription>{item.author}</ComponentDescription>
+      </div>
       <ItemContainer onClick={onClickComponent}>
         <ItemImage src={item.image} alt={item.title} />
       </ItemContainer>
@@ -80,9 +56,10 @@ const ComponentItem = ({ item, setModalTarget }: ComponentItemProps): JSX.Elemen
 
 const Card = styled.div`
   box-sizing: border-box;
-  width: 460px;
-  height: 460px;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   border-radius: 30px;
   padding: 40px 40px 30px;
@@ -90,49 +67,27 @@ const Card = styled.div`
   h3 {
     font-size: 20px;
     font-weight: 800;
+    margin-bottom: 10px;
   }
 
-  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
-    width: 280px;
-    height: 300px;
+  ${({ theme }) => theme.breakPoint.medium} {
     padding: 30px 20px 20px;
   }
-
-  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
-    width: 100%;
-    height: 458px;
-    padding: 40px 40px 30px;
-  }
 `;
 
-const ComponentDescription = styled.p`
-  margin: 10px 0 40px;
-
-  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
-    margin: 10px 0 20px;
-  }
-
-  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
-    margin: 10px 0 40px;
-  }
-`;
+const ComponentDescription = styled.p``;
 
 const ItemContainer = styled.div`
   width: 100%;
-  height: 245px;
   border-radius: 27px;
-  margin-bottom: 27px;
+  margin: 35px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
 
-  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
-    height: 150px;
-  }
-
-  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
-    height: 245px;
+  ${({ theme }) => theme.breakPoint.medium} {
+    margin: 20px 0;
   }
 `;
 

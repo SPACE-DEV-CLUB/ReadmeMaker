@@ -61,7 +61,7 @@ const Wrap = styled.div`
   margin: 60px 110px 120px 0;
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
-    width: 480px;
+    width: calc(100vw - 290px);
     margin-right: 40px;
   }
 

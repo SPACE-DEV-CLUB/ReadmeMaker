@@ -32,8 +32,12 @@ const Container = styled.section`
   width: 100vw;
   height: 100%;
   color: white;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: ${({ theme }) => theme.colors.BACKGROUND};
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const TitleWrap = styled.div`
@@ -41,7 +45,7 @@ const TitleWrap = styled.div`
 `;
 
 const Title = styled.h2`
-  margin: 61px 0 10px;
+  margin-bottom: 10px;
   font-size: 30px;
   font-weight: 800;
 `;
@@ -53,18 +57,17 @@ const SubTitle = styled.h3`
 `;
 
 const Wrap = styled.div`
-  width: 940px;
-  margin-bottom: 120px;
-  margin-right: calc((100vw - 1220px) / 2);
+  width: calc(100vw - 500px);
+  margin: 60px 110px 120px 0;
 
-  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
-    width: calc(100vw - 500px);
-    margin-right: 110px;
-  }
-
-  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
+  ${({ theme }) => theme.breakPoint.small} {
     width: calc(100vw - 290px);
     margin-right: 40px;
+  }
+
+  ${({ theme }) => theme.breakPoint.xLarge} {
+    width: 940px;
+    margin-right: calc((100vw - 1220px) / 2);
   }
 `;
 

@@ -10,10 +10,16 @@ interface ModalProps {
   onToggleModal: () => void;
   left?: number;
   item: Component | Template;
+  likeComponent: ({ id }: { id: number }) => void;
 }
 
-const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
-  const { title, image, author, like } = item;
+const Modal = ({ onToggleModal, left = -50, item, likeComponent }: ModalProps) => {
+  const { id, title, image, author, like } = item;
+  const isComponentModal = 'TemplateId' in item;
+
+  const onClickHeartIcon = () => {
+    likeComponent({ id });
+  };
 
   return (
     <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
@@ -26,11 +32,15 @@ const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
           <h5>{title}</h5>
           <p>{author}</p>
         </div>
-        <IconWrapper>
-          <span>{like}</span>
-          <HeartIconEmpty />
-          <CartIcon />
-        </IconWrapper>
+        {isComponentModal && (
+          <IconWrapper>
+            <div onClick={onClickHeartIcon}>
+              <span>{like}</span>
+            </div>
+            <HeartIconEmpty />
+            <CartIcon />
+          </IconWrapper>
+        )}
       </ModalFooter>
     </ModalTemplate>
   );
@@ -65,6 +75,7 @@ const ModalFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: ${({ theme }) => theme.colors.MAIN_FONT};
   h5 {
     font-size: 20px;
     font-weight: bold;
@@ -75,6 +86,10 @@ const ModalFooter = styled.div`
 const IconWrapper = styled.div`
   display: flex;
   gap: 10px;
+  align-items: center;
+  svg {
+    cursor: pointer;
+  }
 `;
 
 export default Modal;
