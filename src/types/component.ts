@@ -13,7 +13,7 @@ export interface Component {
   title: string;
   type: string;
   updatedAt: string;
-  varaiable: string;
+  variable: string;
 }
 
 export interface ComponentTag extends Tag {
