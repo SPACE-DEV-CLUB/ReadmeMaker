@@ -42,5 +42,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/export': 'off',
     'no-undef': 'off',
+    'no-useless-escape': 'off',
   },
 };
