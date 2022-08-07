@@ -14,7 +14,6 @@ export const ComponentList = ({ componentData }: ComponentListProps) => {
   }
 
   const addComponent = (component: Component): void => {
-    // TODO: DB 변경 시 조건문 수정
     if (component.type === 'badge' || component.type === 'image') {
       const inputVariables = component.variable
         .split(', ')
