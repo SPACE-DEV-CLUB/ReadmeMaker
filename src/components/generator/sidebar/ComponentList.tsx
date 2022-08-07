@@ -14,14 +14,22 @@ export const ComponentList = ({ componentData }: ComponentListProps) => {
   }
 
   const addComponent = (component: Component): void => {
-    if (component.type === 'badge' || component.type === 'image') {
+    if (component.variable) {
       const inputVariables = component.variable
         .split(', ')
         .reduce((acc: { [key: string]: string }, cur: string) => {
           acc[cur] = '';
           return acc;
         }, {});
-      const generateComponent = { ...component, inputVariables: inputVariables };
+      const generateComponent = {
+        ...component,
+        inputVariables: inputVariables,
+        editorType: 'badge',
+      };
+
+      setComponents((oldComponents: any) => [...oldComponents, generateComponent]);
+    } else {
+      const generateComponent = { ...component, editorType: 'image' };
 
       setComponents((oldComponents: any) => [...oldComponents, generateComponent]);
     }

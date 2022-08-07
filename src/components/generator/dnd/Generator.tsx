@@ -24,6 +24,7 @@ const Generator = () => {
         id: `${uuid()}`,
         code: '',
         type: 'text',
+        editorType: 'text',
       },
     ]);
   };
@@ -46,7 +47,7 @@ const Generator = () => {
             </div>
           )}
         </Droppable>
-        <BtnAdd onClick={addTextEditor}>추가</BtnAdd>
+        <BtnAdd onClick={addTextEditor}>add Text Editor</BtnAdd>
       </DragDropContext>
     </DndContainer>
   );
@@ -76,4 +77,5 @@ const BtnAdd = styled.button`
   color: white;
   font-weight: 700;
   font-size: 1rem;
+  margin-top: 20px;
 `;
