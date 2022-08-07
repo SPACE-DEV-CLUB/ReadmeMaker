@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 import { v4 as uuid } from 'uuid';
-import { darkTheme, fontSize } from 'styles/theme';
+import { breakPoint, darkTheme, fontSize } from 'styles/theme';
 import { Component } from 'types/component';
 
 export const cartListState = atom<Component[]>({
@@ -18,5 +18,6 @@ export const darkModeState = atom({
   default: {
     colors: darkTheme,
     fontSize: fontSize,
+    breakPoint: breakPoint,
   },
 });

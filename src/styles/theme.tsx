@@ -1,3 +1,5 @@
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
+
 export const darkTheme = {
   MAIN_FONT: '#FFFFFF',
   PIN: '#F5FF80',
@@ -9,6 +11,7 @@ export const darkTheme = {
   BUTTON_FIELD: '#2C3037',
   SHADOW: '',
   TYPE: 'dark',
+  BORDER: '',
 };
 
 export const lightTheme: ColorTheme = {
@@ -22,6 +25,7 @@ export const lightTheme: ColorTheme = {
   BUTTON_FIELD: 'rgba(23, 27, 33, 0.1);',
   SHADOW: '0px 4px 20px rgba(0, 0, 0, 0.1);',
   TYPE: 'light',
+  BORDER: '#FFF',
 };
 
 const Color = {
@@ -45,9 +49,24 @@ export const fontSize = {
   FONT_XLG: '40px',
 };
 
+// SMALL: '768px',
+// MEDIUM: '1080px',
+// LARGE: '1440px',
+// X_LARGE: '1920px',
+
+export const breakPoint = {
+  small: `@media (max-width: ${MEDIA_QUERY_END_POINT.SMALL})`,
+  medium: `@media (min-width: 769px) and (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM})`,
+  large: `@media (min-width: 1081px) and (max-width: ${MEDIA_QUERY_END_POINT.LARGE})`,
+  xLarge: `@media (min-width: ${MEDIA_QUERY_END_POINT.LARGE})`,
+};
+
+export type BreakPointType = typeof breakPoint;
+
 const theme = {
   colors,
   fontSize,
+  breakPoint,
 };
 
 export default theme;
