@@ -6,7 +6,7 @@ import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
 import { TextComponentType } from 'types/textComponentType';
-import { removeComponent, replaceText } from 'utils';
+import { removeComponent, modifyComponentValue } from 'utils';
 
 interface TextComponentEditorProps {
   textComponent: TextComponentType;
@@ -19,7 +19,7 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
   const curIndex = components.findIndex(component => component.id === textComponent.id);
 
   const editText = () => {
-    const updatedComponentList = replaceText([...components], curIndex, {
+    const updatedComponentList = modifyComponentValue([...components], curIndex, {
       ...textComponent,
       code: editorRef.current.getContent(),
     });
