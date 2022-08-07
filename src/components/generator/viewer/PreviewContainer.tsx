@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useRecoilValue } from 'recoil';
 import { componentsState } from 'atoms/components';
+import { replaceVariable } from 'utils/replaceVariable';
 
 const PreviewContainer = () => {
   const components = useRecoilValue(componentsState);
@@ -13,7 +14,7 @@ const PreviewContainer = () => {
           break;
         case 'badge':
         case 'image':
-          return component.code.replace('%user%', component.username);
+          return replaceVariable(component.code, component.inputVariables);
       }
       return component.code;
     })
@@ -37,9 +38,6 @@ const PreviewContainer = () => {
       <PreviewBox>
         <div dangerouslySetInnerHTML={{ __html: htmlCode }} />
       </PreviewBox>
-      {/* <div>{mockData.src}</div> */}
-
-      {/* <img src={mockData.src.replace('variable', mockData.author)} alt="" /> */}
     </Container>
   );
 };
