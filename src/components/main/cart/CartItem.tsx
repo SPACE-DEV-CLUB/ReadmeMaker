@@ -54,6 +54,9 @@ const RemoveButton = styled(CloseButton)`
 
 const Image = styled.div`
   box-sizing: border-box;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
   img {
     width: 100%;
   }
