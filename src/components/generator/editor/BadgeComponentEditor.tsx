@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
-import { BadgeComponentType } from 'types/badgeComponentType';
+import { BadgeComponentType } from 'types/editorComponent';
 import { modifyComponentValue, removeComponent } from 'utils';
 
 interface BadgeComponentEditorProps {
