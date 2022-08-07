@@ -21,7 +21,8 @@ const FilterList = () => {
       return;
     }
     setFilteredData(componentList);
-  }, [activeFilter]);
+  }, [componentList, activeFilter]);
+
   const handleActiveFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
