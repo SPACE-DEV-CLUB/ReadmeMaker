@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
-import { TextComponentType } from 'types/textComponentType';
+import { TextComponentType } from 'types/editorComponent';
 import { removeComponent, modifyComponentValue } from 'utils';
 
 interface TextComponentEditorProps {
