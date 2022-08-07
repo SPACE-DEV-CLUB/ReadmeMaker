@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 import { useSetRecoilState } from 'recoil';
+import { v4 as uuid } from 'uuid';
 import { componentsState } from 'atoms/components';
 import { Component } from 'types/component';
+
 interface ComponentListProps {
   componentData: Component[] | undefined;
 }
@@ -23,13 +25,18 @@ export const ComponentList = ({ componentData }: ComponentListProps) => {
         }, {});
       const generateComponent = {
         ...component,
+        id: `${uuid()}`,
         inputVariables: inputVariables,
         editorType: 'badge',
       };
 
       setComponents((oldComponents: any) => [...oldComponents, generateComponent]);
     } else {
-      const generateComponent = { ...component, editorType: 'image' };
+      const generateComponent = {
+        ...component,
+        id: `${uuid()}`,
+        editorType: 'image',
+      };
 
       setComponents((oldComponents: any) => [...oldComponents, generateComponent]);
     }

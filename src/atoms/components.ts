@@ -8,6 +8,7 @@ export const componentsState = atom({
       id: `${uuid()}`,
       code: '',
       type: 'text',
+      editorType: 'text',
     },
   ],
 });
