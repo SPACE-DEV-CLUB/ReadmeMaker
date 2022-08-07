@@ -61,7 +61,7 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
       </EditorWrap>
       <ButtonWrap>
         <BtnOk type="button" onClick={editText}>
-          입력
+          Enter
         </BtnOk>
       </ButtonWrap>
       <RemoveButton onClick={deleteTextComponent} />
@@ -134,6 +134,13 @@ const EditorWrap = styled.article<{ isDragging: boolean }>`
 const BtnOk = styled.button`
   font-size: 1rem;
   color: #fff;
+  font-weight: 700;
+  margin-top: 40px;
+  padding: 5px;
+
+  &:hover {
+    color: #e9f370;
+  }
 `;
 
 const ButtonWrap = styled.div`
