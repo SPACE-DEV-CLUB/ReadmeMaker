@@ -1,22 +1,19 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { useMutation } from 'react-query';
 import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIconEmpty from 'assets/HeartIconEmpty';
 import { cartListState } from 'atoms';
-import { MEDIA_QUERY_END_POINT } from 'constants/index';
+import useLikeComponent from 'hooks/useLikeComponent';
 import { Component } from 'types/component';
-import { likeComponent } from 'utils/apis';
-import { getClient, QueryKeys } from 'utils/queryClient';
 
 interface ComponentItemProps {
   item: Component;
   setModalTarget: (item: Component) => void;
-  like: ({ id }: { id: number }) => void;
 }
-const ComponentItem = ({ item, setModalTarget, like }: ComponentItemProps): JSX.Element => {
+const ComponentItem = ({ item, setModalTarget }: ComponentItemProps): JSX.Element => {
   const [cartList, setCartList] = useRecoilState(cartListState);
+  const like = useLikeComponent();
 
   const onClickComponent = () => {
     setModalTarget(item);

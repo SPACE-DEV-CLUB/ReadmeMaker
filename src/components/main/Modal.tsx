@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIconEmpty from 'assets/HeartIconEmpty';
+import { cartListState } from 'atoms';
 import ModalTemplate from 'components/common/ModalTemplate';
+import useLikeComponent from 'hooks/useLikeComponent';
 import { Component } from 'types/component';
 import { Template } from 'types/template';
 
@@ -10,15 +13,22 @@ interface ModalProps {
   onToggleModal: () => void;
   left?: number;
   item: Component | Template;
-  likeComponent: ({ id }: { id: number }) => void;
 }
 
-const Modal = ({ onToggleModal, left = -50, item, likeComponent }: ModalProps) => {
-  const { id, title, image, author, like } = item;
+const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
+  const like = useLikeComponent();
+  const [cartList, setCartList] = useRecoilState(cartListState);
+  const { id, title, image, author, like: likeCount } = item;
   const isComponentModal = 'TemplateId' in item;
 
   const onClickHeartIcon = () => {
-    likeComponent({ id });
+    like({ id });
+  };
+
+  const onClickCartIcon = () => {
+    if (isComponentModal) {
+      setCartList([...cartList, item]);
+    }
   };
 
   return (
@@ -34,11 +44,13 @@ const Modal = ({ onToggleModal, left = -50, item, likeComponent }: ModalProps) =
         </div>
         {isComponentModal && (
           <IconWrapper>
+            <span>{likeCount}</span>
             <div onClick={onClickHeartIcon}>
-              <span>{like}</span>
+              <HeartIconEmpty />
             </div>
-            <HeartIconEmpty />
-            <CartIcon />
+            <div onClick={onClickCartIcon}>
+              <CartIcon />
+            </div>
           </IconWrapper>
         )}
       </ModalFooter>
