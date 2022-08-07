@@ -1,2 +1,0 @@
-// common
-export const TYPE = {}
