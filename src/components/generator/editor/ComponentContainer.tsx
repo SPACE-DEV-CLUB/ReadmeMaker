@@ -42,13 +42,14 @@ const draggingStyle = () => css`
     color: #0e1116;
   }
 `;
+
 const CardContainer = styled.article<{ isDragging: boolean }>`
   display: flex;
   position: relative;
   flex-direction: column;
   justify-content: space-between;
   padding: 50px 60px 60px 60px;
-  height: 200px;
+  /* height: 200px; */
   border-radius: 20px;
   background: #0e1116;
   border: 1px solid #20262f;
@@ -58,6 +59,7 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
   &:hover {
     border-color: ${lightTheme.PIN};
     border-right: 20px solid ${lightTheme.PIN};
+    padding-right: 40px;
 
     & svg {
       right: -12px;
