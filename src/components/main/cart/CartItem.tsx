@@ -36,9 +36,9 @@ const CartItemWrap = styled.div`
 
   &:hover {
     img {
-      opacity: 0.9;
+      opacity: 0.1;
     }
-    div:last-child {
+    div:nth-child(2) {
       display: block;
     }
   }
@@ -64,10 +64,11 @@ const Image = styled.div`
 
 const CartDesc = styled.div`
   box-sizing: border-box;
-  display: none;
   position: absolute;
-  top: 0;
-  left: 0;
+  display: none;
+  top: 20px;
+  left: 10px;
+  color: ${({ theme }) => theme.colors.MAIN_FONT};
 `;
 
 const Title = styled.h5`
