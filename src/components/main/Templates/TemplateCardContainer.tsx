@@ -31,7 +31,6 @@ const TemplateCardContainer = ({ item }: TemplateCardContainerProps) => {
         </TemplateContent>
         <ComponentWrapper>
           <DraggableContainer>
-            {/* <TemplateComponents /> */}
             {item.Components.map(component => (
               <TemplateComponents item={component} key={component.id} />
             ))}
