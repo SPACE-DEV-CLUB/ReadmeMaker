@@ -41,13 +41,14 @@ const draggingStyle = (theme: any) => css`
     color: ${theme.colors.NAV_BACKGROUND};
   }
 `;
+
 const CardContainer = styled.article<{ isDragging: boolean }>`
   display: flex;
   position: relative;
   flex-direction: column;
   justify-content: space-between;
   padding: 50px 60px 60px 60px;
-  height: 200px;
+  /* height: 200px; */
   border-radius: 20px;
   background: ${({ theme }) => theme.colors.COMPONENT};
   border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
@@ -57,6 +58,7 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
   &:hover {
     border-color: ${({ theme }) => theme.colors.PIN};
     border-right: 20px solid ${({ theme }) => theme.colors.PIN};
+    padding-right: 40px;
 
     & svg {
       right: -12px;
