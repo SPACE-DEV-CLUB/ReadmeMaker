@@ -1,16 +1,31 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import ComponentList from './ComponentList';
 import FilterList from './FilterList';
 import PopularItemList from './PopularItemList';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
+import { Component } from 'types/component';
 import { getComponents, getComponentTags } from 'utils/apis';
 import { QueryKeys } from 'utils/queryClient';
 
 const ComponentsContainer = () => {
   const { data: componentList } = useQuery(QueryKeys.COMPONENTS, getComponents);
   const { data: tags } = useQuery(QueryKeys.TAGS, getComponentTags);
+  const [selectedFilter, setSelectedFilter] = useState('All');
+  const [filteredData, setFilteredData] = useState<Component[]>();
+
+  useEffect(() => {
+    if (selectedFilter !== 'All') {
+      const newData = componentList?.filter((component: Component) =>
+        component.ComponentTags.some(tag => tag.title === selectedFilter),
+      );
+      setFilteredData(newData);
+      return;
+    }
+
+    setFilteredData(componentList);
+  }, [selectedFilter]);
 
   if (!componentList || !tags) return null;
 
@@ -18,8 +33,12 @@ const ComponentsContainer = () => {
     <Container>
       <Wrap>
         <PopularItemList list={componentList} />
-        <FilterList list={tags} />
-        <ComponentList list={componentList} />
+        <FilterList
+          list={tags}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+        />
+        <ComponentList list={filteredData || componentList} />
       </Wrap>
     </Container>
   );
