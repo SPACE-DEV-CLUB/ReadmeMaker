@@ -59,7 +59,7 @@ const FilterList = () => {
           );
         })}
       </FilterBtnList>
-      <ComponentList componentData={filteredData} />
+      <ComponentList mode="menu" componentData={filteredData} />
     </div>
   );
 };

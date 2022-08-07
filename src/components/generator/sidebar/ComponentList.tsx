@@ -5,14 +5,22 @@ import { componentsState } from 'atoms/components';
 import { Component } from 'types/component';
 
 interface ComponentListProps {
+  mode: string;
   componentData: Component[] | undefined;
 }
 
-export const ComponentList = ({ componentData }: ComponentListProps) => {
+export const ComponentList = ({ mode, componentData }: ComponentListProps) => {
   const setComponents = useSetRecoilState(componentsState);
 
   if (componentData?.length === 0) {
-    return <p>해당 필터에 속하는 컴포넌트가 존재하지 않습니다.</p>;
+    switch (mode) {
+      case 'menu':
+        return <InfoText>해당 필터에 속하는 컴포넌트가 존재하지 않습니다.</InfoText>;
+      case 'cart':
+        return <InfoText>장바구니가 비어있습니다.</InfoText>;
+      default:
+        return null;
+    }
   }
 
   const addComponent = (component: Component): void => {
@@ -58,7 +66,7 @@ export const ComponentList = ({ componentData }: ComponentListProps) => {
 };
 
 const ContentList = styled.div`
-  padding-left: 40px;
+  padding: 0 40px;
 `;
 
 const ComponentCard = styled.div`
@@ -80,4 +88,10 @@ const ComponentCard = styled.div`
 const Image = styled.img`
   margin: 30px auto 0;
   width: 100%;
+`;
+
+const InfoText = styled.p`
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.5;
 `;

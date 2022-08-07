@@ -1,11 +1,15 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { ComponentList } from './ComponentList';
 import FilterList from './FilterList';
 import CartIcon from 'assets/CartIcon';
+import { cartListState } from 'atoms';
 
 const SideBar = () => {
   const [activeMenu, setActiveMenu] = useState('menu');
+  const cartList = useRecoilValue(cartListState);
 
   const handlActiveMenu = () => {
     setActiveMenu('menu');
@@ -40,7 +44,11 @@ const SideBar = () => {
           </li>
         </MenuBtnList>
       </Menu>
-      {activeMenu === 'menu' ? <FilterList /> : <div>cart</div>}
+      {activeMenu === 'menu' ? (
+        <FilterList />
+      ) : (
+        <ComponentList mode="cart" componentData={cartList} />
+      )}
     </Container>
   );
 };
