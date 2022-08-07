@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app';
 import React from 'react';
 import { QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
-import Pages from 'pages/pages';
+import { Page } from 'components/common/PageLayout';
 import GlobalStyle from 'styles/globalStyle';
 import { getClient } from 'utils/queryClient';
 
@@ -16,7 +16,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     <QueryClientProvider client={client}>
       <RecoilRoot>
         <Global styles={GlobalStyle} />
-        <Pages Component={Component} pageProps={pageProps} />
+        <Page Component={Component} pageProps={pageProps} />
       </RecoilRoot>
     </QueryClientProvider>
   );
