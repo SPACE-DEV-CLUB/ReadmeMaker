@@ -16,9 +16,11 @@ const PopularItemList = ({ list }: PopularItemListProps): JSX.Element => {
         today.getMonth() + 1
       }월의 인기 컴포넌트를 확인하세요 !`}</ComponentsSubTitle>
       <DraggableContainer>
-        {list.map((item, index) => (
-          <PopularItem key={index} item={item} />
-        ))}
+        {list
+          .sort((a, b) => b.like - a.like)
+          .map((item, index) => (
+            <PopularItem key={index} item={item} />
+          ))}
       </DraggableContainer>
     </Container>
   );
