@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import ImgComponentEditor from '../editor/BadgeComponentEditor';
+import BadgeComponentEditor from '../editor/BadgeComponentEditor';
 import { BadgeComponentType } from 'types/badgeComponentType';
 import { TextComponentType } from 'types/textComponentType';
 
@@ -29,7 +29,7 @@ const DndComponent = ({ component, componentIndex }: any) => {
       case 'badge':
       case 'image':
         return (
-          <ImgComponentEditor
+          <BadgeComponentEditor
             key={component.id}
             badgeComponent={component as BadgeComponentType}
             isDragging={isDragging}

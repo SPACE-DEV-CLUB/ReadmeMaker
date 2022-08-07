@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
-import { MEDIA_QUERY_END_POINT } from 'constants/.';
+import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import useDebounce from 'hooks/useDebounce';
 import { BadgeComponentType } from 'types/badgeComponentType';
 import { replaceText, removeComponent } from 'utils';

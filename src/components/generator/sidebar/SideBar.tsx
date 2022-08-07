@@ -1,4 +1,4 @@
-import { Theme, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import FilterList from './FilterList';
@@ -72,7 +72,7 @@ const MenuBtnList = styled.ul`
   height: 100%;
 `;
 
-const BtnMenuStyle = (isActive: boolean, theme: Theme) => css`
+const BtnMenuStyle = (isActive: boolean, theme: any) => css`
   ${isActive
     ? `
           background: ${theme.colors.NAV_BACKGROUND};

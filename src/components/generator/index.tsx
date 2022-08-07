@@ -1,5 +1,5 @@
 export * from './editor/TextComponentEditor';
-// export * from './editor/ImgComponentEditor';
+export * from './editor/BadgeComponentEditor';
 export * from './viewer/PreviewContainer';
 export * from './dnd/Generator';
 export * from './viewer/MDViewer';
