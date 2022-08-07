@@ -78,7 +78,7 @@ const ThumbNailImageWrapper = styled.article<{ isModalOn: boolean }>`
   width: ${({ isModalOn }) => (isModalOn ? '700px' : '500px')};
   height: ${({ isModalOn }) => (isModalOn ? '500px' : '400px')};
   border-radius: 30px;
-  background-color: #1b2027;
+  background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
   margin: ${({ isModalOn }) => (isModalOn ? '80px' : '40px')};
   display: flex;
   align-items: center;

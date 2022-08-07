@@ -5,7 +5,6 @@ import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 import DndComponent from './DndComponent';
 import { componentsState } from 'atoms/components';
-import { darkTheme } from 'styles/theme';
 
 const Generator = () => {
   const [components, setComponents] = useRecoilState(componentsState);
@@ -58,21 +57,22 @@ export default Generator;
 const DndContainer = styled.section`
   padding-bottom: 5%;
   text-align: center;
-  overflow-y: auto;
-  background-color: ${darkTheme.CASUAL_FIELD};
+  overflow: hidden auto;
+  background: ${({ theme }) => theme.colors.COMPONENT};
 
   &::-webkit-scrollbar {
     width: 10px;
   }
   &::-webkit-scrollbar-track {
-    background-color: ${darkTheme.CASUAL_FIELD};
+    background-color: ${({ theme }) => theme.colors.CASUAL_FIELD};
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${darkTheme.CASUAL_LINE};
+    background-color: ${({ theme }) => theme.colors.CASUAL_LINE};
   }
 `;
 
 const BtnAdd = styled.button`
+  background: none;
   color: white;
   font-weight: 700;
   font-size: 1rem;

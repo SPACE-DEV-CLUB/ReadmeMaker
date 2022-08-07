@@ -71,7 +71,4 @@ const ComponentBox = styled.div`
   margin: 10px;
 `;
 
-const Container = styled.div`
-  background-color: #171b21;
-  height: 100%;
-`;
+const Container = styled.div``;

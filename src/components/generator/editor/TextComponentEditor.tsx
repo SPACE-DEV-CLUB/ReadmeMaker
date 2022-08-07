@@ -73,16 +73,19 @@ export default TextComponentEditor;
 
 const EditorWrap = styled.article<{ isDragging: boolean }>`
   & .tox-toolbar__primary {
-    background-color: ${props => (props.isDragging ? '#F5FF80' : '#0e1116')} !important;
+    background-color: ${({ isDragging, theme }) =>
+      isDragging ? theme.colors.PIN : theme.colors.COMPONENT} !important;
   }
 
   & .tox-editor-header {
     // TODO: border style none 해제
-    background-color: ${props => (props.isDragging ? '#f5ff80' : '#0e1116')} !important;
+    background-color: ${({ isDragging, theme }) =>
+      isDragging ? theme.colors.PIN : theme.colors.COMPONENT} !important;
   }
 
   & .tox-toolbar__group {
-    background-color: ${props => (props.isDragging ? '#e9f370' : '#1B2027')} !important;
+    background-color: ${({ isDragging, theme }) =>
+      isDragging ? '#e9f370' : theme.colors.CASUAL_SUB_FIELD} !important;
     width: 24px;
     height: 24px;
     display: flex;
@@ -92,8 +95,13 @@ const EditorWrap = styled.article<{ isDragging: boolean }>`
     margin-right: 2px !important;
   }
 
+  & .tox .tox-tbtn--enabled,
+  .tox .tox-tbtn--enabled:hover {
+    background: #a5dcd2;
+  }
+
   & .tox .tox-tbtn svg {
-    fill: #dddedf;
+    fill: ${({ theme }) => theme.colors.MAIN_FONT};
   }
 
   & .tox-tbtn {
@@ -109,7 +117,8 @@ const EditorWrap = styled.article<{ isDragging: boolean }>`
   }
 
   & .tox-edit-area__iframe {
-    background-color: ${props => (props.isDragging ? '#e9f370' : '#1B2027')} !important;
+    background-color: ${({ isDragging, theme }) =>
+      isDragging ? '#e9f370' : theme.colors.CASUAL_SUB_FIELD} !important;
     margin-top: 10px;
     height: 54px !important;
     border-radius: 20px;
@@ -120,11 +129,6 @@ const EditorWrap = styled.article<{ isDragging: boolean }>`
   .tox .tox-toolbar__primary {
     background: transparent;
   }
-`;
-
-const BtnDelete = styled.button`
-  font-size: 1rem;
-  color: #fff;
 `;
 
 const BtnOk = styled.button`

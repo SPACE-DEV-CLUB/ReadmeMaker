@@ -50,7 +50,7 @@ const SwitchGenerator = () => {
 export default SwitchGenerator;
 
 const Container = styled.div`
-  background-color: #171b21;
+  background-color: ${({ theme }) => theme.colors.CASUAL_FIELD};
   padding: 70px 20px 70px;
   display: flex;
   flex-direction: column;

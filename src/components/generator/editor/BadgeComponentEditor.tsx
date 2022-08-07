@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
+import { MEDIA_QUERY_END_POINT } from 'constants/.';
 import useDebounce from 'hooks/useDebounce';
 import { BadgeComponentType } from 'types/badgeComponentType';
 import { replaceText, removeComponent } from 'utils';
@@ -58,7 +59,12 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  white-space: nowrap;
+  text-align: start;
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const Title = styled.h3`
@@ -71,7 +77,7 @@ const ImgWrap = styled.div`
   width: 126px;
   height: 36px;
   padding: 20px;
-  background-color: #1b2027;
+  background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
   border-radius: 20px;
 `;
 
@@ -83,7 +89,7 @@ const Img = styled.img`
 
 const InputField = styled.input`
   height: 30px;
-  background: #171b21;
+  background: ${({ theme }) => theme.colors.CASUAL_FIELD};
   color: white;
   border: none;
   border-radius: 20px;

@@ -27,7 +27,7 @@ const generator = () => {
         <GridWrap>
           <SideBar />
           <Generator />
-          <PreviewContainer></PreviewContainer>
+          <PreviewContainer />
         </GridWrap>
       </Container>
     </>
@@ -37,7 +37,7 @@ const generator = () => {
 export default generator;
 
 const Container = styled.section`
-  background-color: #171b21;
+  background: ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
 const GridWrap = styled.section`
@@ -51,7 +51,7 @@ const GridWrap = styled.section`
 `;
 
 const Title = styled.h2`
-  color: #f5ff80;
+  color: ${({ theme }) => theme.colors.PIN};
   font-size: 1.25rem;
   font-weight: 800;
 `;

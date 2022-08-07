@@ -41,13 +41,15 @@ const EditorComponent = ({ isDragging }: DragProps) => {
 export default EditorComponent;
 
 const Container = styled.div<DragProps>`
-  background-color: ${props => (props.isDragging ? '#F5FF80' : '#1B2027')};
+  background-color: ${({ isDragging, theme }) =>
+    isDragging ? theme.colors.PIN : theme.colors.CASUAL_SUB_FIELD};
   padding: 40px 70px 40px 40px;
   border-radius: 10px;
-  border: 1px solid #1b2027;
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
   /* TODO: 롱클릭 시 스타일 적용 */
-  border-right: 30px solid #f5ff80;
-  color: ${props => (props.isDragging ? '#1B2027' : '#F5FF80')};
+  border-right: 30px solid ${({ theme }) => theme.colors.PIN};
+  color: ${({ isDragging, theme }) =>
+    isDragging ? theme.colors.CASUAL_SUB_FIELD : theme.colors.PIN};
 
   & .tox-toolbar__primary {
     background-color: #000 !important;
@@ -58,7 +60,7 @@ const Container = styled.div<DragProps>`
   }
 
   & .tox-toolbar__group {
-    background-color: #1b2027;
+    background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
     width: 24px;
     height: 24px;
     line-height: 24px !important;
@@ -85,7 +87,7 @@ const Container = styled.div<DragProps>`
   }
 
   & .tox-edit-area__iframe {
-    background-color: #1b2027 !important;
+    background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD} !important;
     margin-top: 10px;
     height: 54px !important;
     border-radius: 20px;
