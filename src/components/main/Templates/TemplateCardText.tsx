@@ -27,10 +27,6 @@ const TemplateCardText = ({
         <SubTitle>{createdAt}</SubTitle>
         <TemplateInfo>{description}</TemplateInfo>
       </article>
-      <IconWrapper>
-        <HeartIcon />
-        <CartIcon />
-      </IconWrapper>
     </Container>
   );
 };

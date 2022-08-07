@@ -14,6 +14,22 @@ export interface Template {
   updatedAt: string;
 }
 
+export interface TemplateComponent {
+  TemplateId: 1;
+  author: string;
+  code: string;
+  createdAt: string;
+  description: string;
+  id: number;
+  image: string;
+  like: number;
+  link: string;
+  title: string;
+  type: string;
+  updatedAt: string;
+  variable: string;
+}
+
 export interface TemplateTag {
   id: number;
   title: string;
