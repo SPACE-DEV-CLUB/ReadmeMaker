@@ -14,7 +14,18 @@ export const ComponentList = ({ componentData }: ComponentListProps) => {
   }
 
   const addComponent = (component: Component): void => {
-    setComponents((oldComponents: any[]) => [...oldComponents, component]);
+    // TODO: DB 변경 시 조건문 수정
+    if (component.type === 'badge' || component.type === 'image') {
+      const inputVariables = component.variable
+        .split(', ')
+        .reduce((acc: { [key: string]: string }, cur: string) => {
+          acc[cur] = '';
+          return acc;
+        }, {});
+      const generateComponent = { ...component, inputVariables: inputVariables };
+
+      setComponents((oldComponents: any) => [...oldComponents, generateComponent]);
+    }
   };
 
   return (
