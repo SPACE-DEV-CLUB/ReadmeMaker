@@ -4,7 +4,6 @@ import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
-import useDebounce from 'hooks/useDebounce';
 import { BadgeComponentType } from 'types/badgeComponentType';
 import { modifyComponentValue, removeComponent } from 'utils';
 
@@ -18,13 +17,12 @@ const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEdit
 
   const [components, setComponents] = useRecoilState(componentsState);
   const [inputValue, setInputValue] = useState({ key: '', value: '' });
-  const debounceValue = useDebounce(inputValue);
   const curIndex = components.findIndex(component => component.id === id);
 
   useEffect(() => {
-    const newInputVariables = { ...inputVariables, [debounceValue.key]: debounceValue.value };
+    const newInputVariables = { ...inputVariables, [inputValue.key]: inputValue.value };
 
-    if (inputValue.value) {
+    if (inputValue.key) {
       const updatedComponentList = modifyComponentValue(components, curIndex, {
         ...badgeComponent,
         inputVariables: newInputVariables,
@@ -32,7 +30,7 @@ const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEdit
 
       setComponents(updatedComponentList);
     }
-  }, [debounceValue]);
+  }, [inputValue.value]);
 
   const inputList = useMemo(() => Object.keys(inputVariables), []);
 
@@ -65,6 +63,7 @@ const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEdit
             <InputField
               id={variable}
               type="text"
+              value={inputVariables[variable]}
               onChange={event => changeValue(event.target.value, variable)}
             />
           </InputItem>
