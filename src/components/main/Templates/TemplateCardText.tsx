@@ -73,7 +73,7 @@ const TemplateInfo = styled.p`
     top: -30px;
     height: 3px;
     width: 100%;
-    background-color: #1b2027;
+    background-color: ${({ theme }) => theme.colors.CASUAL_LINE};
   }
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {

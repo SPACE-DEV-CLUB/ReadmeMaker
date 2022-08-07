@@ -42,7 +42,8 @@ const CartContainer = styled.aside`
   padding: 40px 40px;
   border-radius: 30px;
   box-sizing: border-box;
-  background-color: #171b21;
+  background-color: ${({ theme }) => theme.colors.CASUAL_FIELD};
+  box-shadow: ${({ theme }) => theme.colors.SHADOW};
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
     padding: 40px 20px;

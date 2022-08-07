@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import useToggle from 'hooks/useToggle';
+import { useDarkMode } from 'hooks/useDarkMode';
+import { darkTheme } from 'styles/theme';
 
 // interface IProp extends React.InputHTMLAttributes<HTMLInputElement> {
 //   onToggle: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -7,8 +8,8 @@ import useToggle from 'hooks/useToggle';
 // }
 // { onToggle, checked, ...rest }: IProp
 export const DarkModeButton = () => {
-  const [checked, toggle] = useToggle(false);
-  return <CheckBox type="checkbox" onChange={toggle} checked={checked} />;
+  const { theme, toggleTheme } = useDarkMode();
+  return <CheckBox type="checkbox" onChange={toggleTheme} checked={theme.colors === darkTheme} />;
 };
 
 const CheckBox = styled.input`

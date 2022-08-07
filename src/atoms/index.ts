@@ -1,12 +1,22 @@
 import { atom } from 'recoil';
+import { v4 as uuid } from 'uuid';
+import { darkTheme, fontSize } from 'styles/theme';
 import { Component } from 'types/component';
 
 export const cartListState = atom<Component[]>({
-  key: 'cartListState',
+  key: `cartListState${uuid()}`,
   default: [],
 });
 
 export const modalStates = atom({
-  key: 'modalState',
+  key: `modalState${uuid()}`,
   default: [false, false],
+});
+
+export const darkModeState = atom({
+  key: `darkModeState${uuid()}`,
+  default: {
+    colors: darkTheme,
+    fontSize: fontSize,
+  },
 });

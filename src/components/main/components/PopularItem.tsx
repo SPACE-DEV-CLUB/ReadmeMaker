@@ -32,7 +32,8 @@ const ItemContent = styled.div`
   margin-top: 60px;
   width: 188px;
   height: 188px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   border-radius: 20px;
   white-space: nowrap;
   text-align: center;

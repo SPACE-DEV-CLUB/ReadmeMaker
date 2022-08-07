@@ -6,16 +6,15 @@ import CartIcon from 'assets/CartIcon';
 import HeartIconEmpty from 'assets/HeartIconEmpty';
 import { cartListState } from 'atoms';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
-import { getClient } from 'pages/_app';
 import { Component } from 'types/component';
 import { likeComponent } from 'utils/apis';
-import { QueryKeys } from 'utils/queryClient';
+import { getClient, QueryKeys } from 'utils/queryClient';
 
-interface ConponentItemProps {
+interface ComponentItemProps {
   item: Component;
   setModalTarget: (item: Component) => void;
 }
-const ComponentItem = ({ item, setModalTarget }: ConponentItemProps): JSX.Element => {
+const ComponentItem = ({ item, setModalTarget }: ComponentItemProps): JSX.Element => {
   const queryClient = getClient();
   const [cartList, setCartList] = useRecoilState(cartListState);
 
@@ -84,9 +83,10 @@ const Card = styled.div`
   width: 460px;
   height: 460px;
   color: #fff;
-  border: 1px solid #1b2027;
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   border-radius: 30px;
   padding: 40px 40px 30px;
+  box-shadow: ${({ theme }) => theme.colors.SHADOW};
   h3 {
     font-size: 20px;
     font-weight: 800;
@@ -120,7 +120,6 @@ const ComponentDescription = styled.p`
 const ItemContainer = styled.div`
   width: 100%;
   height: 245px;
-  background-color: #171b21;
   border-radius: 27px;
   margin-bottom: 27px;
   display: flex;

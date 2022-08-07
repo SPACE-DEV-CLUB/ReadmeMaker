@@ -6,4 +6,4 @@ export const MEDIA_QUERY_END_POINT = {
   X_LARGE: '1920px',
 };
 
-export const API_ENDPOINT = 'http://44.201.164.193:3065';
+export const API_ENDPOINT = 'http://44.201.218.32:3065';
