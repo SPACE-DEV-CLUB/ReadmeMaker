@@ -14,4 +14,5 @@ export interface BadgeComponentType {
   registered_date: string;
   expired: boolean;
   like: number;
+  inputVariables: { [key: string]: string };
 }
