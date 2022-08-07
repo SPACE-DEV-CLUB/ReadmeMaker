@@ -78,4 +78,9 @@ const BtnAdd = styled.button`
   font-weight: 700;
   font-size: 1rem;
   margin-top: 20px;
+  padding: 5px;
+
+  &:hover {
+    color: #e9f370;
+  }
 `;
