@@ -49,7 +49,6 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
   flex-direction: column;
   justify-content: space-between;
   padding: 50px 60px 60px 60px;
-  /* height: 200px; */
   border-radius: 20px;
   background: #0e1116;
   border: 1px solid #20262f;
