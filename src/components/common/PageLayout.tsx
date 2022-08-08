@@ -25,7 +25,7 @@ export const Page = ({ Component, pageProps }: any) => {
             src="https://i.gifer.com/origin/ff/ff17113095f355430637c2b17ccf6712_w200.gif"
             alt="ReplacePageImage"
           />
-          <ReplaceText>This size is not supported.</ReplaceText>
+          <ReplaceText>We only support 768px and above.</ReplaceText>
         </ReplacePage>
       )}
     </ThemeProvider>
