@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIconEmpty from 'assets/HeartIconEmpty';
+import { cartListState } from 'atoms';
 import ModalTemplate from 'components/common/ModalTemplate';
+import useLikeComponent from 'hooks/useLikeComponent';
 import { Component } from 'types/component';
 import { Template } from 'types/template';
 
@@ -13,7 +16,20 @@ interface ModalProps {
 }
 
 const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
-  const { title, image, author, like } = item;
+  const like = useLikeComponent();
+  const [cartList, setCartList] = useRecoilState(cartListState);
+  const { id, title, image, author, like: likeCount } = item;
+  const isComponentModal = 'TemplateId' in item;
+
+  const onClickHeartIcon = () => {
+    like({ id });
+  };
+
+  const onClickCartIcon = () => {
+    if (isComponentModal) {
+      setCartList([...cartList, item]);
+    }
+  };
 
   return (
     <ModalTemplate onToggleModal={onToggleModal} width={900} height={770} left={left}>
@@ -26,11 +42,17 @@ const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
           <h5>{title}</h5>
           <p>{author}</p>
         </div>
-        <IconWrapper>
-          <span>{like}</span>
-          <HeartIconEmpty />
-          <CartIcon />
-        </IconWrapper>
+        {isComponentModal && (
+          <IconWrapper>
+            <span>{likeCount}</span>
+            <div onClick={onClickHeartIcon}>
+              <HeartIconEmpty />
+            </div>
+            <div onClick={onClickCartIcon}>
+              <CartIcon />
+            </div>
+          </IconWrapper>
+        )}
       </ModalFooter>
     </ModalTemplate>
   );
@@ -65,6 +87,7 @@ const ModalFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: ${({ theme }) => theme.colors.MAIN_FONT};
   h5 {
     font-size: 20px;
     font-weight: bold;
@@ -75,6 +98,10 @@ const ModalFooter = styled.div`
 const IconWrapper = styled.div`
   display: flex;
   gap: 10px;
+  align-items: center;
+  svg {
+    cursor: pointer;
+  }
 `;
 
 export default Modal;

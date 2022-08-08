@@ -1,21 +1,41 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { useRecoilState } from 'recoil';
 import CartIcon from 'assets/CartIcon';
 import HeartIconEmpty from 'assets/HeartIconEmpty';
+import { cartListState } from 'atoms';
+import useLikeComponent from 'hooks/useLikeComponent';
 import { Component } from 'types/component';
 
 interface PopularComponetItemProps {
   item: Component;
 }
 const PopularComponentsItem = ({ item }: PopularComponetItemProps): JSX.Element => {
+  const [cartList, setCartList] = useRecoilState(cartListState);
+  const like = useLikeComponent();
+
+  const onClickHeartIcon = () => {
+    like({ id: item.id });
+  };
+
+  const onClickCartIcon = () => {
+    if (cartList.includes(item)) return;
+
+    setCartList([...cartList, item]);
+  };
+
   return (
     <ItemContainer>
       <ItemContent>
         <ItemImage src={item.image} alt={item.title} />
       </ItemContent>
       <SvgContainer>
-        <HeartIconEmpty />
-        <CartIcon />
+        <div onClick={onClickHeartIcon}>
+          <HeartIconEmpty />
+        </div>
+        <div onClick={onClickCartIcon}>
+          <CartIcon />
+        </div>
       </SvgContainer>
     </ItemContainer>
   );
@@ -56,6 +76,8 @@ const SvgContainer = styled.div`
   position: absolute;
   bottom: 10px;
   right: 0;
+  display: flex;
+
   svg {
     margin-right: 10px;
     cursor: pointer;
