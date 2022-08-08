@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import Script from 'next/script';
 import React from 'react';
 import NavBar from 'components/common/NavBar';
 import Generator from 'components/generator/dnd/Generator';
@@ -15,12 +13,6 @@ const generator = () => {
 
   return (
     <>
-      <Head>
-        <Script
-          src="https://cdn.tiny.cloud/1/grw4sefbm00ssvsu8w4c01r6wbwjavncftmlqr5elrrgh62v/tinymce/6/tinymce.min.js"
-          referrerPolicy="origin"
-        ></Script>
-      </Head>
       <Container>
         <NavBar route="generator">
           <Title>Make It</Title>
