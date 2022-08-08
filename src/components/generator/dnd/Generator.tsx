@@ -48,7 +48,6 @@ const Generator = () => {
             </div>
           )}
         </Droppable>
-        <BtnAdd onClick={addTextEditor}>add Text Editor</BtnAdd>
       </DragDropContext>
     </DndContainer>
   );
@@ -70,17 +69,5 @@ const DndContainer = styled.section`
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${darkTheme.CASUAL_LINE};
-  }
-`;
-
-const BtnAdd = styled.button`
-  color: white;
-  font-weight: 700;
-  font-size: 1rem;
-  margin-top: 20px;
-  padding: 5px;
-
-  &:hover {
-    color: #e9f370;
   }
 `;
