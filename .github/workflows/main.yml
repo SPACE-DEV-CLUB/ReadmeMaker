@@ -60,7 +60,7 @@ jobs:
         run: aws deploy create-deployment
           --application-name readme-front-codedeploy
           --deployment-config-name CodeDeployDefault.AllAtOnce
-          --deployment-group-name Name
+          --deployment-group-name GROUP
           --s3-location bucket=readme-front,key=ReadmeMaker.zip,bundleType=zip
       
       
