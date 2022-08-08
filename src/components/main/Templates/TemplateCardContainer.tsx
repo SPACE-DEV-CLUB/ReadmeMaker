@@ -31,9 +31,8 @@ const TemplateCardContainer = ({ item }: TemplateCardContainerProps) => {
         </TemplateContent>
         <ComponentWrapper>
           <DraggableContainer>
-            <TemplateComponents />
             {item.Components.map(component => (
-              <TemplateComponents key={component.id} />
+              <TemplateComponents item={component} key={component.id} />
             ))}
           </DraggableContainer>
         </ComponentWrapper>
@@ -68,7 +67,7 @@ const TemplateContent = styled.div`
 
 const ComponentWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: 20px 0 24px 40px;
 `;

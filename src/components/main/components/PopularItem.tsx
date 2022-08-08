@@ -51,6 +51,8 @@ const ItemImage = styled.img`
   max-height: 60%;
 `;
 const SvgContainer = styled.div`
+  display: flex;
+  align-items: center;
   position: absolute;
   bottom: 10px;
   right: 0;

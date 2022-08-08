@@ -4,10 +4,12 @@ import TemplateCardContainer from './TemplateCardContainer';
 // import Cart from 'components/main/cart/Cart';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import { getTemplates } from 'utils/apis';
+import { QueryKeys } from 'utils/queryClient';
 
 const TemplatesContainer = () => {
-  const { data: templateList } = useQuery('templates', getTemplates);
+  const { data: templateList } = useQuery(QueryKeys.TEMPLATES, getTemplates);
   if (!templateList) return <></>;
+  console.log('data', templateList);
   return (
     <Container>
       <Wrap>

@@ -1,7 +1,7 @@
 import { Component } from './component';
 
 export interface Template {
-  Components: Component[];
+  Components: TemplateComponent[];
   TemplateTags: TemplateTag[];
   author: string;
   createdAt: string;
@@ -12,6 +12,10 @@ export interface Template {
   link: string;
   title: string;
   updatedAt: string;
+}
+
+export interface TemplateComponent extends Component {
+  TemplateId: number;
 }
 
 export interface TemplateTag {
