@@ -12,10 +12,10 @@ const NavBarMainItem = ({ prevSlide, nextSlide, currentSlide }: NavBarMainItemPr
   return (
     <CategoryWrap>
       <li onClick={prevSlide}>
-        <PageButton props={currentSlide === 0}>컴포넌트</PageButton>
+        <PageButton props={currentSlide === 0}>Components</PageButton>
       </li>
       <li onClick={nextSlide}>
-        <PageButton props={currentSlide === 1}>인기템플릿</PageButton>
+        <PageButton props={currentSlide === 1}>Templates</PageButton>
       </li>
     </CategoryWrap>
   );

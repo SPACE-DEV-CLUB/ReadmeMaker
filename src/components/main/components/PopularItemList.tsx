@@ -12,9 +12,9 @@ const PopularItemList = ({ list }: PopularItemListProps): JSX.Element => {
   return (
     <Container>
       <ComponentsTitle>Popular Components</ComponentsTitle>
-      <ComponentsSubTitle>{`${today.getFullYear()}년 ${
-        today.getMonth() + 1
-      }월의 인기 컴포넌트를 확인하세요 !`}</ComponentsSubTitle>
+      <ComponentsSubTitle>
+        Check out the new components and templates for this month!
+      </ComponentsSubTitle>
       <DraggableContainer>
         {[...list]
           .sort((a, b) => b.like - a.like)
@@ -45,7 +45,7 @@ const ComponentsTitle = styled.h3`
 `;
 
 const ComponentsSubTitle = styled.p`
-  margin: 10px 0 30px;
+  margin: 15px 0 30px;
   font-size: 14px;
 `;
 
