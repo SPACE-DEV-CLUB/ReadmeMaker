@@ -39,7 +39,7 @@ jobs:
           yarn build
       
       - name: zip create
-        run: zip -qq -r ./ReadmeMaker.zip
+        run: zip -r ReadmeMaker.zip ./*
         shell: bash
       
       - name: AWS configure credentials
