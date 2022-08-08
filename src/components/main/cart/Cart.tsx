@@ -61,7 +61,7 @@ const CartContainer = styled.aside`
   padding: 40px 40px;
   border-radius: 30px;
   border: ${({ theme }) =>
-    theme.colors.BORDER === '#FFF' ? `1px solid ${theme.colors.BORDER}` : ''};
+    theme.colors.TYPE === 'light' ? `1px solid ${theme.colors.BORDER}` : ''};
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.CASUAL_FIELD};
   box-shadow: ${({ theme }) => theme.colors.SHADOW};
