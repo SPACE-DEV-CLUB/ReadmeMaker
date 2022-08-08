@@ -8,15 +8,10 @@ import { TemplateTag } from 'types/template';
 interface TemplateCardTextProps {
   title: string;
   TemplateTags: TemplateTag[];
-  createdAt: string;
+  author: string;
   description: string;
 }
-const TemplateCardText = ({
-  title,
-  TemplateTags,
-  createdAt,
-  description,
-}: TemplateCardTextProps) => {
+const TemplateCardText = ({ title, TemplateTags, author, description }: TemplateCardTextProps) => {
   return (
     <Container>
       <article>
@@ -24,7 +19,7 @@ const TemplateCardText = ({
           <Tag key={tag.id} tagName={tag.title} />
         ))}
         <Title>{title}</Title>
-        <SubTitle>{createdAt}</SubTitle>
+        <SubTitle>{author}</SubTitle>
         <TemplateInfo>{description}</TemplateInfo>
       </article>
     </Container>

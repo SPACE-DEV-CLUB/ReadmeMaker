@@ -9,7 +9,7 @@ import { QueryKeys } from 'utils/queryClient';
 const TemplatesContainer = () => {
   const { data: templateList } = useQuery(QueryKeys.TEMPLATES, getTemplates);
   if (!templateList) return <></>;
-
+  console.log('data', templateList);
   return (
     <Container>
       <Wrap>
