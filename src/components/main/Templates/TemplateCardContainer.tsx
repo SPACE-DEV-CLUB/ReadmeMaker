@@ -83,6 +83,7 @@ const ThumbNailImageWrapper = styled.article<{ isModalOn: boolean }>`
   align-items: center;
 
   img {
+    object-fit: cover;
     width: 100%;
   }
 
@@ -92,6 +93,12 @@ const ThumbNailImageWrapper = styled.article<{ isModalOn: boolean }>`
   }
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
+    width: 207px;
+    height: 184px;
+    margin: ${({ isModalOn }) => (isModalOn ? '80px' : '20px')};
+  }
+
+  @media (max-width: ${MEDIA_QUERY_END_POINT.SMALL}) {
     width: 207px;
     height: 184px;
     margin: ${({ isModalOn }) => (isModalOn ? '80px' : '20px')};

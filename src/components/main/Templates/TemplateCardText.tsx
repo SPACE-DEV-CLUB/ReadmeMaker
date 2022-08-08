@@ -41,6 +41,7 @@ const Title = styled.h2`
   font-weight: 800;
   color: #fff;
   margin-bottom: 10px;
+  white-space: pre-line;
 
   @media (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {
     font-size: 26px;
