@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-import CartIcon from 'assets/CartIcon';
-import HeartIcon from 'assets/HeartIconEmpty';
 import Tag from 'components/main/Templates/Tag';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
 import { TemplateTag } from 'types/template';

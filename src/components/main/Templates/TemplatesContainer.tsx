@@ -15,7 +15,7 @@ const TemplatesContainer = () => {
       <Wrap>
         <TitleWrap>
           <Title>Now Hot 🔥</Title>
-          <SubTitle>다양한 조합의 인기 템플릿을 확인하세요.</SubTitle>
+          <SubTitle>Check out the different combinations of popular templates.</SubTitle>
         </TitleWrap>
         {templateList.map(template => (
           <TemplateCardContainer item={template} key={template.id} />
@@ -45,7 +45,7 @@ const TitleWrap = styled.div`
 `;
 
 const Title = styled.h2`
-  margin-bottom: 10px;
+  margin: 61px 0 15px;
   font-size: 30px;
   font-weight: 800;
 `;

@@ -62,6 +62,7 @@ const Container = styled.header`
   width: 100%;
   height: 70px;
   background-color: ${({ theme }) => theme.colors.NAV_BACKGROUND};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
 `;
 
 const Wrap = styled.ul`
