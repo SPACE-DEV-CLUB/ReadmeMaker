@@ -19,7 +19,8 @@ const Button = styled.button<{ isSelected: boolean }>`
   border-radius: 6px;
   font-size: 13px;
   color: ${({ isSelected }) => (isSelected ? '#000' : '#fff')};
-  background-color: ${({ isSelected }) => (isSelected ? '#F5FF80' : '#2C3037')};
+  background-color: ${({ isSelected, theme }) =>
+    isSelected ? theme.colors.PIN : theme.colors.BUTTON_FIELD};
 `;
 
 export default FilterButton;

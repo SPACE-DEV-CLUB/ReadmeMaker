@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Script from 'next/script';
 import React from 'react';
 import NavBar from 'components/common/NavBar';
 import Generator from 'components/generator/dnd/Generator';
@@ -15,10 +16,10 @@ const generator = () => {
   return (
     <>
       <Head>
-        <script
+        <Script
           src="https://cdn.tiny.cloud/1/grw4sefbm00ssvsu8w4c01r6wbwjavncftmlqr5elrrgh62v/tinymce/6/tinymce.min.js"
           referrerPolicy="origin"
-        ></script>
+        ></Script>
       </Head>
       <Container>
         <NavBar route="generator">
@@ -27,7 +28,7 @@ const generator = () => {
         <GridWrap>
           <SideBar />
           <Generator />
-          <PreviewContainer></PreviewContainer>
+          <PreviewContainer />
         </GridWrap>
       </Container>
     </>
@@ -37,7 +38,7 @@ const generator = () => {
 export default generator;
 
 const Container = styled.section`
-  background-color: #171b21;
+  background: ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
 const GridWrap = styled.section`
@@ -51,7 +52,7 @@ const GridWrap = styled.section`
 `;
 
 const Title = styled.h2`
-  color: #f5ff80;
+  color: ${({ theme }) => theme.colors.PIN};
   font-size: 1.25rem;
   font-weight: 800;
 `;

@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
+import theme from 'styles/theme';
 
 interface NavBarMainItemProps {
   prevSlide: () => void;
@@ -45,7 +46,7 @@ const PageButton = styled.button<{ props: boolean }>`
         content: '';
         display: block;
         width: calc(100%);
-        border-bottom: 6px solid #f5ff80;
+        border-bottom: 6px solid ${theme.colors.PIN};
         border-radius: 3px;
         bottom: -23px;
       }

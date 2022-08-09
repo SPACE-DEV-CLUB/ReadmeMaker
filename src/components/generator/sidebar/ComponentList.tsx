@@ -32,14 +32,12 @@ export const ComponentList = ({ componentData }: ComponentListProps) => {
   );
 };
 
-const ContentList = styled.div`
-  padding-left: 40px;
-`;
+const ContentList = styled.div``;
 
 const ComponentCard = styled.div`
   padding: 30px 20px;
-  background-color: #171b21;
-  border: 1px solid #1b2027;
+  background-color: ${({ theme }) => theme.colors.CASUAL_FIELD};
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
   border-radius: 20px;
   color: #fff;
   font-size: 10px;
@@ -48,7 +46,7 @@ const ComponentCard = styled.div`
   margin-bottom: 5px;
 
   &:hover {
-    border: 1px solid #f5ff80;
+    border: 1px solid ${({ theme }) => theme.colors.PIN};
   }
 `;
 

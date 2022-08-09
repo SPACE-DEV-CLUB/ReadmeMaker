@@ -30,7 +30,7 @@ const Container = styled.div`
   /* width: calc(100vw - 500px); */
   width: 100%;
   color: #fff;
-  background-color: #171b21;
+  background-color: ${({ theme }) => theme.colors.CASUAL_FIELD};
   background: ${({ theme }) => theme.colors.CASUAL_FIELD};
   border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   border-radius: 30px;

@@ -2,9 +2,11 @@ import { MEDIA_QUERY_END_POINT } from 'constants/index';
 
 export const darkTheme = {
   MAIN_FONT: '#FFFFFF',
+  SUB_FONT: '#FFFFFF',
   PIN: '#F5FF80',
   BACKGROUND: '#0E1116',
   NAV_BACKGROUND: '#0E1116',
+  COMPONENT: `#0E1116`,
   CASUAL_LINE: '#20262F',
   CASUAL_FIELD: '#171B21',
   CASUAL_SUB_FIELD: '#1B2027',
@@ -16,9 +18,11 @@ export const darkTheme = {
 
 export const lightTheme: ColorTheme = {
   MAIN_FONT: '#FFFFFF',
+  SUB_FONT: '#000000',
   PIN: '#F5FF80',
-  BACKGROUND: 'linear-gradient(180deg, #ADE8DF 0%, #DCF8A4 73.81%)', // linear-gradient(180deg, #ADE8DF 0%, #DCF8A4 73.81%);그래디언트 기존꺼 안됨
+  BACKGROUND: 'linear-gradient(180deg, #ADE8DF 0%, #DCF8A4 73.81%)',
   NAV_BACKGROUND: '#A5DCD2',
+  COMPONENT: `rgb(14, 17, 22, 0.08)`,
   CASUAL_LINE: '#FFFFFF;',
   CASUAL_FIELD: 'rgba(255, 255, 255, 0.08);',
   CASUAL_SUB_FIELD: 'rgba(255, 255, 255, 0.1);',

@@ -48,7 +48,7 @@ export default PreviewContainer;
 
 const Container = styled.section`
   padding: 0px 40px 40px 40px;
-  background-color: #000;
+  background: ${({ theme }) => theme.colors.BACKGROUND};
   color: #dddedf;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -86,7 +86,9 @@ const DownloadBtn = styled.a`
 `;
 
 const PreviewBox = styled.section`
+  color: ${({ theme }) => theme.colors.SUB_FONT};
+
   & > div > * {
-    width: 100%;
+    max-width: 100%;
   }
 `;

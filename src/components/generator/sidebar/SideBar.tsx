@@ -34,7 +34,7 @@ const SideBar = () => {
               <CartIcon
                 width={15}
                 height={14}
-                color={activeMenu === 'cart' ? '#2c3037' : '#f5ff80'}
+                color={activeMenu === 'cart' ? ' #F5FF80' : ' #0E1116'}
               />
             </BtnCart>
           </li>
@@ -48,8 +48,8 @@ const SideBar = () => {
 export default SideBar;
 
 const Container = styled.section`
+  margin: 0 20px;
   height: 100%;
-  background-color: #171b21;
   color: white;
   overflow: scroll;
   overflow-x: hidden;
@@ -63,33 +63,31 @@ const Container = styled.section`
 
 const Menu = styled.header`
   height: 70px;
-  background-color: #1b2027;
 `;
 
 const MenuBtnList = styled.ul`
   display: flex;
   align-items: center;
-  padding-left: 40px;
   gap: 14px;
   height: 100%;
 `;
 
-const BtnMenuStyle = (isActive: boolean) => css`
+const BtnMenuStyle = (isActive: boolean, theme: any) => css`
   ${isActive
-    ? {
-        background: '#f5ff80',
-        color: '#2c3037',
-      }
-    : {
-        background: '#2c3037',
-        color: '#f5ff80',
-      }}
+    ? `
+          background: ${theme.colors.NAV_BACKGROUND};
+          color: ${theme.colors.PIN};
+        `
+    : `
+          background: ${theme.colors.PIN};
+          color:${theme.colors.BACKGROUND};
+        `}
   width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #f5ff80;
+  border: 1px solid ${theme.colors.PIN};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
   border-radius: 50%;
   font-weight: 700;
@@ -98,11 +96,11 @@ const BtnMenuStyle = (isActive: boolean) => css`
 `;
 
 const BtnMenu = styled.button<{ isActive: boolean }>`
-  ${({ isActive }) => BtnMenuStyle(isActive)};
+  ${({ isActive, theme }) => BtnMenuStyle(isActive, theme)};
 `;
 
 const BtnCart = styled.button<{ isActive: boolean }>`
-  ${({ isActive }) => BtnMenuStyle(isActive)};
+  ${({ isActive, theme }) => BtnMenuStyle(isActive, theme)};
   svg {
     transform: translateX(-1px);
   }

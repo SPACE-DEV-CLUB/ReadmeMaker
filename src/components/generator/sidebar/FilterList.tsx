@@ -70,7 +70,6 @@ const FilterBtnList = styled.ul`
   flex-wrap: wrap;
   gap: 10px;
   margin: 12px 0 40px;
-  padding: 0 46px 0 40px;
 `;
 
 const BtnFilterItem = styled.button<{ isActive: boolean }>`
@@ -79,14 +78,14 @@ const BtnFilterItem = styled.button<{ isActive: boolean }>`
   padding: 0 10px;
   border-radius: 8px;
   font-size: 0.75rem;
-  ${({ isActive }) =>
+  ${({ isActive, theme }) =>
     isActive
-      ? {
-          background: '#2c3037',
-          color: '#f5ff80',
-        }
-      : {
-          background: '#f5ff80',
-          color: '#2c3037',
-        }}
+      ? `
+          background: ${theme.colors.NAV_BACKGROUND};
+          color: ${theme.colors.PIN};
+        `
+      : `
+          background: ${theme.colors.PIN};
+          color:${theme.colors.NAV_BACKGROUND};
+        `}
 `;

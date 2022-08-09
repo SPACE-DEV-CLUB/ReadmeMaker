@@ -94,7 +94,7 @@ const SwitchAnchor = styled.a<{ route: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5ff80;
+  background-color: ${({ theme }) => theme.colors.PIN};
   font-size: 14px;
   font-weight: 600;
   ${({ route }) => route === 'generator' && 'background-color:#ffffff'}

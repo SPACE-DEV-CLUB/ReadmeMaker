@@ -60,7 +60,7 @@ const transition = keyframes`
 const ModalInner = styled.div<IModalInnerStyled>`
   position: absolute;
   z-index: 9999;
-  background-color: #171b21;
+  background-color: ${({ theme }) => theme.colors.CASUAL_FIELD};
   top: 0;
   bottom: 0;
   right: 0;

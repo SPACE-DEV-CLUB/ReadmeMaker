@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import MeatballIcon from 'assets/Meatball.svg';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
-import { lightTheme } from 'styles/theme';
 
 interface ComponentContainerProps {
   children: ReactNode;
@@ -21,25 +20,25 @@ const ComponentContainer = ({ children, isDragging }: ComponentContainerProps) =
 
 export default ComponentContainer;
 
-const draggingStyle = () => css`
-  background-color: ${lightTheme.PIN};
-  border-right: 20px solid ${lightTheme.PIN};
-  border-color: ${lightTheme.PIN};
+const draggingStyle = (theme: any) => css`
+  background-color: ${theme.colors.PIN};
+  border-right: 20px solid ${theme.colors.PIN};
+  border-color: ${theme.colors.PIN};
   color: black;
 
   & svg {
     right: -12px;
-    fill: #0e1116;
+    fill: ${theme.colors.NAV_BACKGROUND};
   }
 
   & input {
-    background-color: #e9f370;
-    color: #0e1116;
+    background-color: ${theme.colors.PIN};
+    color: ${theme.colors.NAV_BACKGROUND};
   }
 
   & h3,
   & button {
-    color: #0e1116;
+    color: ${theme.colors.NAV_BACKGROUND};
   }
 `;
 const CardContainer = styled.article<{ isDragging: boolean }>`
@@ -50,14 +49,14 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
   padding: 50px 60px 60px 60px;
   height: 200px;
   border-radius: 20px;
-  background: #0e1116;
-  border: 1px solid #20262f;
+  background: ${({ theme }) => theme.colors.COMPONENT};
+  border: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
 
-  ${({ isDragging }) => isDragging && draggingStyle()}
+  ${({ isDragging, theme }) => isDragging && draggingStyle(theme)}
 
   &:hover {
-    border-color: ${lightTheme.PIN};
-    border-right: 20px solid ${lightTheme.PIN};
+    border-color: ${({ theme }) => theme.colors.PIN};
+    border-right: 20px solid ${({ theme }) => theme.colors.PIN};
 
     & svg {
       right: -12px;
@@ -74,7 +73,7 @@ const CardContainer = styled.article<{ isDragging: boolean }>`
     top: 0;
     bottom: 0;
     right: 20px;
-    border-left: 1px solid #20262f;
+    border-left: 1px solid ${({ theme }) => theme.colors.CASUAL_LINE};
   }
 
   @media screen and (max-width: ${MEDIA_QUERY_END_POINT.MEDIUM}) {

@@ -61,7 +61,7 @@ const Modal = ({ onToggleModal, left = -50, item }: ModalProps) => {
 const ModalTitle = styled.h4`
   position: absolute;
   top: -30px;
-  color: #f5ff80;
+  color: ${({ theme }) => theme.colors.PIN};
   font-size: 20px;
 `;
 
@@ -69,7 +69,7 @@ const ImageContainer = styled.article`
   width: 700px;
   height: 500px;
   border-radius: 30px;
-  background-color: #1b2027;
+  background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
   margin: 80px;
   display: flex;
   justify-content: center;
