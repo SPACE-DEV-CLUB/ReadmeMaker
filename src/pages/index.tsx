@@ -12,6 +12,7 @@ const Home: NextPage = () => {
   const slideRef = useRef<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [_, setModal] = useRecoilState(modalStates);
+  // const [webSizeLimit, setWebSizeLimit] = useState(true);
 
   useEffect(() => {
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
@@ -43,6 +44,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Make your readme.md awesome!!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <NavBar route="main">
         <NavBarMainItem nextSlide={nextSlide} prevSlide={prevSlide} currentSlide={currentSlide} />
       </NavBar>
