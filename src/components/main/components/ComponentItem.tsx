@@ -24,7 +24,12 @@ const ComponentItem = ({ item, setModalTarget }: ComponentItemProps): JSX.Elemen
   };
 
   const onClickCartIcon = () => {
-    if (cartList.includes(item)) return;
+    if (
+      cartList.some(list => {
+        return list.id === item.id;
+      })
+    )
+      return;
 
     setCartList([...cartList, item]);
   };
