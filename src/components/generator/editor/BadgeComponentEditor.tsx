@@ -64,6 +64,7 @@ const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEdit
             <InputField
               id={variable}
               type="text"
+              defaultValue={inputVariables[variable]}
               onChange={event => changeValue(event.target.value, variable)}
             />
           </InputItem>
