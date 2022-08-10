@@ -1,4 +1,4 @@
-export interface BadgeComponentType {
+export interface ComponentType {
   id: string;
   title: string;
   code: string;
@@ -14,4 +14,16 @@ export interface BadgeComponentType {
   registered_date: string;
   expired: boolean;
   like: number;
+  editorType: string;
+}
+
+export interface BadgeComponentType extends ComponentType {
+  inputVariables: { [key: string]: string };
+}
+
+export interface TextComponentType {
+  id: string;
+  code: string;
+  type: string;
+  editorType: string;
 }

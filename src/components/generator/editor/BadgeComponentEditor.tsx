@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
 import { MEDIA_QUERY_END_POINT } from 'constants/index';
-import useDebounce from 'hooks/useDebounce';
-import { BadgeComponentType } from 'types/badgeComponentType';
-import { replaceText, removeComponent } from 'utils';
+import { BadgeComponentType } from 'types/editorComponent';
+import { modifyComponentValue, removeComponent } from 'utils';
 
 interface BadgeComponentEditorProps {
   badgeComponent: BadgeComponentType;
@@ -15,39 +14,61 @@ interface BadgeComponentEditorProps {
 }
 
 const BadgeComponentEditor = ({ badgeComponent, isDragging }: BadgeComponentEditorProps) => {
+  const { id, title, image, inputVariables } = badgeComponent;
+
   const [components, setComponents] = useRecoilState(componentsState);
-  const [username, setUsername] = useState('deli-ght');
-  const debounceUsername = useDebounce(username);
-  const curIndex = components.findIndex(component => component.id === badgeComponent.id);
+  const [inputValue, setInputValue] = useState({ key: '', value: '' });
+  const curIndex = components.findIndex(component => component.id === id);
 
   useEffect(() => {
-    const updatedComponentList = replaceText(components, curIndex, {
-      ...badgeComponent,
-      username: debounceUsername,
-    });
+    const newInputVariables = { ...inputVariables, [inputValue.key]: inputValue.value };
 
-    setComponents(updatedComponentList);
-  }, [debounceUsername]);
+    if (inputValue.key) {
+      const updatedComponentList = modifyComponentValue(components, curIndex, {
+        ...badgeComponent,
+        inputVariables: newInputVariables,
+      });
 
-  const changeUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+      setComponents(updatedComponentList);
+    }
+  }, [inputValue.value]);
+
+  const inputList = useMemo(() => Object.keys(inputVariables), []);
+
+  const changeValue = (value: string, key: string): void => {
+    setInputValue({ key, value });
   };
 
-  const deleteBadgeComponent = () => {
+  const deleteBadgeComponent = (): void => {
     const updatedComponentList = removeComponent(components, curIndex);
 
     setComponents(updatedComponentList);
   };
 
+  const replacePercent = (value: string): string => {
+    return value.replace(/\%/g, '');
+  };
+
   return (
     <ComponentContainer isDragging={isDragging}>
       <Header>
-        <Title>{badgeComponent.title}</Title>
+        <Title>{title}</Title>
         <ImgWrap>
-          <Img src={badgeComponent.image} alt="" />
+          <Img src={image} alt="" />
         </ImgWrap>
       </Header>
-      <InputField type="text" onChange={changeUsername} value={username} />
+      <ul>
+        {inputList.map(variable => (
+          <InputItem key={`${id}-${variable}`}>
+            <Label htmlFor={variable}>{replacePercent(variable)}</Label>
+            <InputField
+              id={variable}
+              type="text"
+              onChange={event => changeValue(event.target.value, variable)}
+            />
+          </InputItem>
+        ))}
+      </ul>
       <RemoveButton onClick={() => deleteBadgeComponent()} />
     </ComponentContainer>
   );
@@ -71,6 +92,10 @@ const Title = styled.h3`
   font-size: 1.25rem;
   font-weight: 800;
   color: white;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const ImgWrap = styled.div`
@@ -79,12 +104,31 @@ const ImgWrap = styled.div`
   padding: 20px;
   background-color: ${({ theme }) => theme.colors.CASUAL_SUB_FIELD};
   border-radius: 20px;
+  flex-basis: 1;
 `;
 
 const Img = styled.img`
   width: 100%;
   height: 100%;
   display: block;
+`;
+
+const InputItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
+
+const Label = styled.label`
+  margin-bottom: 10px;
+  font-size: 10px;
+  color: #fff;
+  text-align: left;
+  text-transform: capitalize;
 `;
 
 const InputField = styled.input`

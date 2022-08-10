@@ -2,9 +2,8 @@ import styled from '@emotion/styled';
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import BadgeComponentEditor from '../editor/BadgeComponentEditor';
-import { BadgeComponentType } from 'types/badgeComponentType';
-import { TextComponentType } from 'types/textComponentType';
+import { BadgeComponentEditor, ImageComponentEditor } from '../editor';
+import { BadgeComponentType, TextComponentType, ComponentType } from 'types/editorComponent';
 
 const DndComponent = ({ component, componentIndex }: any) => {
   const TextComponentEditor = dynamic(() => import('../editor/TextComponentEditor'), {
@@ -17,7 +16,7 @@ const DndComponent = ({ component, componentIndex }: any) => {
   }, []);
 
   const switchComponent = (component: any, isDragging: boolean) => {
-    switch (component.type) {
+    switch (component.editorType) {
       case 'text':
         return (
           <TextComponentEditor
@@ -27,7 +26,6 @@ const DndComponent = ({ component, componentIndex }: any) => {
           />
         );
       case 'badge':
-      case 'image':
         return (
           <BadgeComponentEditor
             key={component.id}
@@ -35,19 +33,23 @@ const DndComponent = ({ component, componentIndex }: any) => {
             isDragging={isDragging}
           />
         );
+      case 'image':
+        return (
+          <ImageComponentEditor
+            key={component.id}
+            imageComponent={component as ComponentType}
+            isDragging={isDragging}
+          />
+        );
       default:
-        return;
+        return null;
     }
   };
 
   return (
     <Container>
       {start && (
-        <Draggable
-          draggableId={`test-${component.id}`}
-          index={componentIndex}
-          key={`test-${component.id}`}
-        >
+        <Draggable draggableId={`${component.id}`} index={componentIndex} key={`${component.id}`}>
           {(provided, snapshot) => {
             return (
               <div

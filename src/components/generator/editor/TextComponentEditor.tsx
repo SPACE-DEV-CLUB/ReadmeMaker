@@ -5,8 +5,8 @@ import { useRecoilState } from 'recoil';
 import ComponentContainer from './ComponentContainer';
 import CloseButton from 'assets/CloseButton';
 import { componentsState } from 'atoms/components';
-import { TextComponentType } from 'types/textComponentType';
-import { removeComponent, replaceText } from 'utils';
+import { TextComponentType } from 'types/editorComponent';
+import { removeComponent, modifyComponentValue } from 'utils';
 
 interface TextComponentEditorProps {
   textComponent: TextComponentType;
@@ -19,7 +19,7 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
   const curIndex = components.findIndex(component => component.id === textComponent.id);
 
   const editText = () => {
-    const updatedComponentList = replaceText([...components], curIndex, {
+    const updatedComponentList = modifyComponentValue([...components], curIndex, {
       ...textComponent,
       code: editorRef.current.getContent(),
     });
@@ -61,7 +61,7 @@ const TextComponentEditor = ({ textComponent, isDragging }: TextComponentEditorP
       </EditorWrap>
       <ButtonWrap>
         <BtnOk type="button" onClick={editText}>
-          입력
+          Enter
         </BtnOk>
       </ButtonWrap>
       <RemoveButton onClick={deleteTextComponent} />
@@ -134,6 +134,13 @@ const EditorWrap = styled.article<{ isDragging: boolean }>`
 const BtnOk = styled.button`
   font-size: 1rem;
   color: #fff;
+  font-weight: 700;
+  margin-top: 40px;
+  padding: 5px;
+
+  &:hover {
+    color: #e9f370;
+  }
 `;
 
 const ButtonWrap = styled.div`

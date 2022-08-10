@@ -1,2 +1,3 @@
 export * from './removeComponent';
-export * from './replaceText';
+export * from './modifyComponentValue';
+export * from './replaceVariable';

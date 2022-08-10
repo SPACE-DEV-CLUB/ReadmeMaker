@@ -1,20 +1,53 @@
 import styled from '@emotion/styled';
 import { useSetRecoilState } from 'recoil';
+import { v4 as uuid } from 'uuid';
 import { componentsState } from 'atoms/components';
 import { Component } from 'types/component';
+
 interface ComponentListProps {
+  mode: string;
   componentData: Component[] | undefined;
 }
 
-export const ComponentList = ({ componentData }: ComponentListProps) => {
+export const ComponentList = ({ mode, componentData }: ComponentListProps) => {
   const setComponents = useSetRecoilState(componentsState);
 
   if (componentData?.length === 0) {
-    return <p>해당 필터에 속하는 컴포넌트가 존재하지 않습니다.</p>;
+    switch (mode) {
+      case 'menu':
+        return <InfoText>해당 필터에 속하는 컴포넌트가 존재하지 않습니다.</InfoText>;
+      case 'cart':
+        return <InfoText>장바구니가 비어있습니다.</InfoText>;
+      default:
+        return null;
+    }
   }
 
   const addComponent = (component: Component): void => {
-    setComponents((oldComponents: any[]) => [...oldComponents, component]);
+    if (component.variable) {
+      const inputVariables = component.variable
+        .split(', ')
+        .reduce((acc: { [key: string]: string }, cur: string) => {
+          acc[cur] = '';
+          return acc;
+        }, {});
+      const generateComponent = {
+        ...component,
+        id: `${uuid()}`,
+        inputVariables: inputVariables,
+        editorType: 'badge',
+      };
+
+      setComponents((oldComponents: any) => [...oldComponents, generateComponent]);
+    } else {
+      const generateComponent = {
+        ...component,
+        id: `${uuid()}`,
+        editorType: 'image',
+      };
+
+      setComponents((oldComponents: any) => [...oldComponents, generateComponent]);
+    }
   };
 
   return (
@@ -32,7 +65,9 @@ export const ComponentList = ({ componentData }: ComponentListProps) => {
   );
 };
 
-const ContentList = styled.div``;
+const ContentList = styled.div`
+  padding: 0 40px;
+`;
 
 const ComponentCard = styled.div`
   padding: 30px 20px;
@@ -53,4 +88,10 @@ const ComponentCard = styled.div`
 const Image = styled.img`
   margin: 30px auto 0;
   width: 100%;
+`;
+
+const InfoText = styled.p`
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.5;
 `;
