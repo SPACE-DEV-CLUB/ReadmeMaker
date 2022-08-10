@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { BadgeComponentType, TextComponentType, ComponentType } from 'types/editorComponent';
 import { BadgeComponentEditor, ImageComponentEditor } from '../editor';
+import { BadgeComponentType, TextComponentType, ComponentType } from 'types/editorComponent';
 
 const DndComponent = ({ component, componentIndex }: any) => {
   const TextComponentEditor = dynamic(() => import('../editor/TextComponentEditor'), {
