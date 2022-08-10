@@ -19,7 +19,12 @@ const PopularComponentsItem = ({ item }: PopularComponetItemProps): JSX.Element 
   };
 
   const onClickCartIcon = () => {
-    if (cartList.includes(item)) return;
+    if (
+      cartList.some(list => {
+        return list.id === item.id;
+      })
+    )
+      return;
 
     setCartList([...cartList, item]);
   };
