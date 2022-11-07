@@ -70,6 +70,15 @@
         /><br /><sub><b>이현호</b></sub></a>
     <br />
     </td>
+     <td align="center">
+      <a href="https://github.com/VerryBerry36"
+        ><img
+          src="https://avatars.githubusercontent.com/VerryBerry36"
+          width="100px;"
+          alt=""
+        /><br /><sub><b>안은지</b></sub></a>
+    <br />
+    </td>
   </tr>
 </table>
 
@@ -98,6 +107,10 @@
 - Sequelize
 - Express
 
+### Design
+
+- Figma
+
 ### 화면 구현
 
 #### 메인 페이지
@@ -123,6 +136,7 @@
 | Main page                 | 김기영, 박정훈 |
 | Readme Editor page        | 김민주, 박서영 |
 | Backend | 이규리, 이현호       |
+| Design | 안은지       |
 
 <!-- ## 데이터베이스 구조 -->
 
