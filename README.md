@@ -84,6 +84,7 @@
 - discord
 - slack
 - notion
+- jira
 
 ### Frontend
 
